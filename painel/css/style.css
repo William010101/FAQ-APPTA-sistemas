@@ -1,0 +1,94 @@
+@font-face {
+    font-family: MoskBold;
+    src: url(../fonts/Mosk-Bold-700.ttf)
+}
+
+@font-face {
+    font-family: MoskLight;
+    src: url(../fonts/Mosk-Light-300.ttf)
+}
+
+@font-face {
+    font-family: RobotoBold;
+    src: url(../fonts/Roboto-Bold.ttf)
+}
+
+@font-face {
+    font-family: RobotoRegular;
+    src: url(../fonts/Roboto-Regular.ttf)
+}
+
+@font-face {
+    font-family: PoppinsBold;
+    font-display: swap;
+    src: url(../fonts/Poppins-Bold.ttf)
+}
+
+@font-face {
+    font-family: PoppinsRegular;
+    font-display: swap;
+    src: url(../fonts/Poppins-Regular.ttf)
+}
+
+@font-face {
+    font-family: PoppinsLight;
+    font-display: swap;
+    src: url(../fonts/Poppins-Light.ttf)
+}
+
+@font-face {
+    font-family: Segoemdl2;
+    src: url(../fonts/Segoe-mdl2-assets.ttf)
+}
+
+#title-faq {
+    font-family: PoppinsRegular;
+    font-size: 36px;
+    line-height: 54px;
+    letter-spacing: 0.05em;
+    color: #C7BD6C;
+}
+
+#logologin {
+    width: 76px;
+    height: 117px;
+}
+
+.boxLogin {
+    background: #FFFFFF;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.25);
+    margin: auto;
+}
+
+.lblLogin,
+#linkEsqueceuSenha,
+#LinkQuerSerRevenda {
+    font-family: RobotoRegular;
+    font-size: 18px;
+    letter-spacing: 0.05em;
+    color: #6B6B6B;
+}
+
+#btnLogin {
+    width: 80%;
+    background: #07AEFF;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 30px;
+    max-width: 100%;
+    font-family: RobotoBold;
+    font-size: 18px;
+    letter-spacing: 0.07em;
+    color: #FFFFFF;
+    margin: 7% 10% 7% 10%;
+    padding: 20px 0px 20px 0px;
+}
+
+.containerLogin {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    min-height: 100%;
+    max-width: 1163px;
+}

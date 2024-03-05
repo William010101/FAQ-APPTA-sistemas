@@ -1,0 +1,9 @@
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+RewriteRule ^inicio/?$ /index.php [NC,L]
+  RewriteRule ^link/?$ /link.php [NC,L]
+  RewriteRule ^search/?$  /search.php [NC,L]
+  RewriteRule ^categoria/?$ /categoria.php [NC,L]
+</IfModule>
+
+Options -Indexes

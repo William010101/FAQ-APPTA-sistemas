@@ -1,0 +1,700 @@
+@font-face {
+    font-family: PoppinsBold;
+    font-display: swap;
+    src: url(../fonts/Poppins-Bold.ttf)
+}
+
+@font-face {
+    font-family: PoppinsLight;
+    font-display: swap;
+    src: url(../fonts/Poppins-Light.ttf)
+}
+
+@font-face {
+    font-family: RobotoBold;
+    font-display: swap;
+    src: url(../fonts/Roboto-Bold.ttf)
+}
+
+@font-face {
+    font-family: RobotoRegular;
+    font-display: swap;
+    src: url(../fonts/Roboto-Regular.ttf)
+}
+
+.Poppins {
+    font-family: PoppinsLight;
+}
+
+.PoppinsBold {
+    font-family: PoppinsBold;
+}
+
+.RobotoBold {
+    font-family: RobotoBold;
+}
+
+.RobotoRegular {
+    font-family: RobotoRegular;
+}
+
+.appta-titulo {
+    font-size: 36px;
+    color: white;
+    margin-bottom: 35px;
+    margin-top: 93px;
+    letter-spacing: 0.07em;
+}
+
+#appta-subtitulo {
+    font-size: 18px;
+    line-height: 24px;
+}
+
+.inputSearch {
+    margin-top: 37px;
+    width: 100%;
+}
+
+.gridProdutos {
+    margin-left: 4%;
+    height: 200px;
+    display: inline-block;
+}
+
+.cardProdutos {
+    margin-left: 3%;
+    width: 143px;
+    height: 143px;
+    border: 3px solid #FFF;
+}
+
+.btn.btn-recentes {
+    width: 100%;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    font-family: RobotoBold;
+    font-size: 14px;
+    line-height: 24px;
+    color: #FFF;
+    background-color: #07AEFF;
+    border-radius: 0px 0px 10px 10px;
+}
+
+#formRecentes {
+    margin-bottom: 0;
+}
+
+.card.recentes {
+    border-radius: 10px 10px 10px 10px;
+    border-color: #07AEFF;
+    height: 301px;
+}
+
+.card-title.recentes {
+    margin-top: 45px;
+    margin-left: 40px;
+    font-family: PoppinsBold;
+    font-size: 18px;
+    line-height: 22px;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: #07AEFF;
+}
+
+.card-text.recentes,
+.card-text.categoria {
+    height: 301px;
+    font-family: RobotoRegular;
+    font-size: 14px;
+    line-height: 22px;
+    letter-spacing: 0.07em;
+    color: #6B6B6B;
+    padding-top: 16px;
+    padding-right: 40px;
+    padding-left: 40px;
+}
+
+.card-text.categoria {
+    height: 100%;
+    padding-bottom: 5%;
+}
+
+#produtoAppta,
+#produtoFood,
+#produtoFidelizappta {
+    display: block;
+    margin: auto;
+    margin-top: 22%;
+}
+
+#produtoFidelizappta {
+    margin-top: 12%;
+}
+
+#btnAppta,
+#btnFood {
+    font-family: RobotoRegular;
+    font-size: 15px;
+    text-decoration-line: underline;
+    color: #FFF;
+}
+
+.containerProdutos {
+    margin-top: 29%;
+    margin-bottom: 16%;
+}
+
+#inputHeader {
+    border: none;
+    height: 58px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+#rowHeader {
+    display: block;
+}
+
+.produtos-titulo {
+    color: black;
+}
+
+#btnpesquisar,
+#btnpesquisarhome {
+    border-radius: 0px 10px 10px 0px;
+    height: 44px;
+    background-color: #FFF;
+    color: #ADADAD;
+}
+
+#btnpesquisarhome {
+    height: 58px;
+}
+
+#btnpesquisar:hover {
+    background-color: rgb(243, 243, 243);
+    color: #ADADAD;
+}
+
+#imagem {
+    background-image: url("../img/fundo.jpeg");
+    background-repeat: none;
+    background-size: 200px 450px;
+}
+
+.logocentral {
+    margin-right: 15px;
+    width: 42px;
+    height: 48px;
+}
+
+#btnLinkConheca {
+    font-family: RobotoBold;
+    font-size: 18px;
+    text-decoration-line: underline;
+    color: #FFFFFF;
+}
+
+#categoriaProdutos {
+    height: auto;
+    width: 125px;
+}
+
+.categoria-tags {
+    padding-left: 40px;
+    font-family: RobotoRegular;
+    font-size: 14px;
+    line-height: 24px;
+    color: #6B6B6B;
+}
+
+.produtos-titulos {
+    margin-top: 116px;
+    margin-bottom: 71px;
+    font-family: PoppinsBold;
+    font-size: 36px;
+    line-height: 40px;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: #C7BD6C;
+}
+
+.titulo-pergunta {
+    word-break: break-word;
+    font-family: PoppinsBold;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: #07AEFF;
+}
+
+.resposta-perguntalink {
+    padding: 50px;
+    word-wrap: break-word;
+    overflow-x: auto;
+    /* text-align-last: center; */
+    margin-bottom: 2%;
+}
+
+.breadcrumb {
+    font-family: RobotoRegular;
+    font-size: 18px;
+    line-height: 21px;
+    text-decoration-line: underline;
+    color: #C7BD6C;
+    padding: 5px 0px 5px 0px;
+}
+
+.text-truncate {
+    height: 47px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: unset;
+}
+
+.produtos-sub-titulos {
+    margin-bottom: 41px;
+    font-family: RobotoRegular;
+    font-size: 18px;
+    line-height: 24px;
+    letter-spacing: 0.07em;
+    color: #6B6B6B;
+}
+
+#headvideo {
+    border-bottom: none;
+    background-color: #FFF;
+    border-radius: 10px;
+}
+
+.card.video {
+    border-color: #07AEFF;
+}
+
+.card.search {
+    border-color: #07AEFF;
+    margin-bottom: 2rem;
+}
+
+.hResultadoPesquisa {
+    color: #6B6B6B;
+    font-family: RobotoRegular;
+}
+
+.hResultadoPesquisa {
+    letter-spacing: 0.05em;
+    font-family: RobotoBold;
+    color: #C7BD6C;
+}
+
+.card.search {
+    border-radius: 0px 0px 12px 12px;
+}
+
+.card.card-body {
+    border-radius: 0px 0px 0px 0px;
+    border-top-color: #07AEFF;
+}
+
+#breadcrumb {
+    font-family: RobotoRegular;
+    font-size: 18px;
+    line-height: 21px;
+    text-decoration-line: underline;
+    color: #C7BD6C;
+}
+
+.btn.btn-video {
+    margin-bottom: 5px;
+    font-family: PoppinsBold;
+    font-size: 18px;
+    line-height: 22px;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: #07AEFF;
+}
+
+.blockquote.video {
+    margin-top: 13px;
+    margin-left: 15px;
+    margin-bottom: -2px;
+    font-family: RobotoRegular;
+    font-size: 18px;
+    line-height: 24px;
+    letter-spacing: 0.07em;
+    color: #C7BD6C;
+}
+
+#duvidasrecentes {
+    font-size: .8em;
+    letter-spacing: .01em;
+    line-height: 1.6em;
+}
+
+.btn.btn-produtos-primario {
+    margin-bottom: 2%;
+    margin-left: 1%;
+    padding-left: 25px;
+    padding-right: 25px;
+    font-family: RobotoRegular;
+    font-size: 18px;
+    line-height: 24px;
+    background: #C7BD6C;
+    border-radius: 30px;
+    color: #FFF;
+}
+
+.btn.btn-produtos-secundario,
+.btn.btn-produtosrecentes-secundario {
+    width: 100%;
+    margin-bottom: 2%;
+    margin-left: 1%;
+    padding-left: 25px;
+    padding-right: 25px;
+    font-family: RobotoRegular;
+    font-size: 18px;
+    line-height: 24px;
+    background: #FFF;
+    border-radius: 30px;
+    border-color: #07AEFF;
+    color: #07AEFF !important;
+}
+
+#categoria {
+    height: 30px;
+    padding-bottom: 3%;
+    padding-left: 1%;
+}
+
+.btn.btn-acessados,
+.btn.btn-relacionadas,
+.blockquote.pesquisa {
+    text-align: left;
+    padding: 45px 0px 45px 41px;
+    width: 100%;
+    border-color: #07AEFF;
+    font-family: PoppinsBold;
+    font-size: 18px;
+    line-height: 22px;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: #07AEFF;
+}
+
+.btn.btn-acessados:hover {
+    cursor: pointer;
+    color: #07AEFF;
+}
+
+.blockquote.pesquisa {
+    max-width: 100%;
+    padding: 5px 0px 16px 0px;
+    margin-bottom: 0px;
+}
+
+.fas.fa-chevron-right {
+    margin-left: 2%;
+}
+
+#lista {
+    border: none;
+    cursor: pointer;
+}
+
+#lista:hover {
+    background-color: #007bff;
+    color: white;
+}
+
+#rodape {
+    height: 300px;
+}
+
+#menupesquisacategoria {
+    height: auto;
+}
+
+.titulocategoria {
+    color: white;
+    padding-top: 2px;
+    margin-bottom: 0;
+}
+
+#menudrop {
+    color: white;
+    font-size: 20px;
+    font-family: 'Biryani', sans-serif !important;
+}
+
+#submenudrop {
+    color: white;
+}
+
+.dropdown-item {
+    color: #07AEFF;
+    font-family: RobotoRegular;
+    font-size: 18px;
+}
+
+#cardtamanho {
+    width: 255px;
+    height: 200px;
+}
+
+.imgdrop {
+    width: 80px;
+}
+
+#pesquisacategoria {
+    display: contents;
+}
+
+#searchnav {
+    display: contents;
+}
+
+#inputpesquisa {
+    height: 44px;
+    background: #FFFFFF;
+    border: 1px solid #F1F1F2;
+    box-sizing: border-box;
+    border-radius: 10px 0px 0px 10px;
+}
+
+.breadcrumb {
+    background-color: white;
+    color: #c8c8c8;
+    font-weight: 300;
+    font-size: 15px;
+    font-family: 'Biryani', sans-serif !important;
+}
+
+.home-header {
+    background: #C7BD6C;
+    display: table;
+    min-height: 300px;
+    position: relative;
+    width: 100%;
+}
+
+#navbar {
+    background-color: #C7BD6C;
+}
+
+.botao {
+    font-size: 20px;
+    color: white;
+}
+
+.resultadopesquisa {
+    width: 2000px;
+}
+
+#semresultado {
+    font-size: 20px;
+    height: auto;
+}
+
+.contagempesquisa {
+    font-size: 18px;
+    font-family: RobotoRegular;
+}
+
+#artigo {
+    color: darkslategrey;
+    line-height: 25px;
+}
+
+.hoverlist {
+    cursor: pointer;
+    color: black;
+    padding: 15px 0;
+    font-size: 22px;
+    font-weight: 500;
+}
+
+.hoverlist:hover {
+    background-color: #2e90fa;
+    cursor: pointer;
+    color: white;
+    font-weight: 700;
+}
+
+.bodyrecentes {
+    height: 50px;
+    background-color: red;
+}
+
+#naoencontrou {
+    background-position-x: right;
+    background-image: url(../img/bgnaoencontrou.jpg);
+    background-repeat: no-repeat;
+}
+
+.naoencontrou-title {
+    font-family: PoppinsBold;
+    font-size: 36px;
+    line-height: 40px;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: #07AEFF;
+    padding-top: 441px;
+}
+
+.nãoencontrou-sub-title {
+    font-family: RobotoRegular;
+    font-size: 18px;
+    line-height: 24px;
+    letter-spacing: 0.07em;
+    color: #6B6B6B;
+}
+
+.btn.btn-contato {
+    margin-bottom: 140px;
+    padding: 18px 41px 18px 41px;
+    color: #FFF;
+    background: #C7BD6C;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 30px;
+    font-family: RobotoBold;
+    font-size: 18px;
+    line-height: 24px;
+}
+
+.breadcrumb-item.active {
+    font-weight: bold;
+    color: #C7BD6C;
+}
+
+
+/* footer */
+
+footer {
+    background-color: #0485C4;
+}
+
+.btn.qrpptafooter {
+    margin-top: 100px;
+    margin-left: 15px;
+    background-color: #C7BD6C;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 30px;
+    width: 206px;
+    height: 60px;
+    font-family: RobotoBold;
+    font-size: 18px;
+    color: #ffffff;
+}
+
+.btn.ajudafooter {
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+    padding-top: 3%;
+    margin-top: 100px;
+    margin-left: 15px;
+    width: 168px;
+    height: 60px;
+    border: 1px solid #FFFFFF;
+    box-sizing: border-box;
+    border-radius: 30px;
+    color: #FFFFFF;
+    font-family: RobotoBold;
+    font-size: 18px;
+}
+
+.produtos {
+    margin-top: 45%;
+    margin-bottom: 17%;
+    font-family: RobotoBold;
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 24px;
+    letter-spacing: 0.07em;
+    color: #FFFFFF;
+    display: inline-block;
+}
+
+.menufooter {
+    font-family: RobotoRegular;
+    display: block;
+    line-height: 24px;
+    color: #FFFFFF;
+    font-size: 18px;
+    text-decoration: underline;
+}
+
+.cafe {
+    margin-left: 10%;
+    margin-top: 82px;
+    font-family: RobotoBold;
+    font-size: 18px;
+    line-height: 24px;
+    letter-spacing: 0.07em;
+    color: #FFFFFF;
+}
+
+.endereco {
+    margin-bottom: 16%;
+    margin-left: 10%;
+    margin-top: 3%;
+    font-family: RobotoRegular;
+    font-size: 18px;
+    line-height: 24px;
+    letter-spacing: 0.07em;
+    color: #FFFFFF;
+}
+
+#direitossite {
+    font-family: RobotoRegular;
+    font-size: 12px;
+    line-height: 24px;
+    letter-spacing: 0.07em;
+    color: #FFFFFF;
+}
+
+.far.fa-heart {
+    padding-left: 5px;
+    color: #C7BD6C;
+}
+
+.fab.fa-facebook-f,
+.fab.fa-instagram,
+.fab.fa-linkedin-in {
+    margin-right: 9%;
+    font-size: 20px !important;
+    color: #C7BD6C;
+}
+
+#categoriasAtivas {
+    font-family: RobotoRegular;
+    font-size: 14px;
+    line-height: 24px;
+    color: #6B6B6B;
+}
+
+.btn.btn-produtos-primario {
+    color: #FFF;
+    border-radius: 30px;
+    background: #C7BD6C;
+    margin-left: 2%;
+}
+
+#autorArtigo {
+    font-size: 14px;
+    font-family: Poppinslight;
+    letter-spacing: 0.02em;
+    color: #6B6B6B;
+}
+
+#fotoAutorArtigo {
+    width: 5rem;
+    height: 5rem;
+}
+
+@media only screen and (max-width: 480px) {
+    button#btnLinkConheca {
+        font-size: 13px;
+    }
+    div#colProdutos {
+        display: none;
+    }
+}
