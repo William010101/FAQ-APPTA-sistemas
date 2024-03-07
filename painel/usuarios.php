@@ -10,7 +10,7 @@
 			global $pdo;
 			try
 			{	
-				$pdo = new PDO("pgsql:host=localhost;port=5432;dbname=FAQ;user=postgres;password=123");
+				$pdo = new PDO("pgsql:host=localhost;port=5432;dbname=FAQ;user=postgres;password=masterkey");
 			} catch (PDOException $e){
 				throw new PDOException($e);
 			}
