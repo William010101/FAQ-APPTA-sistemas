@@ -4,7 +4,7 @@ function conectarBancoDeDados() {
     $conn = null;
     try {
         // Conexão com banco de dados
-        $conn = pg_connect("host=127.0.0.1 port=5432 dbname=FAQ user=postgres password=masterkey");
+        $conn = pg_connect("host=localhost port=5432 dbname=FAQ user=postgres password=masterkey");
 
         if (!$conn) {
             throw new Exception("Erro ao conectar ao banco de dados: " . pg_last_error());
