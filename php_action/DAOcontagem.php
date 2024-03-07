@@ -23,6 +23,7 @@ if(isset($_POST['btnAcessos'])):
     id_pergunta = '$id'";
 
     pg_query($conn, $sql);
+    //header("");
     header("Location: ../link?id=$idpergunta");
     
 endif;
