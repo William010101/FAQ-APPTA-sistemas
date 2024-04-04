@@ -9,10 +9,10 @@ $resultado = pg_query($conn, $sql);
 
 <div class="container-fluid  ">
     <!-- Produtos categorias -->
-    <div class="container row mx-auto g-4" id="corpo">
+    <div class="container row mx-auto m-4" id="corpo">
 
-        <h2 class="produtos-titulos mt-5 mb-4">Todos os produtos</h2>
-        <p class="produtos-sub-titulos">Navegue pelas categorias para encontras mais informações<br> sobre a sua
+        <h2 class="produtos-titulos mt-7 mb-0">Todos os produtos</h2>
+        <p class="produtos-sub-titulos mt-2">Navegue pelas categorias para encontras mais informações<br> sobre a sua
             questão.
         </p>
             <?php
@@ -23,18 +23,18 @@ $resultado = pg_query($conn, $sql);
             while ($dados = pg_fetch_array($resultado)): ?>
 
                 
-                    <div class="col-3">
-                        <div class="card" style="">
+                    <div class="col-3 mx-auto">
+                        <div class="card w-100 m-3" style="">
                             <svg class="bd-placeholder-img card-img-top" width="100%" height="180"
                                 xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Image cap"
                                 preserveAspectRatio="xMidYMid slice" focusable="false">
                                 <title>Placeholder</title>
                                 
                             </svg>
-                            <div class="card-header">
+                            <div class="card-header p-1">
                                 <div class="text-center">
                                 <a href="categoria?id=<?php echo ($dados['id_produto'])   ?>"
-                            class="btn btn-produtos-primario"><?php echo ($dados['nomeproduto'])   ?></a>
+                            class="btn btn-produtos-primario p-0"><?php echo ($dados['nomeproduto'])   ?></a>
                                 </div>
                             </div>
                         </div>

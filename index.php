@@ -1,7 +1,7 @@
-<?php 
-  include_once 'include/ref.php';
-  include_once 'php_action/db_connect.php';
-  $pagina = "inicio";
+<?php
+include_once 'include/ref.php';
+include_once 'php_action/db_connect.php';
+$pagina = "inicio";
 ?>
 
 <!DOCTYPE html>
@@ -15,37 +15,35 @@
 </head>
 
 <body>
-    <!-- Cabeçalho site -->
-    <?php include_once 'include/header.php'; ?>
+    <!-- Cabeçalho site "-->
+    <?php //include_once 'include/header.php';  ?>
     <!-- Menu Pesquisa -->
-    <section class="home-header">
-        <div class="container-fluid">
-            <div class="container" id="menupesquisa">
-                <div class="botao">
-                    <div class="row">
-                        <div class="col-12 col-sm-6">
-                            <h3 class="appta-titulo text-uppercase"><span class="Poppins">Como podemos</span> <br><span
-                                    class="PoppinsBold">ajudar?</span></h3>
-                            <span class="RobotoRegular" id="appta-subtitulo">Encontre as informações que você precisa
-                                <br> sobre os sistemas APPTA.</span>
-                            <div class="inputSearch">
-                                <form method="POST" action="search">
-                                    <div class="input-group mb-3">
-                                        <input type="search" class="form-control" name="pesquisar"
-                                            placeholder="Tente buscar por tópicos ou palavras-chave"
-                                            id="inputHeader">
-                                        <div class="input-group-append">
-                                            <button class="btn " id="btnpesquisarhome" type="text"><i
-                                                    class="material-icons" id="">search</i></button>
-                                        </div>
+    <section class="home-header ">
+        <div class="container " id="menupesquisa">
+            <div class="botao">
+                <div class="row ">
+                    <img class="col-6 mt-4" src="img\appta.png" alt="" style=" width: 90px; height: 100px;">
+                    <h3 class="appta-titulo text-uppercase mt-4 mb-0 col-6"><span class="Poppins">Como podemos</span> <br><span
+                            class="PoppinsBold">ajudar?</span></h3>
+                    <div class="col-6 mx-auto">
+
+                        <div class="inputSearch">
+                            <form method="POST" action="search">
+                                <div class="input-group mb-3">
+                                    <input type="search" class="form-control" name="pesquisar"
+                                        placeholder="Tente buscar por tópicos ou palavras-chave" id="inputHeader">
+                                    <div class="input-group-append">
+                                        <button class="btn " id="btnpesquisarhome" type="text"><i class="material-icons"
+                                                id="">search</i></button>
                                     </div>
-                                </form>
-                            </div>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
     </section>
 
     <?php include_once 'include/body.php' ?>
