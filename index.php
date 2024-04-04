@@ -42,34 +42,7 @@
                                 </form>
                             </div>
                         </div>
-                        <div class="col-12 col-sm-6" id="colProdutos">
-                            <div class="containerProdutos">
-                                <div class="gridProdutos">
-                                    <div class="cardProdutos rounded-circle">
-                                        <img src="img/ajudaappta.png" id="produtoAppta" alt="Produto APPTA">
-                                    </div>
-                                    <a name="Food" id="btnAppta" class="btn btn-link" href="categoria?id=1"
-                                        role="button">Ajuda APPTA</a>
-                                </div>
-                                <div class="gridProdutos">
-                                    <div class="cardProdutos rounded-circle"> <img src="img/ajudaapptafood.png"
-                                            id="produtoFood" alt="Produto APPTA">
-                                    </div>
-                                    <a name="Food" id="btnFood" class="btn btn-link" href="categoria?id=2"
-                                        role="button">Ajuda APPTA Food</a>
-                                </div>
-                                <div class="gridProdutos">
-                                    <div class="cardProdutos rounded-circle">
-                                        <img src="img/ajudafidelizappta.png" id="produtoFidelizappta"
-                                            alt="Produto APPTA">
-                                    </div>
-                                    <a name="Food" id="btnFood" class="btn btn-link" href="categoria?id=3"
-                                        role="button">Ajuda FidelizAPPTA</a>
-                                </div>
-                            </div>
-                        </div>
                     </div>
-
                 </div>
             </div>
         </div>
