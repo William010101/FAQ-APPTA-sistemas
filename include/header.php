@@ -1,4 +1,4 @@
-<div class="container-fluid" id="navbar">
+<div class="" id="navbar">
     <div class="container">
 
         <header class="header">
@@ -19,16 +19,7 @@
                 </form>
                 <?php endif;?>
                 <div class="nav-wrapper" title="Site APPTA Sistemas">
-                    <div class="btn-group">
-                        <button class="btn btn-link btn-sm dropdown-toggle text-light" id="btnLinkConheca" type="button"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Conheça nossos sistemas
-                        </button>
-                        <div class="dropdown-menu bg-light">
-                        <a class="dropdown-item" href="https://apptasistemas.com.br/appta">APPTA</a>
-                        <a class="dropdown-item" href="https://apptasistemas.com.br/food">APPTA FOOD</a>
-                        <a class="dropdown-item" href="https://apptasistemas.com.br/fidelizappta">FidelizAPPTA</a>
-                        </div>
+
                     </div>
                 </div>
             </nav>
