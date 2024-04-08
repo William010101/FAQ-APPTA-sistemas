@@ -562,6 +562,7 @@
 
 footer {
     background-color: #0485C4;
+
 }
 
 .btn.qrpptafooter {
@@ -593,8 +594,8 @@ footer {
 }
 
 .produtos {
-    margin-top: 45%;
-    margin-bottom: 17%;
+    margin-top: 30%;
+    margin-bottom: 3%;
     font-family: RobotoBold;
     font-size: 18px;
     font-weight: bold;
@@ -609,7 +610,7 @@ footer {
     display: block;
     line-height: 24px;
     color: #FFFFFF;
-    font-size: 18px;
+    font-size: 15px;
     text-decoration: underline;
 }
 
@@ -624,22 +625,22 @@ footer {
 }
 
 .endereco {
-    margin-bottom: 16%;
-    margin-left: 10%;
-    margin-top: 3%;
+    margin-top: 20px;
     font-family: RobotoRegular;
-    font-size: 18px;
-    line-height: 24px;
-    letter-spacing: 0.07em;
-    color: #FFFFFF;
+    font-size: 15px;
+    color: #ffffff;
+}
+
+.endereco h5{
+    color: #FFF;
 }
 
 #direitossite {
     font-family: RobotoRegular;
     font-size: 12px;
-    line-height: 24px;
     letter-spacing: 0.07em;
     color: #FFFFFF;
+
 }
 
 .far.fa-heart {

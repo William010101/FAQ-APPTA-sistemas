@@ -29,18 +29,18 @@
 
             </ol>
         </nav>
-        <form method="POST" action="search">
+        <!-- <form method="POST" action="search">
             <div class="categoriaslink">
 
-                <label for="categorias" id="categoriasAtivas">Categorias</label>
+                 <label for="categorias" id="categoriasAtivas">Categorias</label>
                 <a class="btn btn-produtos-primario mb-0"
-                    href="categoria.php?id=<?php echo $idproduto ?>"><?php echo $produto?></a>
+                    href="categoria.php?id=<?php //echo $idproduto ?>"><?php //echo $produto?></a>
 
-                <button class="btn btn-produtos-secundario" style="width: 10.1rem;margin-top: 2%;"> <input
+                 <button class="btn btn-produtos-secundario" style="width: 10.1rem;margin-top: 2%;"> <input
                         name="pesquisar" style="display:none"
-                        value='<?php echo $subcategoria?>'><?php echo $subcategoria?></button>
+                        value='<?php //echo $subcategoria?>'><?php //echo $subcategoria?></button> 
 
-            </div>
+            </div> -->
         </form>
         <h1 class="titulo-pergunta mb-1"><?php echo $pergunta ?></h1>
         <div class="author d-flex align-items-center">
@@ -91,7 +91,7 @@
             </div>
         </div>
 
-        <div class="perguntasvizinhas" >
+        <!-- <div class="perguntasvizinhas" >
             <div class="row">
                 <div class="col-12 col-sm-6">
                     <div class="card video mb-2 mb-sm-0">
@@ -101,20 +101,20 @@
                         </div>
                         <div class="card-body text-right py-0">
                         <h5 class="mb-0">
-                                <?php if( $perguntaAnterior != null): ?>
+                                <?php //if( $perguntaAnterior != null): ?>
                                 <form method="POST" 
-                                    action="php_action/DAOcontagem.php?id=<?php echo $idperguntaAnterior?>" >
+                                    action="php_action/DAOcontagem.php?id=<?php //echo $idperguntaAnterior?>" >
                                     <button class="btn btn-video text-right" type="submit" name="btnAcessos">
-                                        <?php echo $perguntaAnterior?>
+                                        <?php //echo $perguntaAnterior?>
                                     </button>
                                 </form>
-                                <?php else: ?>
-                                <form method="POST" action="php_action/DAOcontagem.php?id=<?php echo $idpergunta ?>">
+                                <?php //else: ?>
+                                <form method="POST" action="php_action/DAOcontagem.php?id=<?php //echo $idpergunta ?>">
                                     <button class="btn btn-video text-right" type="submit" name="btnAcessos">
-                                        <?php echo $pergunta ?>
+                                        <?php //echo $pergunta ?>
                                     </button>
                                 </form>
-                                <?php endif; ?>
+                                <?php //endif; ?>
                             </h5></div>
                     </div>
                 </div>
@@ -126,20 +126,20 @@
                         </div>
                         <div class="card-body py-0">
                         <h5 class="mb-0">
-                                <?php if( $perguntaProximo != null): ?>
+                                <?php //if( $perguntaProximo != null): ?>
                                 <form method="POST"
-                                    action="php_action/DAOcontagem.php?id=<?php echo $idperguntaProximo ?>">
+                                    action="php_action/DAOcontagem.php?id=<?php //echo $idperguntaProximo ?>">
                                     <button class="btn btn-video text-left" type="submit" name="btnAcessos">
-                                        <?php echo $perguntaProximo ?>
+                                        <?php //echo $perguntaProximo ?>
                                     </button>
                                 </form>
-                                <?php else: ?>
-                                <form method="POST" action="php_action/DAOcontagem.php?id=<?php echo $idpergunta ?>">
+                                <?php //else: ?>
+                                <form method="POST" action="php_action/DAOcontagem.php?id=<?php //echo $idpergunta ?>">
                                     <button class="btn btn-video text-left" type="submit" name="btnAcessos">
-                                        <?php echo $pergunta ?>
+                                        <?php //echo $pergunta ?>
                                     </button>
                                 </form>
-                                <?php endif; ?>
+                                <?php //endif; ?>
                             </h5>
                         </div>
                     </div>
@@ -148,26 +148,26 @@
         </div>
 
 
-        <!-- Produtos categorias -->
+         Produtos categorias 
         <div class="relacionadas">
             <h2 class="produtos-titulos mt-5 mb-4">PERGUNTAS <br>RELACIONADAS </h2>
             <div class="row d-flex justify-content-left">
                 <?php
-            while ($dadosRelacionados = pg_fetch_array($resultado)): ?>
+            //while ($dadosRelacionados = pg_fetch_array($resultado)): ?>
 
                 <div class="col-12 col-sm-6">
-                    <form method="POST" action="php_action/DAOcontagem.php?id=<?php echo $dados['id_pergunta']; ?>">
+                    <form method="POST" action="php_action/DAOcontagem.php?id=<?php //echo $dados['id_pergunta']; ?>">
                         <button class="btn btn-relacionadas" type="submit"
-                            name="btnAcessos"><?php echo $dadosRelacionados['pergunta']; ?> <i
+                            name="btnAcessos"><?php //echo $dadosRelacionados['pergunta']; ?> <i
                                 class="fas fa-chevron-right"></i></button>
                     </form>
                 </div>
-                <?php endwhile;?>
+                <?php //endwhile;?>
             </div>
         </div>
 
         <div class="container-fluid">
-            <!-- Produtos categorias -->
+             Produtos categorias 
             <div class="container" id="naoencontrou">
 
                 <p class="naoencontrou-title">
@@ -178,7 +178,7 @@
                 </p>
                 <a href="#" class="btn btn-contato" role="button">Entre em contato</a>
             </div>
-        </div>
+        </div> -->
 
 
     </div>

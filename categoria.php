@@ -29,7 +29,7 @@
             ?>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb mt-4">
-                    <li class="breadcrumb-item"><a href="index.php">Início</a></li>
+                    <!-- <li class="breadcrumb-item"><a href="index.php">Início</a></li> -->
                     <li class="breadcrumb-item active" aria-current="page"><?php echo strtoupper($nomeproduto);?></li>
                 </ol>
             </nav>
@@ -56,19 +56,6 @@
             </div>
 
 
-        </div>
-    </div>
-    <div class="container-fluid">
-        <!-- Produtos categorias -->
-        <div class="container" id="naoencontrou">
-
-            <p class="naoencontrou-title">
-                Não encontrou o<br> que precisava?
-            </p>
-            <p class="nãoencontrou-sub-title">
-                Entre em contato com a gente para<br> receber suporte personalizado.
-            </p>
-            <a href="#" class="btn btn-contato" role="button">Entre em contato</a>
         </div>
     </div>
 </body>
