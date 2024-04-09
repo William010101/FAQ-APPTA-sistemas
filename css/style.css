@@ -679,9 +679,15 @@ footer {
     height: 5rem;
 }
 
-.card-header{
-    background-color: #C7BD6C;
+ .card-header{
+    background-color: #0485C4;
+    border-radius:0px 0px 5px 5px;
 }
+
+.bg-primary{
+    background-color: #C7BD6C !important;
+}
+
 
 
 

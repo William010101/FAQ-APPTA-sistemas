@@ -43,3 +43,44 @@ CREATE TABLE public.usuarios
   email character varying(32),
   fotoperfil character varying(50)
 );
+
+----------------------------------------------------------
+
+-- Criação da tabela categoria
+CREATE TABLE categoria (
+    id_categoria INT PRIMARY KEY,
+    nomeCategoria VARCHAR(100),
+    visivel boolean,
+    fk_id_produto INT,
+    FOREIGN KEY (fk_id_produto) REFERENCES produto(id_produto)
+);
+
+-- Criação da tabela produto
+CREATE TABLE produto (
+    id_produto INT PRIMARY KEY,
+    nomeproduto VARCHAR(100),
+    visivel boolean
+);
+
+-- Criação da tabela subcategoria
+CREATE TABLE subcategoria (
+    id_subcategoria INT PRIMARY KEY,
+    nomesubcategoria VARCHAR(100),
+    visivel boolean,
+    fk_id_categoria INT,
+    FOREIGN KEY (fk_id_categoria) REFERENCES categoria(id_categoria)
+);
+
+CREATE TABLE pergunta
+(
+  id_pergunta SERIAL PRIMARY KEY,
+  pergunta VARCHAR(100),
+  resposta VARCHAR(50000),
+  datacadastro TIMESTAMP WITHOUT TIME ZONE,
+  video VARCHAR(800),
+  usuario VARCHAR(50),
+  idusuario INTEGER,
+  visivel boolean,
+  fk_id_subcategoria INT,
+  FOREIGN KEY (fk_id_subcategoria) REFERENCES subcategoria(id_subcategoria)
+);

@@ -23,19 +23,12 @@ $resultado = pg_query($conn, $sql);
             while ($dados = pg_fetch_array($resultado)): ?>
 
                 
-                    <div class="col-3 mx-auto">
-                        <div class="card w-75 m-3" style="">
-                            <svg class="bd-placeholder-img card-img-top" width="100%" height="180"
-                                xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Image cap"
-                                preserveAspectRatio="xMidYMid slice" focusable="false">
-                                <title>Placeholder</title>
-                                
-                            </svg>
-                            <div class="card-header p-1">
-                                <div class="text-center">
+                    <div class="col-3 mx-auto h-50">
+                        <div class="card w-75 m-3 text-center bg-primary" >                         
+                             <img class="img-fluid w-75 " src="../img/appta.png" alt="">
+                            <div class="card-header p-1">                                
                                 <a href="categoria?id=<?php echo ($dados['id_produto'])   ?>"
-                            class="btn btn-produtos-primario p-0"><?php echo ($dados['nomeproduto'])   ?></a>
-                                </div>
+                            class="btn btn-produtos-primario p-0"><?php echo ($dados['nomeproduto'])   ?></a>                               
                             </div>
                         </div>
                     </div>
