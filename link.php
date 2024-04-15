@@ -18,17 +18,7 @@
     <?php include_once 'include/header.php'; ?>
 
     <div class="container">
-        <nav aria-label="breadcrumb">
-            <ol class="breadcrumb mt-5">
-                <li class="breadcrumb-item text-uppercase"><a href="inicio" id="breadcrumb">Inicio</a></li>
-                <li class="breadcrumb-item text-uppercase"><a id="breadcrumb"
-                        href="categoria?id=<?php echo $idproduto ?>"><?php echo $produto ?></a>
-                </li>
-                <li class="breadcrumb-item text-uppercase active" name="pesquisar">
-                    <?php echo($dados['pergunta']) ?></li>
-
-            </ol>
-        </nav>
+            
         <!-- <form method="POST" action="search">
             <div class="categoriaslink">
 
@@ -63,15 +53,15 @@
                         <h5 class="mb-0">
 
                             <button class="btn btn-video" type="button" data-toggle="collapse" data-target="#video">
-                                <?php echo $pergunta ?>
+                                <a href="<?php echo $video ?>"><?php echo $pergunta ?></a>
                             </button>
                         </h5>
                     </div>
-                    <div class="collapse" id="video">
+                    <!-- <div class="collapse" id="video">
                         <div class="card card-body">
-                            <?php echo $video ?>
+                            <?php //echo $video ?>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>

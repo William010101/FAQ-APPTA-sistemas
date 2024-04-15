@@ -1,8 +1,9 @@
-<?php 
-  include_once 'include/ref.php';
-  include_once 'php_action/db_connect.php';
-  include_once 'php_action/DAOcategoria.php';
-  $pagina = "categoria";
+<?php
+include_once 'include/ref.php';
+include_once 'php_action/db_connect.php';
+include_once 'php_action/DAOcategoria.php';
+include_once 'php_action/breadcrumb.php';
+$pagina = "categoria";
 ?>
 
 <!DOCTYPE html>
@@ -20,38 +21,43 @@
 <body>
     <div class="container-fluid">
         <div class="container">
-            <?php               
-                $produto = $dados['nomeproduto']; 
-                //filtro de respostas em branco
-                $sql = "SELECT * FROM pergunta WHERE produto ilike '$nomeproduto' and resposta is not null";
-                $resultado = pg_query($conn, $sql);
-               
+            <?php
+            //filtro de categorias ativas
+            $sql = "SELECT * FROM categoria WHERE fk_id_produto = $idproduto and visivel = true";
+            $resultado = pg_query($conn, $sql);
             ?>
-            <nav aria-label="breadcrumb">
-                <ol class="breadcrumb mt-4">
-                    <!-- <li class="breadcrumb-item"><a href="index.php">Início</a></li> -->
-                    <li class="breadcrumb-item active" aria-current="page"><?php echo strtoupper($nomeproduto);?></li>
-                </ol>
-            </nav>
-            <h2 class="produtos-titulos mt-5 mb-5 ml-2"><?php echo strtoupper($nomeproduto); ?></h2>
 
+            <nav aria-label="breadcrumb">
+            <ol class="breadcrumb mt-5">
+            <?php echo exibe_nome_prd($conn, $nomeproduto) ?>
+                
+            </ol>
+
+            <h2 class="produtos-titulos mt-5 mb-5 ml-2"><?php echo strtoupper($nomeproduto); ?></h2>
+            
             <div class="row">
-                <?php   while($dados = pg_fetch_array($resultado)): ?>
-                <div class="col-12 col-sm-6 mb-5">
-                    <div class="card" style="height:100%; border-radius: 2.25rem;">
-                        <h5 class="card-title recentes"> <?php echo $dados['pergunta']; ?> </h5>
-                        <div class="card-text categoria">
-                            <span class="d-inline-block text-truncate" style="max-width: 100%;">
-                                <?php echo $dados['resposta']; ?>
-                            </span>
-                        </div>
-                        <form method="POST" action="php_action/DAOcontagem.php?id=<?php echo $dados['id_pergunta']; ?>"
-                            id="formRecentes">
-                            <button type="submit" name="btnAcessos" class="btn btn-recentes">Visualizar
-                                resposta completa</button>
-                        </form>
-                    </div>
-                </div>
+                <?php while ($dados = pg_fetch_array($resultado)): ?>
+                                    <div class="col-12 col-sm-6 mb-5">
+                                        <div class="card" style="height:100%; border-radius: 2.25rem;">
+                                            <h5 class="card-title recentes"><?php echo $dados['nomecategoria']; ?></h5>
+                                            <div class="card-text categoria">
+                                                <span class="d-inline-block text-truncate" style="max-width: 100%;">
+                                                    <?php
+                                                    $idcategoria = $dados['id_categoria'];
+                                                    $sqlsubcategoria = "SELECT * FROM subcategoria WHERE fk_id_categoria = $idcategoria and visivel = true";
+                                                    $resultadosubcategoria = pg_query($conn, $sqlsubcategoria);
+
+                                                    while ($dadossubcategoria = pg_fetch_array($resultadosubcategoria)): ?>
+                                                                        <a href="#"
+                                                                            class="link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"><?php echo ($dadossubcategoria['nomesubcategoria']) ?></a><br>
+                                                    <?php endwhile; ?>
+                                                </span>
+                                            </div>
+                                            <a href="subcategoria?id=<?php echo $dados['id_categoria']; ?>" class="btn btn-recentes">
+                                                Visualizar todas subcategorias
+                                            </a>
+                                        </div>
+                                    </div>
                 <?php endwhile; ?>
             </div>
 
@@ -61,7 +67,7 @@
 </body>
 
 <footer>
-    <?php  include_once 'include/footer.php' ?>
+    <?php include_once 'include/footer.php' ?>
 </footer>
 
 </html>

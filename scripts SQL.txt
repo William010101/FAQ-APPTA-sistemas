@@ -84,3 +84,12 @@ CREATE TABLE pergunta
   fk_id_subcategoria INT,
   FOREIGN KEY (fk_id_subcategoria) REFERENCES subcategoria(id_subcategoria)
 );
+
+CREATE TABLE public.usuarios
+(
+  id_usuario SERIAL PRIMARY KEY,
+  nome character varying(30),
+  senha character varying(32),
+  email character varying(32),
+  fotoperfil character varying(50)
+);

@@ -688,6 +688,14 @@ footer {
     background-color: #C7BD6C !important;
 }
 
+.btn-listar{
+    background-color: #0485C4;
+    color: #FFF;
+    padding: 5px;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
 
 
 
