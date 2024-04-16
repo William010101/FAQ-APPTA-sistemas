@@ -14,7 +14,7 @@ function exibe_nome_categoria($conn,$idcategoria){
     $sql = "SELECT id_produto, nomeproduto , nomecategoria, id_categoria
     FROM produto
     INNER JOIN categoria ON id_produto = categoria.fk_id_produto
-    WHERE id_categoria = 1";
+    WHERE id_categoria = '$idcategoria'";
     $resultado = pg_query($conn, $sql);
     $dados = pg_fetch_array($resultado);
     $nomeproduto = $dados['nomeproduto'];
