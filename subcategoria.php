@@ -2,6 +2,7 @@
   include_once 'include/ref.php';
   include_once 'php_action/db_connect.php';
   include_once 'php_action/DAOsubcategoria.php';
+  include_once 'php_action/breadcrumb.php';
   $pagina = "subcategoria";
 ?>
 
@@ -25,10 +26,11 @@
                 $sql = "SELECT * FROM subcategoria WHERE $idcategoria  = fk_id_categoria and visivel = true";
                 $resultado = pg_query($conn, $sql);              
             ?>                            
-
+            
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb mt-4">
-                    <li class="breadcrumb-item active" aria-current="page"><?php echo strtoupper($nomecategoria);?></li>
+                    <?php echo exibe_nome_categoria($conn, $idcategoria); ?>
+                    <li class="breadcrumb-item active" aria-current="page"><?php //echo strtoupper($nomecategoria);?></li>
                 </ol>
             </nav>
             <h2 class="produtos-titulos mt-5 mb-5 ml-2"><?php echo strtoupper($nomecategoria); ?></h2>
