@@ -31,12 +31,9 @@ $pagina = "subcategoria";
                 <ol class="breadcrumb mt-4">
                     <?php //echo exibe_nome_categoria($conn, $idcategoria); ?>
                     <li class="breadcrumb-item text-uppercase">
-                        <a id="breadcrumb" href="categoria?id=<?php echo $idproduto ?>"><?php echo $nomeproduto ?></a>
+                        <a id="breadcrumb" href="categoria?id=<?php //echo //$idproduto ?>"><?php //echo //$nomeproduto ?></a>
                     </li>
-                    <li class="breadcrumb-item text-uppercase">
-                        <a id="breadcrumb"
-                            href="subcategoria?id=<?php echo $idcategoria ?>&produto=1-APPTA%20gerencial"><?php echo $nomecategoria ?></a>
-                    </li>
+                    
                 </ol>
             </nav>
             <h2 class="produtos-titulos mt-5 mb-5 ml-2"><?php echo strtoupper($nomecategoria); ?></h2>
@@ -61,7 +58,7 @@ $pagina = "subcategoria";
 
                                 </span>
                             </div>
-                            <a href="perguntas?id=<?php echo ($dados['id_subcategoria'])?>&produto=<?php echo $idproduto.'-'.$nomeproduto ?>&categoria=<?php echo $idcategoria.'-'.$nomecategoria ?>" class="btn btn-recentes">
+                            <a href="perguntas?id=<?php echo ($dados['id_subcategoria'])?>" class="btn btn-recentes">
                                 Visualizar todas as perguntas da subcategoria
                             </a>
 
