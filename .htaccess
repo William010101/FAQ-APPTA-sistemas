@@ -1,8 +1,8 @@
-<IfModule mod_rewrite.c>
+ <IfModule mod_rewrite.c>
   RewriteEngine On
 RewriteRule ^inicio/?$ /index.php [NC,L]
   RewriteRule ^perguntas/?$ /perguntas.php [NC,L]
-  RewriteRule ^link/?$ /link.php [NC,L]
+  RewriteRule ^resposta/?$ /resposta.php [NC,L]
   RewriteRule ^subcategoria/?$ /subcategoria.php [NC,L]
   RewriteRule ^search/?$  /search.php [NC,L]
   RewriteRule ^categoria/?$ /categoria.php [NC,L]

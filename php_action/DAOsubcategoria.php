@@ -1,9 +1,12 @@
 <?php
- if(isset($_GET['id'])):
+ if(isset($_GET['id']) && isset($_GET['produto'])):
     $id = pg_escape_string($conn, $_GET['id']);
-    // if($id > 3){
-    //     header('Location: inicio');
-    // }
+    $produto = $_GET['produto'];
+    // Divida a string usando o hífen (-) como separador
+    $produto_info = explode('-', $produto);
+    // O primeiro elemento do array será o ID do produto
+    $idproduto = $produto_info[0];
+    $nomeproduto = $produto_info[1];
     function limpar_texto($str){ 
         return preg_replace("/[^0-9]/", "", $str); 
       }
