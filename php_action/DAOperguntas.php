@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 <?php
  if(isset($_GET['id'])&& isset($_GET['produto'])&& isset($_GET['categoria'])):
     //parte que pega as informações do produto

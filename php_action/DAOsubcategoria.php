@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 <?php
  if(isset($_GET['id'])):
     $id = pg_escape_string($conn, $_GET['id']);

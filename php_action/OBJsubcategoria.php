@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 
 <?php
 //require_once 'OBJconection.php';
@@ -11,7 +11,7 @@ class Subcategoria
     public function __construct(){
         $this->Conexao = new Conexao();
     }
-    public function exibeSubcategoriaDaCategoria($id_categoria)
+    public function GetSubcategoriaDaCategoria($id_categoria)
     {
         try {
             $pdo = $this->Conexao->getPdo();
@@ -20,8 +20,8 @@ class Subcategoria
             $stmt = $pdo->prepare($query);
             $stmt->bindParam(':id_categoria', $id_categoria, PDO::PARAM_INT);
             $stmt->execute();
-
-            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+            $stmt->setFetchMode(PDO::FETCH_CLASS, 'Subcategoria');
+            return $stmt->fetchAll();
         } catch (PDOException $e) {
             throw new PDOException($e->getMessage(), (int)$e->getCode());
         }
