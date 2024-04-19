@@ -1,9 +1,6 @@
 <?php
  if(isset($_GET['id'])):
     $id = pg_escape_string($conn, $_GET['id']);
-    // if($id > 3){
-    //     header('Location: inicio');
-    // }
     function limpar_texto($str){ 
         return preg_replace("/[^0-9]/", "", $str); 
       }
