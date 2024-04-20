@@ -10,9 +10,9 @@ class Produto
     public function __construct(){
         $this->Conexao = new Conexao();
     }
-    public function exibeNomeProduto()
+    public function exibeNomeProduto($idproduto)
     {
-        $idproduto = $_GET['id'];
+        
 
         try {
             $pdo = $this->Conexao->getPdo();

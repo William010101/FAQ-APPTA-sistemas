@@ -6,7 +6,6 @@ include_once 'php_action/OBJproduto.php';
 $produto = new Produto();
 $categoria = new Categoria();
 $subcategoria = new Subcategoria();
-$pagina = "categoria";
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -23,55 +22,55 @@ $pagina = "categoria";
     <div class="container-fluid">
         <div class="container">
             <?php
-            $produtos = $produto->exibeNomeProduto();
-            foreach ($produtos as $prod):
-                var_dump($prod);
-                ?>
-            <?php endforeach; ?>
+            $produtos = $produto->exibeNomeProduto($_GET['id']);
+            // Acessando o primeiro elemento do array
+            $produto = $produtos[0];
+            // Acessando a propriedade "nomeproduto" do objeto Produto
+            $nomeproduto = $produto->nomeproduto;
+            ?>
+            <?php //endforeach; ?>
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb mt-5">
                         <li class="breadcrumb-item text-uppercase">
                             <a id="breadcrumb"
-                                href="categoria?id=<?php echo $prod->id_produto; ?>"><?php echo $prod->nomeproduto ?></a>
+                                href="categoria?id=<?php //echo $prod->id_produto; ?>"><?php echo $nomeproduto ?></a>
                         </li>
                     </ol>
-                    <h2 class="produtos-titulos mt-5 mb-5 ml-2"><?php echo strtoupper($prod->nomeproduto); ?></h2>
+                    <h2 class="produtos-titulos mt-5 mb-5 ml-2"><?php echo strtoupper($nomeproduto); ?></h2>
                     <div class="row">
                     
                     <?php
                     $categorias = $categoria->GetCategorias();
                     foreach ($categorias as $cat):
-                        //var_dump($cat);
                         ?>
-                        <div class="col-12 col-sm-6 mb-5">
-                            <div class="card" style="height:100%; border-radius: 2.25rem;">
-                                <h5 class="card-title recentes">
-                                    <?php echo $cat->nomecategoria; ?>
-                                </h5>
-                                <div class="card-text categoria">
-                                    <span class="d-inline-block text-truncate" style="max-width: 100%;">
-                                        <?php
-                                        $subcategorias = $subcategoria->GetSubcategoriaDaCategoria($cat->id_categoria);
-                                        foreach ($subcategorias as $sub):
-                                            ?>
-                                            <a href="#"
-                                                class="link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">
-                                                <?php echo $sub->nomesubcategoria ?>
-                                            </a><br>
-                                        <?php endforeach; ?>
-                                    </span>
+                            <div class="col-12 col-sm-6 mb-5">
+                                <div class="card" style="height:100%; border-radius: 2.25rem;">
+                                    <h5 class="card-title recentes">
+                                        <?php echo $cat->nomecategoria; ?>
+                                    </h5>
+                                    <div class="card-text categoria">
+                                        <span class="d-inline-block text-truncate" style="max-width: 100%;">
+                                            <?php
+                                            $subcategorias = $subcategoria->GetSubcategorias($cat->id_categoria);
+                                            foreach ($subcategorias as $sub):
+                                                ?>
+                                                    <a href="#"
+                                                        class="link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">
+                                                        <?php echo $sub->nomesubcategoria ?>
+                                                    </a><br>
+                                            <?php endforeach; ?>
+                                        </span>
+                                    </div>
+                                    <a href="subcategoria?id=<?php echo $cat->id_categoria; ?>" class="btn btn-recentes">
+                                        Visualizar todas subcategorias
+                                    </a>
                                 </div>
-                                <a href="subcategoria?id=<?php echo $cat->id_categoria; ?>" class="btn btn-recentes">
-                                    Visualizar todas subcategorias
-                                </a>
                             </div>
-                        </div>
                     <?php endforeach; ?>
                 </div>
         </div>
     </div>
 </body>
-
 <footer>
     <?php include_once 'include/footer.php' ?>
 </footer>

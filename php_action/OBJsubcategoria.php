@@ -11,12 +11,12 @@ class Subcategoria
     public function __construct(){
         $this->Conexao = new Conexao();
     }
-    public function GetSubcategoriaDaCategoria($id_categoria)
+    public function GetSubcategorias($id_categoria)
     {
         try {
             $pdo = $this->Conexao->getPdo();
 
-            $query = "SELECT id_subcategoria, nomesubcategoria FROM subcategoria where fk_id_categoria = :id_categoria AND visivel = true";
+            $query = "SELECT * FROM subcategoria where fk_id_categoria = :id_categoria AND visivel = true";
             $stmt = $pdo->prepare($query);
             $stmt->bindParam(':id_categoria', $id_categoria, PDO::PARAM_INT);
             $stmt->execute();
