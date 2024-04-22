@@ -11,7 +11,7 @@ class Subcategoria
     public function __construct(){
         $this->Conexao = new Conexao();
     }
-    public function GetSubcategoriaDaCategoria($id_categoria)
+    public function GetSubcategorias($id_categoria)
     {
         try {
             $pdo = $this->Conexao->getPdo();

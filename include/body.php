@@ -12,7 +12,7 @@
     <!-- Produtos categorias -->
     <div class="container row mx-auto m-4" id="corpo">
 
-        <h2 class="produtos-titulos mt-7 mb-0">Todos os produtos</h2>
+        <h2 class="produtos-titulos mt-5 mb-0">Todos os produtos</h2>
         <p class="produtos-sub-titulos mt-2">Navegue pelas categorias para encontras mais informações<br> sobre a sua
             questão.
         </p>

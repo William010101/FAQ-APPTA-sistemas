@@ -1,7 +1,6 @@
 <?php
 include_once 'include/ref.php';
 include_once 'php_action/db_connect.php';
-$pagina = "inicio";
 ?>
 
 <!DOCTYPE html>
