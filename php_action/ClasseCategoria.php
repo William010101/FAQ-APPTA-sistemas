@@ -1,7 +1,7 @@
 
 
 <?php
-require_once 'OBJconection.php';
+require_once 'ClasseConnection.php';
 
 class Categoria
 {
@@ -27,6 +27,22 @@ class Categoria
             $stmt->execute();
             $stmt->setFetchMode(PDO::FETCH_CLASS, 'Categoria');
             return $stmt->fetchAll();
+        } catch (PDOException $e) {
+            throw new PDOException($e->getMessage(), (int)$e->getCode());
+        }
+    }
+
+    public function GetNomeCategoria($idcategoria)
+    {
+        try {
+            $pdo = $this->Conexao->getPdo();
+
+            $query = "SELECT * FROM categoria WHERE id_categoria = :idcategoria";
+            $stmt = $pdo->prepare($query);
+            $stmt->bindParam(":idcategoria", $idcategoria, PDO::PARAM_INT);
+            $stmt->execute();
+            $stmt->setFetchMode(PDO::FETCH_CLASS, 'Categoria');
+            return $stmt->fetchALL();
         } catch (PDOException $e) {
             throw new PDOException($e->getMessage(), (int)$e->getCode());
         }

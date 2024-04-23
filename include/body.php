@@ -1,13 +1,9 @@
-<!-- ------------------------------------------ -->
-
 <?php
-// $sql = "SELECT * FROM produto";
-// // "SELECT * FROM pergunta inner join produto on nomeproduto = produto where resposta is not null ORDER BY 
-// // id_pergunta DESC limit 2 ";
-// $resultado = pg_query($conn, $sql);
-
+include_once 'include/ref.php';
+include_once 'php_action/ClasseProduto.php';
+include_once 'php_action/ClasseConnection.php';
+$produto = new Produto();
 ?>
-
 <div class="container-fluid  ">
     <!-- Produtos categorias -->
     <div class="container row mx-auto m-4" id="corpo">
@@ -17,24 +13,22 @@
             questão.
         </p>
             <?php
-            $sql = "SELECT * FROM produto where visivel = true ORDER BY
-                        id_produto";
-            $resultado = pg_query($conn, $sql);
-
-            while ($dados = pg_fetch_array($resultado)): ?>
+            $produtos = $produto->GetProdutos();
+            foreach ($produtos as $prod):  
+                ?>
 
                 
                     <div class="col-3 mx-auto h-50">
                         <div class="card w-75 m-3 text-center bg-primary" >                         
                              <img class="img-fluid w-75 mx-auto" src="../img/appta.png" alt="">
                             <div class="card-header p-1">                                
-                                <a href="categoria?id=<?php echo ($dados['id_produto'])   ?>"
-                            class="btn btn-produtos-primario p-0"><?php echo ($dados['nomeproduto'])   ?></a>                               
+                                <a href="categoria?id=<?php echo $prod->id_produto ?>"
+                            class="btn btn-produtos-primario p-0"><?php echo $prod->nomeproduto ?></a>                               
                             </div>
                         </div>
                     </div>
                 
 
-            <?php endwhile; ?>
+            <?php endforeach; ?>
     </div>
 </div>

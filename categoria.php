@@ -1,8 +1,8 @@
 <?php
 include_once 'include/ref.php';
-include_once 'php_action/OBJcategoria.php';
-include_once 'php_action/OBJsubcategoria.php';
-include_once 'php_action/OBJproduto.php';
+include_once 'php_action/ClasseCategoria.php';
+include_once 'php_action/ClasseSubcategoria.php';
+include_once 'php_action/ClasseProduto.php';
 $produto = new Produto();
 $categoria = new Categoria();
 $subcategoria = new Subcategoria();
@@ -22,10 +22,11 @@ $subcategoria = new Subcategoria();
     <div class="container-fluid">
         <div class="container">
             <?php
-            $produtos = $produto->exibeNomeProduto($_GET['id']);
+            $produtos = $produto->GetNomeProduto($_GET['id']);
             // Acessando o primeiro elemento do array
             $produto = $produtos[0];
             // Acessando a propriedade "nomeproduto" do objeto Produto
+            $idproduto = $produto->id_produto;
             $nomeproduto = $produto->nomeproduto;
             ?>
             <?php //endforeach; ?>
@@ -33,7 +34,7 @@ $subcategoria = new Subcategoria();
                     <ol class="breadcrumb mt-5">
                         <li class="breadcrumb-item text-uppercase">
                             <a id="breadcrumb"
-                                href="categoria?id=<?php //echo $prod->id_produto; ?>"><?php echo $nomeproduto ?></a>
+                                href="categoria?id=<?php echo $idproduto; ?>"><?php echo $nomeproduto ?></a>
                         </li>
                     </ol>
                     <h2 class="produtos-titulos mt-5 mb-5 ml-2"><?php echo strtoupper($nomeproduto); ?></h2>
