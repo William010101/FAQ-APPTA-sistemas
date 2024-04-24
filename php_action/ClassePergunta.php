@@ -20,15 +20,15 @@ class Pergunta
         $this->Conexao = new Conexao();
     }
 
-    public function GetPerguntas($fk_id_subcategoria)
+    public function GetPerguntas($id_subcategoria)
     {
         
         try {
             $pdo = $this->Conexao->getPdo();
 
-            $query = "SELECT * FROM pergunta where fk_id_subcategoria = :fk_id_subcategoria AND visivel = true";
+            $query = "SELECT * FROM pergunta where fk_id_subcategoria = :id_subcategoria AND visivel = true";
             $stmt = $pdo->prepare($query);
-            $stmt->bindParam(':fk_id_subcategoria', $fk_id_subcategoria, PDO::PARAM_INT);
+            $stmt->bindParam(':id_subcategoria', $id_subcategoria, PDO::PARAM_INT);
             $stmt->execute();
             $stmt->setFetchMode(PDO::FETCH_CLASS, 'Pergunta');
             return $stmt->fetchAll();
@@ -49,6 +49,42 @@ class Pergunta
             $stmt->execute();
             $stmt->setFetchMode(PDO::FETCH_CLASS, 'Pergunta');
             return $stmt->fetchAll();
+        } catch (PDOException $e) {
+            throw new PDOException($e->getMessage(), (int)$e->getCode());
+        }
+    }
+
+    public function BreadCrumbPergunta($id_subcategoria)
+    {
+        try {
+            $pdo = $this->Conexao->getPdo();
+            $query = "SELECT id_produto, nomeproduto , id_categoria, nomecategoria, id_subcategoria, nomesubcategoria
+            FROM produto
+            INNER JOIN categoria ON id_produto = categoria.fk_id_produto
+            INNER JOIN subcategoria ON id_categoria = subcategoria.fk_id_categoria
+            WHERE id_subcategoria = :id_subcategoria";
+            $stmt = $pdo->prepare($query);
+            $stmt->bindParam(':id_subcategoria', $id_subcategoria, PDO::PARAM_INT);
+            $stmt->execute();
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            throw new PDOException($e->getMessage(), (int)$e->getCode());
+        }
+    }
+    public function BreadCrumbReposta($id_pergunta)
+    {
+        try {
+            $pdo = $this->Conexao->getPdo();
+            $query = "SELECT id_produto, nomeproduto , id_categoria, nomecategoria, id_subcategoria, nomesubcategoria, id_pergunta, pergunta
+            FROM produto
+            INNER JOIN categoria ON id_produto = categoria.fk_id_produto
+            INNER JOIN subcategoria ON id_categoria = subcategoria.fk_id_categoria
+            INNER JOIN pergunta ON id_subcategoria = pergunta.id_pergunta
+            WHERE id_pergunta = :id_pergunta";
+            $stmt = $pdo->prepare($query);
+            $stmt->bindParam(':id_pergunta', $id_pergunta, PDO::PARAM_INT);
+            $stmt->execute();
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
         } catch (PDOException $e) {
             throw new PDOException($e->getMessage(), (int)$e->getCode());
         }

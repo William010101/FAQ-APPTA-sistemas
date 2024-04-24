@@ -18,25 +18,30 @@ $pergunta = new Pergunta();
     <?php include_once 'include/header.php'; ?>
 
     <div class="container">
-        <!-- <nav aria-label="breadcrumb">
-            <ol class="breadcrumb mt-4">
-                <?php //echo exibe_nome_categoria($conn, $idcategoria); ?>
-                <li class="breadcrumb-item text-uppercase">
-                    <a id="breadcrumb" href="categoria?id=<?php //echo $idproduto ?>"><?php //echo $nomeproduto ?></a>
-                </li>
-                <li class="breadcrumb-item text-uppercase">
-                    <a id="breadcrumb" href="categoria?id=<?php //echo $idcategoria ?>"><?php //echo $nomecategoria ?></a>
-                </li>
-                <li class="breadcrumb-item text-uppercase">
-                    <a id="breadcrumb"
-                        href="categoria?id=<?php //echo $idsubcategoria ?>"><?php //echo $nomesubcategoria ?></a>
-                </li>
-                <li class="breadcrumb-item text-uppercase">
-                    <a id="breadcrumb"
-                        href="subcategoria?id=<?php //echo $idpergunta ?>"><?php //echo $pergunta ?></a>
-                </li>
-            </ol>
-        </nav>  -->
+
+
+                    <nav aria-label="breadcrumb">
+                        <?php
+                        $breadcrumb = $pergunta->BreadCrumbReposta($_GET['id']);
+                        foreach ($breadcrumb as $crumb):
+                        ?>
+                        <ol class="breadcrumb mt-4">
+                            <li class="breadcrumb-item text-uppercase">
+                                <a id="breadcrumb" href="categoria?id=<?php echo $crumb['id_produto']; ?>"><?php echo $crumb['nomeproduto']; ?></a>
+                            </li>
+                            <li class="breadcrumb-item text-uppercase">
+                                <a id="breadcrumb" href="subcategoria?id=<?php echo $crumb['id_categoria']; ?>"><?php echo $crumb['nomecategoria']; ?></a>
+                            </li>
+                            <li class="breadcrumb-item text-uppercase">
+                                <a id="breadcrumb" href="perguntas?id=<?php echo $crumb['id_subcategoria']; ?>"><?php echo $crumb['nomesubcategoria']; ?></a>
+                            </li>
+                            <li class="breadcrumb-item text-uppercase">
+                                <a id="breadcrumb" href="resposta?id=<?php echo $crumb['id_pergunta']; ?>"><?php echo $crumb['pergunta']; ?></a>
+                            </li>
+                        </ol>
+                         <?php endforeach; ?>    
+                    </nav>
+         
                <?php
                 $perguntas = $pergunta->GetResposta($_GET['id']);
                 foreach ($perguntas as $perg):

@@ -23,9 +23,7 @@ $subcategoria = new Subcategoria();
         <div class="container">
             <?php
             $produtos = $produto->GetNomeProduto($_GET['id']);
-            // Acessando o primeiro elemento do array
             $produto = $produtos[0];
-            // Acessando a propriedade "nomeproduto" do objeto Produto
             $idproduto = $produto->id_produto;
             $nomeproduto = $produto->nomeproduto;
             ?>
