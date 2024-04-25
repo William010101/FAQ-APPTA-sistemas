@@ -90,4 +90,19 @@ class Pergunta
         }
     }
 
+    public function Pesquisa(){
+        $pesquisar = $_POST['pesquisar'];
+        try {
+            $pdo = $this->Conexao->getPdo();
+
+            $query = "SELECT * FROM pergunta where pergunta iLIKE '%$pesquisar%' OR resposta iLIKE '%$pesquisar%'  AND visivel = true";
+            $stmt = $pdo->prepare($query);
+            $stmt->execute();
+            $stmt->setFetchMode(PDO::FETCH_CLASS, 'Pergunta');
+            return $stmt->fetchAll();
+        } catch (PDOException $e) {
+            throw new PDOException($e->getMessage(), (int)$e->getCode());
+        }
+    }
+
 }
