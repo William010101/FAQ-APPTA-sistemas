@@ -79,7 +79,7 @@ class Pergunta
             FROM produto
             INNER JOIN categoria ON id_produto = categoria.fk_id_produto
             INNER JOIN subcategoria ON id_categoria = subcategoria.fk_id_categoria
-            INNER JOIN pergunta ON id_subcategoria = pergunta.id_pergunta
+            INNER JOIN pergunta ON id_subcategoria = pergunta.fk_id_subcategoria
             WHERE id_pergunta = :id_pergunta";
             $stmt = $pdo->prepare($query);
             $stmt->bindParam(':id_pergunta', $id_pergunta, PDO::PARAM_INT);
