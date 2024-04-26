@@ -94,6 +94,15 @@ CREATE TABLE public.usuarios
   fotoperfil character varying(50)
 );
 
+CREATE TABLE resposta_imagem (
+    id_respostaimagem INT PRIMARY KEY,
+    ordem SERIAL,
+    imagem BYTEA,
+    Descricao VARCHAR(1000),
+    resposta VARCHAR(50000),
+    fk_id_pergunta INT,
+    FOREIGN KEY (fk_id_pergunta) REFERENCES pergunta(id_pergunta)
+);
 
 ------------------------------------------
 gerar registros em subcategoria

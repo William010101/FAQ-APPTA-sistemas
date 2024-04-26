@@ -2,7 +2,9 @@
 <?php
 include_once 'include/ref.php';
 include_once 'php_action/ClassePergunta.php';
+include_once 'php_action/ClasseResposta_Imagem.php';
 $pergunta = new Pergunta();
+$respostaimagem = new Respostaimagem();
 ?>
 <html lang="pt-br">
 
@@ -57,29 +59,37 @@ $pergunta = new Pergunta();
             </p>
 
         </div>
+        <hr>
+        <div class="col-xs-12 col-md-12 mb-50 body resposta-perguntalink">
+            <?php echo $perg->resposta ?>
+            <?php 
+            $imagens = $respostaimagem->GetImagemResposta($perg->id_pergunta);
+            $imagem = $imagens[2];
+            $img = $imagem->imagem; 
+            echo $img;
+            foreach($imagens as $res_img):
+                var_dump($res_img);
+                 $im = $res_img->imagem;
+                 $imagem_binaria = pg_unescape_bytea($im);
+                 $img = 'data: image/gif;base64,'.base64_encode($imagem_binaria);
+            ?>
 
-        <?php if ($perg->video != "") { ?>
+            <img style="width:300px; margin-top: 100px;" src="<?php echo $img; ?>" alt="Imagem">
+            <?php endforeach;?>
+            <div class="social-icons-footer">
+            <?php if ($perg->video != "") { ?>
             <div class="row">
                 <div class="col">
-                    <div class="card video">
-                        <div class="card-header video" id="headvideo">
-                            <p class="blockquote video">Assista ao video</p>
-                            <h5 class="mb-0">
-
-                                <button class="btn btn-video" type="button" data-toggle="collapse" data-target="#video">
-                                    <a href="<?php echo $perg->video ?>"><?php echo $perg->pergunta ?></a>
-                                </button>
-                            </h5>
+                    <div class="card video mt-5">
+                        <div class="card-header video mx-auto" id="headvideo">
+                            <p class="blockquote video">ASSISTA AO VIDEO</p>
+                            <?php echo $perg->video ?>
                         </div>
                     </div>
                 </div>
             </div>
         <?php } else {
         } ?>
-        <hr>
-        <div class="col-xs-12 col-md-12 mb-50 body resposta-perguntalink">
-            <?php echo $perg->resposta ?>
-            <div class="social-icons-footer">
                 <hr>
                 <span class="RobotoRegular">Compartilhe esse conteúdo:</span><br>
                 <a target="_blank" class="btn btn-outline-success" id="whatsapp-share-btt"><i
