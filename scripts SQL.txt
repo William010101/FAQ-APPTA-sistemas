@@ -93,3 +93,29 @@ CREATE TABLE public.usuarios
   email character varying(32),
   fotoperfil character varying(50)
 );
+
+
+------------------------------------------
+gerar registros em subcategoria
+INSERT INTO subcategoria (id_subcategoria, nomesubcategoria, visivel, fk_id_categoria)
+SELECT
+    (SELECT COALESCE(MAX(id_subcategoria), 0) FROM subcategoria) + row_number + 1, -- Próximo ID disponível
+    'Subcategoria ' || ((SELECT COALESCE(MAX(id_subcategoria), 0) FROM subcategoria) + row_number + 1), -- Nome da subcategoria baseado no ID
+    true, -- Define visibilidade como verdadeira para todas as subcategorias
+    floor(random() * 250) + 1 -- Gera valores aleatórios de 1 a 250 para fk_id_categoria
+FROM generate_series(1, 745) AS row_number;
+--------------------------------------------
+gera perguntas 
+INSERT INTO pergunta (pergunta, resposta, datacadastro, video, usuario, idusuario, visivel, fk_id_subcategoria)
+SELECT
+    'Pergunta ' || generate_series(4, 1500), -- Pergunta única para cada registro
+    'Resposta' 
+    || generate_series(1, 1500), -- Resposta única para cada registro
+    NOW(), -- Data de cadastro atual
+    'https://youtu.be/syqJAgTQdlU?si=WljyCPC0Er_9gnNF', -- URL do vídeo
+    'teste', -- Nome de usuário
+    1, -- ID de usuário
+    true, -- Visível
+    floor(random() * 750) + 1 -- ID de subcategoria aleatório entre 1 e 750
+FROM
+    generate_series(1, 1500); -- Gera 1500 linhas de dados
