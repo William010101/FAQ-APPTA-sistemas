@@ -14,9 +14,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_FILES["imagem"])) {
     // Ler a imagem do arquivo enviado
     $imagem = file_get_contents($_FILES["imagem"]["tmp_name"]);
 
-    // Escapar a imagem para ser inserida no banco de dados
-    $imagem_escapada = pg_escape_bytea($imagem);
-    
+// Converter a imagem para base64
+$imagem_escapada = base64_encode($imagem);
+
+// Escapar a imagem para ser inserida no banco de dados
 
     // Preparar a consulta SQL com um placeholder para a imagem
     $query = "INSERT INTO resposta_imagem (id_respostaimagem, ordem, imagem, descricao, resposta, fk_id_pergunta) VALUES (2, default, $1, 'dsnfjnsdfn', 'kdsnjfnjasndf', 1)";

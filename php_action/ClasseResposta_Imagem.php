@@ -11,26 +11,48 @@ class Respostaimagem
     public int $fk_id_pergunta;
     private $Conexao;
 
-    public function __construct(){
+    public function __construct(int $id_respostaimagem = 0, int $ordem = 0, string $imagem = "", string $descricao = "", string $resposta = "", int $fk_id_pergunta = 0)
+
+    {
+        $this->id_respostaimagem = $id_respostaimagem;
+        $this->ordem = $ordem;
+        $this->imagem = base64_decode($imagem); 
+        $this->descricao = $descricao;
+        $this->resposta = $resposta;
+        $this->fk_id_pergunta = $fk_id_pergunta;
+        
         $this->Conexao = new Conexao();
-        $this->Conexao->conectar(); // Chame o método conectar() para estabelecer a conexão com o banco de dados
+        $this->Conexao->conectar();
     }
 
     public function GetImagemResposta($id_pergunta)
     {
         try {
             $pdo = $this->Conexao->getPdo();
-
-            $query = "SELECT * FROM resposta_imagem where fk_id_pergunta = :id_pergunta";
+    
+            $query = "SELECT id_respostaimagem, ordem, imagem, descricao, resposta, fk_id_pergunta FROM resposta_imagem WHERE fk_id_pergunta = :id_pergunta";
             $stmt = $pdo->prepare($query);
             $stmt->bindParam(':id_pergunta', $id_pergunta, PDO::PARAM_INT);
             $stmt->execute();
-            $stmt->setFetchMode(PDO::FETCH_CLASS, 'Respostaimagem');
-            return $stmt->fetchAll();
+    
+            $imagens = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    
+            $result = [];
+            foreach ($imagens as $imagem) {
+                $result[] = new Respostaimagem(
+                    $imagem['id_respostaimagem'],
+                    $imagem['ordem'],
+                    stream_get_contents($imagem['imagem']), 
+                    $imagem['descricao'],
+                    $imagem['resposta'],
+                    $imagem['fk_id_pergunta']
+                );
+            }
+    
+            return $result;
         } catch (PDOException $e) {
             throw new PDOException($e->getMessage(), (int)$e->getCode());
         }
     }
 }
-
 ?>

@@ -7,7 +7,7 @@
 
 <?php
    require_once("db.php"); 
-   $query = "SELECT imagem FROM resposta_imagem where id_respostaimagem = 3"; // Use o ID da imagem desejada
+   $query = "SELECT imagem FROM resposta_imagem where id_respostaimagem = 1"; // Use o ID da imagem desejada
    $result = pg_query($conn, $query);
    
    if ($result) {
@@ -17,7 +17,9 @@
            $imagem_binaria = pg_unescape_bytea($row['imagem']);
         //    function dataURI($imagem_binaria)
         //     {
-                $img = 'data: image/gif;base64,'.base64_encode( $imagem_binaria );
+               
+                $img = 'data: image/png;base64,'.$imagem_binaria;
+                //echo '<img src="data:image/png;base64,' . $imagem_binaria . '" alt="Descrição da imagem">';
             // }	
        } else {
            header("HTTP/1.0 404 Not Found");
@@ -30,7 +32,7 @@
 <?php
 // $img = dataURI($imagem_binaria);
 ?>
-<img style="width:300px; margin-top: 100px;" src="<?php echo $img; ?>" alt="Imagem">
+<img src="<?php echo $img ?>" style="width:300px; margin-top: 100px;"  alt="Imagem">
 
 </body>
 </html>
