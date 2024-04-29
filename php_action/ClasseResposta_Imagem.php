@@ -20,7 +20,6 @@ class Respostaimagem
         $this->descricao = $descricao;
         $this->resposta = $resposta;
         $this->fk_id_pergunta = $fk_id_pergunta;
-        
         $this->Conexao = new Conexao();
         $this->Conexao->conectar();
     }

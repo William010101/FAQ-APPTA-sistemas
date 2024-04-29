@@ -1,6 +1,5 @@
 <?php
 session_start();
-
 // Conexão
 include_once 'php_action/db_connect.php';
 // Header
