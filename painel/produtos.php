@@ -1,17 +1,9 @@
 <?php
 session_start();
-
-// Conexão
-include_once 'php_action/db_connect.php';
-// Header
 include_once 'includes/header.php';
-
-//CONTAR REGISTROS
-$contador = "SELECT id_produto,
-(SELECT COUNT(*) FROM produto ) AS total FROM produto";
-$registros = pg_query($conn, $contador);
-$dadoscontador = pg_fetch_array($registros);
-
+include_once '../php_action/ClasseProduto.php';
+include_once '../php_action/ClasseConnection.php';
+$produto = new Produto();
 ?>
 
 <?php include_once 'includes/menufaq.php'; ?>
@@ -36,23 +28,18 @@ $dadoscontador = pg_fetch_array($registros);
 
                 <tbody id="tabela">
                     <?php
-                        $sql = "SELECT * FROM produto ORDER BY
-                        id_produto ASC";
-                        $resultado = pg_query($conn, $sql);            
-                    
-                        if(pg_num_rows($resultado) > 0):
-
-                            while($dados = pg_fetch_array($resultado)):
+                        $produtos = $produto->GetProdutos();
+                        foreach ($produtos as $prod):
                     ?>
 
                     <tr>
 
-                        <td width="50%" data-toggle="collapse" href="#collapse<?php echo $dados['id_produto']; ?>">
-                            <?php echo $dados['nomeproduto']; ?>
-                            <div class="collapse" id="collapse<?php echo $dados['id_produto']; ?>">
+                        <td width="50%" data-toggle="collapse" href="#collapse<?php echo $prod->id_produto; ?>">
+                            <?php echo $prod->nomeproduto; ?>
+                            <div class="collapse" id="collapse<?php echo $prod->id_produto; ?>">
                                 <div class="">
 
-                                    <?php if ($dados['visivel'] == 't') 
+                                    <?php if ($prod->visivel == 'true') 
                                         {
                                             echo '<div class="text-success">Produto visivel no site!</div>';
                                         }else {
@@ -64,14 +51,14 @@ $dadoscontador = pg_fetch_array($registros);
                         </td>
 
                         <td>
-                            <a href="editarproduto.php?id=<?php echo $dados['id_produto']; ?>"
+                            <a href="editarproduto.php?id=<?php echo $prod->id_produto; ?>"
                                 class="btn btn-warning"><i class="material-icons">edit</i>
                             </a>
                         </td>
 
                         <td>
                             <button type="button" class="btn btn-danger" data-toggle="modal"
-                                data-target="#modal<?php echo $dados['id_produto']; ?>">
+                                data-target="#modal<?php echo $prod->id_produto; ?>">
                                 <i class="material-icons">delete</i>
                             </button>
                         </td>
@@ -80,7 +67,7 @@ $dadoscontador = pg_fetch_array($registros);
 
 
                         <!-- Modal -->
-                        <div id="modal<?php echo $dados['id_produto']; ?>" class="modal fade" tabindex="-1"
+                        <div id="modal<?php echo$prod->id_produto; ?>" class="modal fade" tabindex="-1"
                             role="dialog" aria-labelledby="TituloModalCentralizado" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered" role="document">
                                 <div class="modal-content">
@@ -98,7 +85,7 @@ $dadoscontador = pg_fetch_array($registros);
                                     <div class="modal-footer">
                                         <form action="php_action/delete.php" method="POST">
                                             <input type="hidden" name="id_produto"
-                                            value="<?php echo $dados['id_produto']; ?>">
+                                            value="<?php echo $prod->id_produto; ?>">
 
                                             <button type="submit" name="btn-deletar-produto" class="btn btn-danger">Sim,
                                                 quero
@@ -115,21 +102,8 @@ $dadoscontador = pg_fetch_array($registros);
 
 
                         <?php 
-                            endwhile;
-                            else: 
+                            endforeach;
                         ?>
-                        <thead>
-                            <tr>
-                                <td>-</td>
-                                <td>-</td>
-                                <td>-</td>
-                            </tr>
-                        </thead>
-
-                        <?php 
-                            endif;                                
-                        ?>
-
                 </tbody>
             </table>
 
