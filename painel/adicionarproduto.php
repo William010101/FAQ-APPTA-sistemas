@@ -1,38 +1,30 @@
 <?php
 session_start();
-// Header
-
 include_once 'includes/header.php';
+include_once '../php_action/ClasseProduto.php';
+include_once '../php_action/ClasseConnection.php';
+$produto = new Produto();
+
 ?>
 
 <link href="css/style.css" rel="stylesheet" media="screen">
 <link href="css/mobile-style.css" rel="stylesheet" media="screen">
 
 <div class="container">
-    <div class="row">
-        <div class="col offset-md-1 mt-4 col-lg-8">
+    <div class="row  ">
+        <div class="col mx-auto col-lg-8">
             <h3 class="font-weight-light mt-1 mb-3"> Cadastro de Produto</h3>
-            <form name="form1" action="php_action/create.php" method="POST">
+            <form name="form1" action="" method="POST">
 
                 <div class="form-group">
-                    <h6> <label class="mb-0" for="pergunta">Titulo</label><br></h6>
+                    <h6> <label class="mb-0" for="pergunta">Nome do Produto</label><br></h6>
                     <input class="border w-100 p-2" type="text" name="nomeproduto" id="nomeproduto"
                         placeholder="Titulo do produto">
 
                 </div>
 
-
-                <div class="form-group">
-                <h6> <label class="mb-0" for="pergunta">Categoria</label><br></h6>             
-                    <select class="custom-select" id="categoria" name="categoria">
-                        <option selected>Escolher...</option>
-                        <option value="Primario">Primário</option>
-                        <option value="Secundario">Secundário</option>
-                    </select>
-                </div>
-
                 <div class="custom-control custom-checkbox mt-4">
-                    <input type="checkbox" class="custom-control-input" id="customControlValidation1" name="visivel">
+                    <input type="checkbox" class="custom-control-input" id="customControlValidation1" name="visivel" value="1">
                     <label class="custom-control-label" for="customControlValidation1">Mostrar produto no site!</label>
                 </div>
 
@@ -42,7 +34,7 @@ include_once 'includes/header.php';
                 <a href="produtos.php" class="btn btn-success mt-4" data-toggle="modal"
                     data-target="#confirmarsaidaproduto" id="voltar"> Voltar </a>
             </form>
-
+            <h2 class="produtos-titulos mt-5 mb-0"> <?php echo $produto->CadastroProduto();?></h2>
 
 
         </div>

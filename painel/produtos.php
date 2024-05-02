@@ -79,7 +79,7 @@ $produto = new Produto();
                                     </div>
 
                                     <div class="modal-body">
-                                        Tem certeza que deseja deletar essa pergunta?
+                                        Tem certeza que deseja deletar esse produto?
                                     </div>
 
                                     <div class="modal-footer">
