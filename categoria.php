@@ -22,7 +22,7 @@ $subcategoria = new Subcategoria();
     <div class="container-fluid">
         <div class="container">
             <?php
-            $produtos = $produto->GetNomeProduto($_GET['id']);
+            $produtos = $produto->GetProduto($_GET['id']);
             $produto = $produtos[0];
             $idproduto = $produto->id_produto;
             $nomeproduto = $produto->nomeproduto;

@@ -57,7 +57,7 @@ CREATE TABLE categoria (
 
 -- Criação da tabela produto
 CREATE TABLE produto (
-    id_produto INT PRIMARY KEY,
+    id_produto SERIAL PRIMARY KEY,
     nomeproduto VARCHAR(100),
     visivel boolean
 );
