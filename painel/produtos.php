@@ -4,6 +4,7 @@ include_once 'includes/header.php';
 include_once '../php_action/ClasseProduto.php';
 include_once '../php_action/ClasseConnection.php';
 $produto = new Produto();
+$produto->DeletarProduto();
 ?>
 
 <?php include_once 'includes/menufaq.php'; ?>

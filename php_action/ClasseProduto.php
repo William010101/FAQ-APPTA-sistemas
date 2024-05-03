@@ -11,6 +11,21 @@ class Produto
         $this->Conexao = new Conexao();
     }
 
+    public function DeletarProduto()
+    {
+        try {
+            $pdo = $this->Conexao->getPdo();
+            if(isset($_POST['btn-deletar-produto'])) {
+                $this->id_produto = $_POST['id_produto'];
+                $query = "DELETE FROM produto WHERE id_produto = :id_produto";
+                $stmt = $pdo->prepare($query);
+                $stmt->bindParam(':id_produto', $this->id_produto, PDO::PARAM_INT);
+                $stmt->execute();
+            } 
+        } catch (PDOException $e) {
+            echo "Erro ao inserir o produto: " . $e->getMessage();
+        }
+    }
     public function SetProduto()
     {
         try {

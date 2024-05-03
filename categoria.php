@@ -39,7 +39,7 @@ $subcategoria = new Subcategoria();
                     <div class="row">
                     
                     <?php
-                    $categorias = $categoria->GetCategorias();
+                    $categorias = $categoria->GetCategorias($_GET['id']);
                     foreach ($categorias as $cat):
                         
                         ?>

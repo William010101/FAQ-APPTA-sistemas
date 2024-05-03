@@ -15,9 +15,9 @@ class Categoria
         $this->Conexao = new Conexao();
     }
 
-    public function GetCategorias()
+    public function GetCategorias($idproduto)
     {
-        $idproduto = $_GET['id'];
+         
         try {
             $pdo = $this->Conexao->getPdo();
 
@@ -32,14 +32,13 @@ class Categoria
         }
     }
 
-    public function GetNomeCategoria($idcategoria)
+    public function GetTodasCategorias()
     {
         try {
             $pdo = $this->Conexao->getPdo();
 
-            $query = "SELECT * FROM categoria WHERE id_categoria = :idcategoria";
+            $query = "SELECT * FROM categoria WHERE visivel = 'true'";
             $stmt = $pdo->prepare($query);
-            $stmt->bindParam(":idcategoria", $idcategoria, PDO::PARAM_INT);
             $stmt->execute();
             $stmt->setFetchMode(PDO::FETCH_CLASS, 'Categoria');
             return $stmt->fetchALL();
