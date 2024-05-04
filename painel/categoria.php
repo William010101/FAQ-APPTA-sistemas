@@ -9,6 +9,7 @@ include_once '../php_action/ClasseConnection.php';
 // 	header("Location: index.php");	
 // }
 $categoria = new Categoria();
+$categoria->Deletarcategoria();
 ?>
 <?php include_once 'includes/menufaq.php'; ?>
 
@@ -20,7 +21,9 @@ $categoria = new Categoria();
             <h3 class="font-weight-light">FAQ - Lista de categorias </h3>
 
             <input class="form-control" id="pesquisa" type="text" placeholder="Pesquisar..">
-
+                        
+            <a href="adicionarcategoria.php" class="btn btn-primary mb-4 mt-4">ADICIONAR CATEGORIA</a>
+            <a href="sair.php" class="btn btn-danger ml-1  mb-4 mt-4">SAIR</a>
             <table class="table table-hover mt-3">
                 <thead class="thead-light">
                     <tr>
@@ -40,29 +43,19 @@ $categoria = new Categoria();
 
                         <td width="50%" data-toggle="collapse" href="#collapse<?php echo $cat->id_categoria; ?>">
                             <?php echo $cat->nomecategoria; ?>
-                            <div class="collapse" id="collapse<?php echo $cat->id_ctaegoria; ?>">
-                                <div class="">
-
-                                    <?php if ($cat->visivel == 'true') 
-                                        {
-                                            echo '<div class="text-success">Produto visivel no site!</div>';
-                                        }else {
-                                            echo '<div class="text-danger">Produto ocultado do site!</div>';
-                                        } 
-                                    ?>
-                                </div>
+                            <div class="collapse" id="collapse<?php echo $cat->id_categoria; ?>">
                             </div>
                         </td>
 
                         <td>
-                            <a href="editarproduto.php?id=<?php echo $cat->id_ctaegoria; ?>"
+                            <a href="editarcategoria.php?id=<?php echo $cat->id_categoria; ?>"
                                 class="btn btn-warning"><i class="material-icons">edit</i>
                             </a>
                         </td>
 
                         <td>
                             <button type="button" class="btn btn-danger" data-toggle="modal"
-                                data-target="#modal<?php echo $cat->id_ctaegoria; ?>">
+                                data-target="#modal<?php echo $cat->id_categoria; ?>">
                                 <i class="material-icons">delete</i>
                             </button>
                         </td>
@@ -71,7 +64,7 @@ $categoria = new Categoria();
 
 
                         <!-- Modal -->
-                        <div id="modal<?php echo $cat->id_ctaegoria; ?>" class="modal fade" tabindex="-1"
+                        <div id="modal<?php echo $cat->id_categoria; ?>" class="modal fade" tabindex="-1"
                             role="dialog" aria-labelledby="TituloModalCentralizado" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered" role="document">
                                 <div class="modal-content">
@@ -87,11 +80,11 @@ $categoria = new Categoria();
                                     </div>
 
                                     <div class="modal-footer">
-                                        <form action="php_action/delete.php" method="POST">
-                                            <input type="hidden" name="id_produto"
-                                            value="<?php echo $cat->id_ctaegoria; ?>">
+                                        <form action="" method="POST">
+                                            <input type="hidden" name="id_categoria"
+                                            value="<?php echo $cat->id_categoria; ?>">
 
-                                            <button type="submit" name="btn-deletar-produto" class="btn btn-danger">Sim,
+                                            <button type="submit" name="btn-deletar-categoria" class="btn btn-danger">Sim,
                                                 quero
                                                 deletar!
                                             </button>
@@ -111,9 +104,7 @@ $categoria = new Categoria();
                 </tbody>
             </table>
 
-            <br>
-            <a href="adicionarproduto.php" class="btn btn-primary mb-4">ADICIONAR PRODUTO</a>
-            <a href="sair.php" class="btn btn-danger ml-1  mb-4">SAIR</a>
+
 
         </div>
 

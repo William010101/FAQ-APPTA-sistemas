@@ -23,7 +23,7 @@ class Produto
                 $stmt->execute();
             } 
         } catch (PDOException $e) {
-            echo "Erro ao inserir o produto: " . $e->getMessage();
+            echo "Erro ao deletar o produto: " . $e->getMessage();
         }
     }
     public function SetProduto()
@@ -47,7 +47,7 @@ class Produto
                 echo "Produto alterado com sucesso!";
             } 
         } catch (PDOException $e) {
-            echo "Erro ao inserir o produto: " . $e->getMessage();
+            echo "Erro ao alterar produto: " . $e->getMessage();
         }
     }
 

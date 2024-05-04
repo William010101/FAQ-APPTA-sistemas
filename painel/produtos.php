@@ -84,7 +84,7 @@ $produto->DeletarProduto();
                                     </div>
 
                                     <div class="modal-footer">
-                                        <form action="php_action/delete.php" method="POST">
+                                        <form action="" method="POST">
                                             <input type="hidden" name="id_produto"
                                             value="<?php echo $prod->id_produto; ?>">
 

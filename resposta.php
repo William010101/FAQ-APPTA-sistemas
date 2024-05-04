@@ -71,7 +71,7 @@ $respostaimagem = new Respostaimagem();
                     $imagens = $respostaimagem->GetImagemResposta($perg->id_pergunta);
                     foreach ($imagens as $imagem):
                         ?>
-                        <img class="mx-auto" style="width:100%; margin-top: 30px;"  src="data:image/png;base64,<?= base64_encode($imagem->imagem) ?>" alt="Imagem">
+                        <img class="mx-auto img-fluid"  src="data:image/png;base64,<?= base64_encode($imagem->imagem) ?>" alt="Imagem">
                         <p id="autorArtigo"><?php echo $imagem->descricao; ?></p><br>
                         <p id="autorArtigo"><?php echo $imagem->resposta; ?></p>
                     <?php endforeach; ?>

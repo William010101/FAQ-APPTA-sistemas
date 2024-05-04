@@ -48,7 +48,7 @@ CREATE TABLE public.usuarios
 
 -- Criação da tabela categoria
 CREATE TABLE categoria (
-    id_categoria INT PRIMARY KEY,
+    id_categoria SERIAL PRIMARY KEY,
     nomeCategoria VARCHAR(100),
     visivel boolean,
     fk_id_produto INT,
