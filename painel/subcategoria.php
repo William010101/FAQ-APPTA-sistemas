@@ -3,11 +3,6 @@ session_start();
 include_once 'includes/header.php';
 include_once '../php_action/ClasseSubcategoria.php';
 include_once '../php_action/ClasseConnection.php';
-// if(!empty($_SESSION['id_usuario'])){
-// 	//verifica se o login foi feito e permanece na pagina
-// }else{
-// 	header("Location: index.php");	
-// }
 $subcategoria = new Subcategoria();
 $subcategoria->DeletarSubcategoria();
 ?>

@@ -1,7 +1,5 @@
 	<?php
-
-	/* instancia a classe usuario */
-	require_once 'usuarios.php';
+	require_once 'ClasseUsuarios.php';
 	include_once 'includes/ref.php';
 	$u = new Usuario;
 	?>
@@ -50,27 +48,15 @@
 											if(isset($_POST['email']))
 											{	
 												/*proteção contra SQL Injection*/
-
 												$email=addslashes($_POST['email']);
 												$senha=addslashes($_POST['senha']);
 
-												/*verifica se o campo esta preenchido */
-
-												if(!empty($email) && !empty($senha)){
-													/*tenta a conexão com o banco*/
-													$u->conectar();
-
-													if($u->msgErro==""){
-														if($u->logar($email,$senha))
-														{
-															header("location: perguntas.php");
-														}else{
-															echo "<p class='alert alert-danger' id='alerta';>Usuario ou senha incorreto!</p>";
-														}
-													}
+												if($u->logar($email,$senha))
+												{
+													header("location: perguntas.php");
 												}else{
-													echo "<p class='alert alert-danger' id='alerta';>Preencha todos os campos!</p>";
-												}	
+													echo "<p class='alert alert-danger' id='alerta';>Usuario ou senha incorreto!</p>";
+												}													
 											} 
 										?>
 	                                </div>
@@ -80,14 +66,6 @@
 	                </form>
 	            </div>
 	        </div>
-
-
-
-	    </div>
-	    <!-- div responsavel pela verificação dos campos -->
-
-
-
 
 	    </div>
 

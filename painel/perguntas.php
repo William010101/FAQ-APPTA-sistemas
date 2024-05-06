@@ -22,7 +22,8 @@ $dadoscontador = pg_fetch_array($registros);
             <h3 class="font-weight-light">FAQ - Lista de perguntas</h3>
 
             <input class="form-control" id="pesquisa" type="text" placeholder="Pesquisar..">
-
+            <a href="adicionar.php" class="btn btn-primary mb-4 mt-4">ADICIONAR PERGUNTA</a>
+            <a href="sair.php" class="btn btn-danger ml-1  mb-4 mt-4">SAIR</a>
             <table class="table table-hover mt-3">
                 <thead class="thead-light">
                     <tr>
@@ -131,9 +132,6 @@ $dadoscontador = pg_fetch_array($registros);
             </table>
 
             <br>
-
-            <a href="adicionar.php" class="btn btn-primary mb-4">ADICIONAR PERGUNTA</a>
-            <a href="sair.php" class="btn btn-danger ml-1  mb-4">SAIR</a>
 
         </div>
     </div>

@@ -17,7 +17,8 @@ $produto->DeletarProduto();
             <h3 class="font-weight-light">FAQ - Lista de produtos </h3>
 
             <input class="form-control" id="pesquisa" type="text" placeholder="Pesquisar..">
-
+            <a href="adicionarproduto.php" class="btn btn-primary mb-4 mt-4">ADICIONAR PRODUTO</a>
+            <a href="sair.php" class="btn btn-danger ml-1  mb-4 mt-4">SAIR</a>
             <table class="table table-hover mt-3">
                 <thead class="thead-light">
                     <tr>
@@ -63,11 +64,6 @@ $produto->DeletarProduto();
                                 <i class="material-icons">delete</i>
                             </button>
                         </td>
-
-                        <!-- Collapse -->
-
-
-                        <!-- Modal -->
                         <div id="modal<?php echo$prod->id_produto; ?>" class="modal fade" tabindex="-1"
                             role="dialog" aria-labelledby="TituloModalCentralizado" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered" role="document">
@@ -100,17 +96,11 @@ $produto->DeletarProduto();
                                 </div>
                             </div>
                         </div>
-
-
                         <?php 
                             endforeach;
                         ?>
                 </tbody>
             </table>
-
-            <br>
-            <a href="adicionarproduto.php" class="btn btn-primary mb-4">ADICIONAR PRODUTO</a>
-            <a href="sair.php" class="btn btn-danger ml-1  mb-4">SAIR</a>
 
         </div>
 
@@ -119,9 +109,7 @@ $produto->DeletarProduto();
 </div>
 
 </div>
-
 <!-- javascript para pesquisar dentro da tabela -->
-
 <script>
 $(document).ready(function() {
     $("#pesquisa").on("keyup", function() {
