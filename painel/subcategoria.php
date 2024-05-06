@@ -1,15 +1,15 @@
 <?php
 session_start();
 include_once 'includes/header.php';
-include_once '../php_action/ClasseCategoria.php';
+include_once '../php_action/ClasseSubcategoria.php';
 include_once '../php_action/ClasseConnection.php';
 // if(!empty($_SESSION['id_usuario'])){
 // 	//verifica se o login foi feito e permanece na pagina
 // }else{
 // 	header("Location: index.php");	
 // }
-$categoria = new Categoria();
-$categoria->Deletarcategoria();
+$subcategoria = new Subcategoria();
+$subcategoria->DeletarSubcategoria();
 ?>
 <?php include_once 'includes/menufaq.php'; ?>
 
@@ -18,16 +18,16 @@ $categoria->Deletarcategoria();
     <div class="row">
         <div class="col offset-md-2 mt-4 col-lg-8">
 
-            <h3 class="font-weight-light">FAQ - Lista de categorias </h3>
+            <h3 class="font-weight-light">FAQ - Lista de subcategorias </h3>
 
             <input class="form-control" id="pesquisa" type="text" placeholder="Pesquisar..">
                         
-            <a href="adicionarcategoria.php" class="btn btn-primary mb-4 mt-4">ADICIONAR CATEGORIA</a>
+            <a href="adicionarsubcategoria.php" class="btn btn-primary mb-4 mt-4">ADICIONAR SUBCATEGORIA</a>
             <a href="sair.php" class="btn btn-danger ml-1  mb-4 mt-4">SAIR</a>
             <table class="table table-hover mt-3">
                 <thead class="thead-light">
                     <tr>
-                        <th>Nome da categoria</th>
+                        <th>Nome da subcategoria</th>
                         <th>Editar</th>
                         <th>Deletar</th>
                     </tr>
@@ -35,27 +35,27 @@ $categoria->Deletarcategoria();
 
                 <tbody id="tabela">
                     <?php
-                        $categorias = $categoria->GetTodasCategorias();
-                        foreach ($categorias as $cat):
+                        $subcategorias = $subcategoria->GetTodasSubcategorias();
+                        foreach ($subcategorias as $sub):
                     ?>
 
                     <tr>
 
-                        <td width="50%" data-toggle="collapse" href="#collapse<?php echo $cat->id_categoria; ?>">
-                            <?php echo $cat->nomecategoria; ?>
-                            <div class="collapse" id="collapse<?php echo $cat->id_categoria; ?>">
+                        <td width="50%" data-toggle="collapse" href="#collapse<?php echo $sub->id_subcategoria; ?>">
+                            <?php echo $sub->nomesubcategoria; ?>
+                            <div class="collapse" id="collapse<?php echo $sub->id_subcategoria; ?>">
                             </div>
                         </td>
 
                         <td>
-                            <a href="editarcategoria.php?id=<?php echo $cat->id_categoria; ?>"
+                            <a href="editarsubcategoria.php?id=<?php echo $sub->id_subcategoria; ?>"
                                 class="btn btn-warning"><i class="material-icons">edit</i>
                             </a>
                         </td>
 
                         <td>
                             <button type="button" class="btn btn-danger" data-toggle="modal"
-                                data-target="#modal<?php echo $cat->id_categoria; ?>">
+                                data-target="#modal<?php echo $sub->id_subcategoria; ?>">
                                 <i class="material-icons">delete</i>
                             </button>
                         </td>
@@ -64,7 +64,7 @@ $categoria->Deletarcategoria();
 
 
                         <!-- Modal -->
-                        <div id="modal<?php echo $cat->id_categoria; ?>" class="modal fade" tabindex="-1"
+                        <div id="modal<?php echo $sub->id_subcategoria; ?>" class="modal fade" tabindex="-1"
                             role="dialog" aria-labelledby="TituloModalCentralizado" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered" role="document">
                                 <div class="modal-content">
@@ -81,10 +81,10 @@ $categoria->Deletarcategoria();
 
                                     <div class="modal-footer">
                                         <form action="" method="POST">
-                                            <input type="hidden" name="id_categoria"
-                                            value="<?php echo $cat->id_categoria; ?>">
+                                            <input type="hidden" name="id_subcategoria"
+                                            value="<?php echo $sub->id_subcategoria; ?>">
 
-                                            <button type="submit" name="btn-deletar-categoria" class="btn btn-danger">Sim,
+                                            <button type="submit" name="btn-deletar-subcategoria" class="btn btn-danger">Sim,
                                                 quero
                                                 deletar!
                                             </button>
