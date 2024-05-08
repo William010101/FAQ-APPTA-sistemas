@@ -80,7 +80,7 @@ class Subcategoria
         try {
             $pdo = $this->Conexao->getPdo();
 
-            $query = "SELECT * FROM subcategoria WHERE visivel = 'true'";
+            $query = "SELECT * FROM subcategoria";
             $stmt = $pdo->prepare($query);
             $stmt->execute();
             $stmt->setFetchMode(PDO::FETCH_CLASS, 'subcategoria');
@@ -108,7 +108,7 @@ class Subcategoria
     {
         try {
             $pdo = $this->Conexao->getPdo();
-            $query = "SELECT * FROM subcategoria where id_subcategoria = :id_subcategoria AND visivel = true";
+            $query = "SELECT * FROM subcategoria where id_subcategoria = :id_subcategoria";
             $stmt = $pdo->prepare($query);
             $stmt->bindParam(':id_subcategoria', $id_subcategoria, PDO::PARAM_INT);
             $stmt->execute();

@@ -29,7 +29,7 @@ class Respostaimagem
         try {
             $pdo = $this->Conexao->getPdo();
     
-            $query = "SELECT id_respostaimagem, ordem, imagem, descricao, resposta, fk_id_pergunta FROM resposta_imagem WHERE fk_id_pergunta = :id_pergunta";
+            $query = "SELECT * FROM resposta_imagem WHERE fk_id_pergunta = :id_pergunta";
             $stmt = $pdo->prepare($query);
             $stmt->bindParam(':id_pergunta', $id_pergunta, PDO::PARAM_INT);
             $stmt->execute();

@@ -100,7 +100,7 @@ class Categoria
          
         try {
             $pdo = $this->Conexao->getPdo();
-            $query = "SELECT * FROM categoria where id_categoria = :idcategoria AND visivel = true";
+            $query = "SELECT * FROM categoria where id_categoria = :idcategoria";
             $stmt = $pdo->prepare($query);
             $stmt->bindParam(':idcategoria', $idcategoria, PDO::PARAM_INT);
             $stmt->execute();
@@ -116,7 +116,7 @@ class Categoria
         try {
             $pdo = $this->Conexao->getPdo();
 
-            $query = "SELECT * FROM categoria WHERE visivel = 'true'";
+            $query = "SELECT * FROM categoria";
             $stmt = $pdo->prepare($query);
             $stmt->execute();
             $stmt->setFetchMode(PDO::FETCH_CLASS, 'Categoria');

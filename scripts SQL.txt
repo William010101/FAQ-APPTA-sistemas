@@ -95,7 +95,7 @@ CREATE TABLE public.usuarios
 );
 
 CREATE TABLE resposta_imagem (
-    id_respostaimagem INT PRIMARY KEY,
+    id_respostaimagem SERIAL PRIMARY KEY,
     ordem SERIAL,
     imagem VARCHAR(500000),
     Descricao VARCHAR(1000),

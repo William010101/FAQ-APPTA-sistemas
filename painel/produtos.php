@@ -30,7 +30,7 @@ $produto->DeletarProduto();
 
                 <tbody id="tabela">
                     <?php
-                        $produtos = $produto->GetProdutos();
+                        $produtos = $produto->GetTodosProdutos();
                         foreach ($produtos as $prod):
                     ?>
 

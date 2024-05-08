@@ -44,6 +44,16 @@ $categoria->Deletarcategoria();
                         <td width="50%" data-toggle="collapse" href="#collapse<?php echo $cat->id_categoria; ?>">
                             <?php echo $cat->nomecategoria; ?>
                             <div class="collapse" id="collapse<?php echo $cat->id_categoria; ?>">
+                            <div class="">
+
+                                    <?php if ($cat->visivel == 'true') 
+                                        {
+                                            echo '<div class="text-success">Categoria visivel no site!</div>';
+                                        }else {
+                                            echo '<div class="text-danger">Categoria ocultado do site!</div>';
+                                        } 
+                                    ?>
+                            
                             </div>
                         </td>
 

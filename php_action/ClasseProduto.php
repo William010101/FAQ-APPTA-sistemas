@@ -85,6 +85,20 @@ class Produto
         }
     }
 
+    public function GetTodosProdutos()
+    {
+        try {
+            $pdo = $this->Conexao->getPdo();
+
+            $query = "SELECT * FROM produto";//
+            $stmt = $pdo->prepare($query);
+            $stmt->execute();
+            $stmt->setFetchMode(PDO::FETCH_CLASS, 'Produto');
+            return $stmt->fetchALL();
+        } catch (PDOException $e) {
+            throw new PDOException($e->getMessage(), (int)$e->getCode());
+        }
+    }
     public function GetProdutos()
     {
         try {
