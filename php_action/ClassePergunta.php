@@ -20,6 +20,21 @@ class Pergunta
         $this->Conexao = new Conexao();
     }
 
+    public function GetTodasPerguntas()
+    {
+        
+        try {
+            $pdo = $this->Conexao->getPdo();
+
+            $query = "SELECT * FROM pergunta";
+            $stmt = $pdo->prepare($query);
+            $stmt->execute();
+            $stmt->setFetchMode(PDO::FETCH_CLASS, 'Pergunta');
+            return $stmt->fetchAll();
+        } catch (PDOException $e) {
+            throw new PDOException($e->getMessage(), (int)$e->getCode());
+        }
+    }
     public function GetPerguntas($id_subcategoria)
     {
         

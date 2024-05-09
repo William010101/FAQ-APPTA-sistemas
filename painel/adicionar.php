@@ -1,14 +1,17 @@
 <?php
 session_start();
 // Header
-
+include_once 'includes/ref.php';
 include_once 'includes/header.php';
+include_once '../php_action/ClasseSubcategoria.php';
+include_once '../php_action/ClasseConnection.php';
+$subcategoria = new Subcategoria();
 ?>
 
-<div class="container">
-    <div class="row">
-        <div class="col offset-md-1 mt-4 col-lg-8">
-            <h3 class="font-weight-light mt-1 mb-3"> Cadastro FAQ </h3>
+<div class="container ">
+    <div class="row ">
+        <div class="col offset-md-1 mt-4 col-lg-8 mx-auto">
+            <h3 class="font-weight-light mt-1 mb-3"> Cadastro E-Manual </h3>
             <form name="form1" action="php_action/create.php" method="POST">
 
                 <div class="form-group">
@@ -35,41 +38,20 @@ include_once 'includes/header.php';
                 <div class="form-group">
 
                 <h6><label class="mb-0" for="video">Video </label></h6>                  
-                        <textarea class="border border w-100 p-2" id="video" name="video"
-                        rows="5" cols="33"></textarea>
+                        <input class="border border w-100 p-2" id="video" name="video" placeholder="Cole aqui o código de incorporação do vídeo"></in>
                     </div>
 
-                <?php
-                        $sql = "SELECT * FROM produto where categoria = 'Primario'";
-                        $resultado = pg_query($conn, $sql);
-                        
-                ?>
-
-                <div class="form-group">
-                    <h6><label class="mb-0">Produto Principal</label></h6>
-                    <select class="custom-select" id="produto" name="produto">
-                        <?php while($dados = pg_fetch_array($resultado)): ?>
-                        <option><?php echo $dados['nomeproduto'];?></option>
-                        <?php  endwhile; ?>
-
+                    <h6> <label class="mb-0" for="pergunta">Nome da Subcategoria relacionada</label><br></h6>
+             
+                    <select  class="form-select" id="floatingSelect" aria-label="Floating label select example" name="fk_id_subcategoria" id="fk_id_subcategoria" >
+                        <option selected>Selecione </option>
+                        <?php
+                            $subcategorias = $subcategoria->GetTodasSubcategorias();
+                            foreach ($subcategorias as $sub):
+                        ?>
+                        <option value="<?php echo $sub->id_subcategoria; ?>"><?php echo $sub->nomesubcategoria; ?></option>
+                        <?php endforeach; ?>
                     </select>
-                </div>
-
-
-                <?php
-                        $sql = "SELECT * FROM produto where categoria = 'Secundario'";
-                        $resultado = pg_query($conn, $sql);
-                        
-                ?>
-                <div class="form-group">
-                    <h6><label class="mb-0">Sub Categoria</label></h6>
-                    <select class="custom-select" id="subCategoria" name="subCategoria">
-                        <?php while($dados = pg_fetch_array($resultado)): ?>
-                        <option><?php echo $dados['nomeproduto'];?></option>
-                        <?php  endwhile; ?>
-
-                    </select>
-                </div>
 
                 <input type="hidden" id="dataCadastro" name="dataCadastro" value="<?php 
                 date_default_timezone_set ('America/Sao_Paulo');
@@ -78,17 +60,17 @@ include_once 'includes/header.php';
                 ?>">
 
                 <?php
-                        $usuario = $_SESSION['id_usuario'];
-                        $sql = "SELECT * FROM usuarios where id_usuario ='$usuario'";
-                        $resultado = pg_query($conn, $sql);
-                        $dados = pg_fetch_array($resultado);
+                        // $usuario = $_SESSION['id_usuario'];
+                        // $sql = "SELECT * FROM usuarios where id_usuario ='$usuario'";
+                        // $resultado = pg_query($conn, $sql);
+                        // $dados = pg_fetch_array($resultado);
                 ?>
 
                 <input type="hidden" id="usuarioCadastro" name="usuarioCadastro" value="<?php echo $dados['nome'];?>">
                 <input type="hidden" id="usuarioId" name="usuarioId" value="<?php echo $usuario?>">
 
-                <button type="submit" name="btn-cadastrar" class="btn btn-primary mb-4"> Cadastrar </button>
-                <a href="faq.php" class="btn btn-success mb-4" data-toggle="modal" data-target="#confirmarsaida"
+                <button type="submit" name="btn-cadastrar" class="btn btn-primary mb-4 mt-4"> Cadastrar </button>
+                <a href="faq.php" class="btn btn-success mb-4 mt-4" data-toggle="modal" data-target="#confirmarsaida"
                     id="voltar"> Lista de perguntas </a>
             </form>
         </div>

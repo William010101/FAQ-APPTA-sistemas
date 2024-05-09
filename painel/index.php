@@ -15,11 +15,11 @@
 	<body>
 	    <div class="container containerLogin">
 	        <div class="row">
-	            <div class="col-12 col-sm-6 text-center text-sm-right">
+	            <div class="col-12 col-sm-6 text-center ">
 	                <img src="img/logoappta.png" class="mt-3  mb-3" id="logologin" alt="Logo APPTA">
 	            </div>
 	            <div class="col-12 col-sm-6 text-center text-sm-left">
-	                <h5 class="text-uppercase mt-3 mb-3" id="title-faq">Painel FAQ</h5>
+	                <h5 class="text-uppercase mt-3 mb-3" id="title-faq">E-MANUAL</h5>
 	            </div>
 	        </div>
 
