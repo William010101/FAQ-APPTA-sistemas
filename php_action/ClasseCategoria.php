@@ -106,9 +106,9 @@ class Categoria
             $stmt->execute();
             $stmt->setFetchMode(PDO::FETCH_CLASS, 'Categoria');
             return $stmt->fetchAll();
-        } catch (PDOException $e) {
-            throw new PDOException($e->getMessage(), (int)$e->getCode());
-        }
+            } catch (PDOException $e) {
+                throw new PDOException($e->getMessage(), (int)$e->getCode());
+            }
     }
 
     public function GetTodasCategorias()

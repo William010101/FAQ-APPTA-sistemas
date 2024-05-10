@@ -12,6 +12,23 @@ require_once '../php_action/ClasseConnection.php';
 			$this->Conexao = new Conexao();
 		}
 
+		public function GetUsuario($idusuario)
+		{
+			try
+			{
+				$pdo = $this->Conexao->getPdo();
+				$query = "SELECT * FROM usuarios WHERE id_usuario = :idusuario";
+				$stmt = $pdo->prepare($query);
+				$stmt->bindParam(':idusuario', $idusuario, PDO::PARAM_INT);
+				$stmt->execute();
+				$stmt->setFetchMode(PDO::FETCH_CLASS, 'Usuario');
+				return $stmt->fetchAll();
+			}catch (PDOException $e) {
+				throw new PDOException($e->getMessage(), (int)$e->getCode());
+			}
+			
+		}
+
 		public function logar($email,$senha){
 
 			$pdo = $this->Conexao->getPdo();
