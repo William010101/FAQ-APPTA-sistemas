@@ -40,8 +40,8 @@ $usuario = new Usuario();
                     controleCampo++;
                     document.getElementById('formulario-imagem').insertAdjacentHTML(
                     'beforeend', 
-                    '<div id="campo'+controleCampo+'" class="w-100 p-2 mb-3" style="background-color: #f6f6f6;">'+
-                    '<hr />'+
+                    '<div id="campo'+controleCampo+'" class="p-3 mx-auto mb-3 row" style="background-color: #f6f6f6;">'+
+                    '<hr class="w-75 mx-auto" />'+
                     '<h6><label class="mb-0">Seleicone a imagem</label></h6>'+
                     '<input class="form-control form-control-sm mb-3" id="formFileSm" type="file" name="imagem" id="imagem">'+
 
@@ -54,8 +54,8 @@ $usuario = new Usuario();
                     '<h6><label class="mb-0">Resposta da imagem</label></h6>'+
                     '<textarea class="form-control  mb-3" name="respostaimagem" id="respostaimagem" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>'+
                     '</div>'+         
-                    '<button id="'+controleCampo+'" onclick="removerCampo('+controleCampo+')" type="button" class="btn btn-outline-dark mx-auto">Excluir</button>'+
-                    '<hr />'+
+                    '<button id="'+controleCampo+'" onclick="removerCampo('+controleCampo+')" type="button" class="btn btn-outline-dark mx-auto w-25 mb-3">Excluir</button>'+
+                    '<hr class="w-75 mx-auto" />'+
                     '</div>'
                     );
                       
