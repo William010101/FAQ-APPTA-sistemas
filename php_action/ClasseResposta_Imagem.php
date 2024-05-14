@@ -24,6 +24,20 @@ class Respostaimagem
         $this->Conexao->conectar();
     }
 
+    public function CadastroImagemResposta()
+    {
+        try {
+            $pdo = $this->Conexao->getPdo();
+            if(isset($_POST['btn-cadastrar-pergunta'])) {
+                $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
+
+                
+
+            } catch (PDOException $e) {
+                echo "Erro ao inserir a Imagem: " . $e->getMessage();
+            }
+        }
+    }
     public function GetImagemResposta($id_pergunta)
     {
         try {

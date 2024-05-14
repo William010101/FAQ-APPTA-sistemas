@@ -8,6 +8,7 @@ class Pergunta
     public int $id_pergunta;
     public string $pergunta;
     public string $resposta;
+    public string $chave;
     public string $datacadastro;
     public string $video;
     public string $usuario;
@@ -20,12 +21,43 @@ class Pergunta
         $this->Conexao = new Conexao();
     }
 
+    public function CadastroPergunta()
+    {
+        try {
+            $pdo = $this->Conexao->getPdo();
+            if(isset($_POST['btn-cadastrar-pergunta'])) {
+                $this->pergunta = $_POST['pergunta'];
+                $this->resposta = $_POST['resposta'];
+                $this->chave = $_POST['chave'];           
+                $this->video = $_POST['video'];
+                $this->fk_id_subcategoria = $_POST['fk_id_subcategoria'];
+                $this->datacadastro = $_POST['dataCadastro'];
+                $this->usuario = $_POST['usuarioCadastro']; 
+                $this->idusuario = $_POST['usuarioId'];
+                $this->visivel = $_POST['visivel'];      
+                $query = "INSERT INTO pergunta (pergunta, resposta, datacadastro, chave, video, usuario, idusuario, visivel, fk_id_subcategoria)VALUES (:pergunta, :resposta, :datacadastro, :chave, :video, :usuario, :idusuario, :visivel, :fk_id_subcategoria)";
+                $stmt = $pdo->prepare($query);
+                $stmt->bindParam(':pergunta', $this->pergunta, PDO::PARAM_STR);
+                $stmt->bindParam(':resposta', $this->resposta, PDO::PARAM_STR);
+                $stmt->bindParam(':datacadastro', $this->datacadastro, PDO::PARAM_STR);
+                $stmt->bindParam(':chave',$this->chave, PDO::PARAM_STR);
+                $stmt->bindParam(':video', $this->video, PDO::PARAM_STR);
+                $stmt->bindParam(':usuario', $this->usuario, PDO::PARAM_STR);
+                $stmt->bindParam(':idusuario', $this->idusuario, PDO::PARAM_INT);
+                $stmt->bindParam(':visivel', $this->visivel, PDO::PARAM_BOOL);
+                $stmt->bindParam(':fk_id_subcategoria', $this->fk_id_subcategoria, PDO::PARAM_INT);
+                $stmt->execute();
+                return $pdo->lastInsertId();
+            } 
+        } catch (PDOException $e) {
+            echo "Erro ao inserir a pergunta: " . $e->getMessage();
+        }
+    }
     public function GetTodasPerguntas()
     {
         
         try {
             $pdo = $this->Conexao->getPdo();
-
             $query = "SELECT * FROM pergunta";
             $stmt = $pdo->prepare($query);
             $stmt->execute();

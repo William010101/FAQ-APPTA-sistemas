@@ -4,17 +4,19 @@ session_start();
 include_once 'includes/ref.php';
 include_once 'includes/header.php';
 include_once '../php_action/ClasseSubcategoria.php';
+include_once '../php_action/ClassePergunta.php';
 include_once '../php_action/ClasseConnection.php';
 require_once '../php_action/ClasseUsuario.php';
 $subcategoria = new Subcategoria();
 $usuario = new Usuario();
+$pergunta = new Pergunta();
 ?>
 
 <div class="container ">
     <div class="row ">
         <div class="col offset-md-1 mt-4 col-lg-8 mx-auto">
             <h3 class="font-weight-light mt-1 mb-3"> Cadastro E-Manual </h3>
-            <form name="form1" action="php_action/create.php" method="POST">
+            <form name="form1" action="" method="POST">
 
                 <div class="form-group">
                     <h6> <label class="mb-0" for="pergunta">Titulo</label><br></h6>
@@ -43,16 +45,17 @@ $usuario = new Usuario();
                     '<div id="campo'+controleCampo+'" class="p-3 mx-auto mb-3 row" style="background-color: #f6f6f6;">'+
                     '<hr class="w-75 mx-auto" />'+
                     '<h6><label class="mb-0">Seleicone a imagem</label></h6>'+
-                    '<input class="form-control form-control-sm mb-3" id="formFileSm" type="file" name="imagem" id="imagem">'+
+                    '<input class="form-control form-control-sm mb-3" id="formFileSm" type="file" name="imagem[]" id="imagem">'+
 
-                    '<input type="hidden" id="ordem" name="ordem" value="'+controleCampo+'">'+
+                    '<input type="hidden" id="ordem" name="ordem[]" value="'+controleCampo+'">'+
+                    '<input type="hidden" id="id_fk_pergunta" name="id_fk_pergunta[]" value="<?php  $pergunta->CadastroPergunta(); ?>">'+
 
                     '<h6><label class="mb-0">Descrição </label></h6>'+
-                    '<input class="border border w-100 p-2 mb-3" name="descricao" id="descricao" placeholder="Descrição da imagem" data-role="tagsinput">'+
+                    '<input class="border border w-100 p-2 mb-3" name="descricao[]" id="descricao" placeholder="Descrição da imagem" data-role="tagsinput">'+
             
                     '<div class="form-floating">'+
                     '<h6><label class="mb-0">Resposta da imagem</label></h6>'+
-                    '<textarea class="form-control  mb-3" name="respostaimagem" id="respostaimagem" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>'+
+                    '<textarea class="form-control  mb-3" name="respostaimagem[]" id="respostaimagem" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>'+
                     '</div>'+         
                     '<button id="'+controleCampo+'" onclick="removerCampo('+controleCampo+')" type="button" class="btn btn-outline-dark mx-auto w-25 mb-3">Excluir</button>'+
                     '<hr class="w-75 mx-auto" />'+
@@ -81,7 +84,7 @@ $usuario = new Usuario();
 
                     <h6> <label class="mb-0" for="pergunta">Nome da Subcategoria relacionada</label><br></h6>
              
-                    <select  class="form-select" id="floatingSelect" aria-label="Floating label select example" name="fk_id_subcategoria" id="fk_id_subcategoria" >
+                    <select class="form-select" id="floatingSelect" aria-label="Floating label select example" name="fk_id_subcategoria" id="fk_id_subcategoria" required>
                         <option selected>Selecione </option>
                         <?php
                             $subcategorias = $subcategoria->GetTodasSubcategorias();
@@ -105,10 +108,16 @@ $usuario = new Usuario();
                 <input type="hidden" id="usuarioCadastro" name="usuarioCadastro" value="<?php echo $user->nome;?>">
                 <input type="hidden" id="usuarioId" name="usuarioId" value="<?php echo $user->id_usuario;?>">
                 <?php endforeach; ?>
+                <div class="custom-control custom-checkbox mt-4">
+                    <input type="checkbox" class="custom-control-input" id="customControlValidation1" name="visivel" value="1">
+                    <label class="custom-control-label" for="customControlValidation1">Mostrar Pergunta no site!</label>
+                </div>
                 <button type="submit" name="btn-cadastrar-pergunta" class="btn btn-primary mb-4 mt-4"> Cadastrar </button>
                 <a href="faq.php" class="btn btn-success mb-4 mt-4" data-toggle="modal" data-target="#confirmarsaida"
                     id="voltar"> Lista de perguntas </a>
+                    
             </form>
+            <h2 class="produtos-titulos mt-3 mb-5"><?php echo $pergunta->CadastroPergunta();?></h2>
         </div>
     </div>
 </div>
