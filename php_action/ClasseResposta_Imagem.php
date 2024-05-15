@@ -1,5 +1,6 @@
 <?php
-require_once 'ClasseConnection.php'; // Certifique-se de que o nome do arquivo da classe Conexao está correto
+require_once 'ClasseConnection.php'; 
+require_once 'ClassePergunta.php'; 
 
 class Respostaimagem
 {
@@ -24,20 +25,42 @@ class Respostaimagem
         $this->Conexao->conectar();
     }
 
-    public function CadastroImagemResposta()
+    public function CadastroImagemResposta($dados)
     {
+        var_dump($dados);
         try {
-            $pdo = $this->Conexao->getPdo();
-            if(isset($_POST['btn-cadastrar-pergunta'])) {
-                $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
 
-                
-
-            } catch (PDOException $e) {
-                echo "Erro ao inserir a Imagem: " . $e->getMessage();
+            if (isset($_FILES['imagem'])) {
+                $imagens = $_FILES['imagem'];
+                foreach ($imagens['tmp_name'] as $key => $tmp_name) {
+                    $imagem_tmp = $tmp_name;
+                    if (is_uploaded_file($imagem_tmp)) {
+                        $imagem = file_get_contents($imagem_tmp);
+                        $imagemcod = base64_encode($imagem);
+                        $descricao = isset($dados['descricao'][$key]) ? $dados['descricao'][$key] : '';
+                        $ordem = isset($dados['ordem'][$key]) ? $dados['ordem'][$key] : '';
+                        $id_fk_pergunta = isset($dados['id_fk_pergunta'][$key]) ? $dados['id_fk_pergunta'][$key] : '';
+                        $respostaimagem = isset($dados['respostaimagem'][$key]) ? $dados['respostaimagem'][$key] : '';
+                        echo '<div>';
+                        echo '<img src="data:image/jpeg;base64,' . $imagemcod . '" alt="Imagem">';
+                        echo '<p>Descrição: ' . $descricao . '</p>';
+                        echo '<p>Resposta da Imagem: ' . $respostaimagem . '</p>';
+                        echo '<p>ordem da Imagem: ' . $ordem . '</p>';
+                        echo '<p>id pergunta da Imagem: ' . $id_fk_pergunta . '</p>';
+                        echo '</div>';
+                    } else {
+                        echo "Erro ao carregar a imagem.";
+                    }
+                }
+            } else {
+                echo "Nenhuma imagem enviada.";
             }
+        } catch (PDOException $e) {
+            echo "Erro ao inserir a Imagem: " . $e->getMessage();
         }
     }
+
+    
     public function GetImagemResposta($id_pergunta)
     {
         try {

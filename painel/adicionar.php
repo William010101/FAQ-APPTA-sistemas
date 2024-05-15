@@ -7,16 +7,20 @@ include_once '../php_action/ClasseSubcategoria.php';
 include_once '../php_action/ClassePergunta.php';
 include_once '../php_action/ClasseConnection.php';
 require_once '../php_action/ClasseUsuario.php';
+require_once '../php_action/ClasseResposta_Imagem.php';
 $subcategoria = new Subcategoria();
 $usuario = new Usuario();
 $pergunta = new Pergunta();
+$respostaimagem = new Respostaimagem();
+$id_perguntainserida = $pergunta->CadastroPergunta()
 ?>
+<input type="hidden" id="idfkpergunta" name="id_fk_pergunta" value="<?php echo $id_perguntainserida; ?>">
 
 <div class="container ">
     <div class="row ">
         <div class="col offset-md-1 mt-4 col-lg-8 mx-auto">
             <h3 class="font-weight-light mt-1 mb-3"> Cadastro E-Manual </h3>
-            <form name="form1" action="" method="POST">
+            <form name="form1" action="" method="POST" enctype="multipart/form-data">
 
                 <div class="form-group">
                     <h6> <label class="mb-0" for="pergunta">Titulo</label><br></h6>
@@ -30,44 +34,8 @@ $pergunta = new Pergunta();
                     <textarea class="form-control border ckeditor" rows="4" name="resposta"
                         id="resposta"></textarea>
                 </div>
-
-                <div  id="formulario-imagem" class="form-group col-12 p-0">
-
-                </div>
-                <h3 class="font-weight-light mt-1 mb-3"> Inserir uma seção <button onclick="adicionarCampo()" type="button" class="btn btn-outline-dark">+</button></h3>
-
-                <script>
-                var controleCampo = 0;
-                function adicionarCampo(){
-                    controleCampo++;
-                    document.getElementById('formulario-imagem').insertAdjacentHTML(
-                    'beforeend', 
-                    '<div id="campo'+controleCampo+'" class="p-3 mx-auto mb-3 row" style="background-color: #f6f6f6;">'+
-                    '<hr class="w-75 mx-auto" />'+
-                    '<h6><label class="mb-0">Seleicone a imagem</label></h6>'+
-                    '<input class="form-control form-control-sm mb-3" id="formFileSm" type="file" name="imagem[]" id="imagem">'+
-
-                    '<input type="hidden" id="ordem" name="ordem[]" value="'+controleCampo+'">'+
-                    '<input type="hidden" id="id_fk_pergunta" name="id_fk_pergunta[]" value="<?php  $pergunta->CadastroPergunta(); ?>">'+
-
-                    '<h6><label class="mb-0">Descrição </label></h6>'+
-                    '<input class="border border w-100 p-2 mb-3" name="descricao[]" id="descricao" placeholder="Descrição da imagem" data-role="tagsinput">'+
-            
-                    '<div class="form-floating">'+
-                    '<h6><label class="mb-0">Resposta da imagem</label></h6>'+
-                    '<textarea class="form-control  mb-3" name="respostaimagem[]" id="respostaimagem" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>'+
-                    '</div>'+         
-                    '<button id="'+controleCampo+'" onclick="removerCampo('+controleCampo+')" type="button" class="btn btn-outline-dark mx-auto w-25 mb-3">Excluir</button>'+
-                    '<hr class="w-75 mx-auto" />'+
-                    '</div>'
-                    );
-                      
-                }
-
-                function removerCampo(idcampo){
-                    document.getElementById('campo'+idcampo).remove();
-                }
-                </script>
+                
+                
                 <div class="form-group">
 
                     <h6><label class="mb-0" for="chave">Chave </label></h6>
@@ -107,17 +75,60 @@ $pergunta = new Pergunta();
 
                 <input type="hidden" id="usuarioCadastro" name="usuarioCadastro" value="<?php echo $user->nome;?>">
                 <input type="hidden" id="usuarioId" name="usuarioId" value="<?php echo $user->id_usuario;?>">
+
                 <?php endforeach; ?>
                 <div class="custom-control custom-checkbox mt-4">
                     <input type="checkbox" class="custom-control-input" id="customControlValidation1" name="visivel" value="1">
                     <label class="custom-control-label" for="customControlValidation1">Mostrar Pergunta no site!</label>
                 </div>
+                <div id="formulario-imagem"  class="form-group col-12 p-0">
+
+                </div>
+
+                <h3 class="font-weight-light mt-1 mb-3"> Inserir uma seção <button onclick="adicionarCampo()" type="button" class="btn btn-outline-dark">+</button></h3>
+
+                <script>
+                var controleCampo = 0;
+                var idpergunta = document.getElementById('idfkpergunta');
+                var idfkpergunta = idpergunta.value;
+                
+                function adicionarCampo(){
+                    controleCampo++;
+                    document.getElementById('formulario-imagem').insertAdjacentHTML(
+                    'beforeend', 
+                    '<div id="campo'+controleCampo+'" class="p-3 mx-auto mb-3 row" style="background-color: #f6f6f6;">'+
+                    '<hr class="w-75 mx-auto" />'+
+                    '<h6><label class="mb-0">Seleicone a imagem</label></h6>'+
+                    '<input class="form-control form-control-sm mb-3" id="formFileSm" type="file" name="imagem[]" id="imagem">'+
+
+                    '<input type="hidden" id="ordem" name="ordem[]" value="'+controleCampo+'">'+
+                    '<input type="hidden" id="id_fk_pergunta" name="id_fk_pergunta[]" value="'+idfkpergunta+'">'+
+
+                    '<h6><label class="mb-0">Descrição </label></h6>'+
+                    '<input class="border border w-100 p-2 mb-3" name="descricao[]" id="descricao" placeholder="Descrição da imagem" data-role="tagsinput">'+
+            
+                    '<div class="form-floating">'+
+                    '<h6><label class="mb-0">Resposta da imagem</label></h6>'+
+                    '<textarea class="form-control  mb-3" name="respostaimagem[]" id="respostaimagem" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>'+
+                    '</div>'+         
+                    '<button id="'+controleCampo+'" onclick="removerCampo('+controleCampo+')" type="button" class="btn btn-outline-dark mx-auto w-25 mb-3">Excluir</button>'+
+                    '<hr class="w-75 mx-auto" />'+
+                    '</div>'
+                    );
+                      
+                }
+
+                function removerCampo(idcampo){
+                    document.getElementById('campo'+idcampo).remove();
+                }
+                </script>
                 <button type="submit" name="btn-cadastrar-pergunta" class="btn btn-primary mb-4 mt-4"> Cadastrar </button>
                 <a href="faq.php" class="btn btn-success mb-4 mt-4" data-toggle="modal" data-target="#confirmarsaida"
                     id="voltar"> Lista de perguntas </a>
                     
             </form>
-            <h2 class="produtos-titulos mt-3 mb-5"><?php echo $pergunta->CadastroPergunta();?></h2>
+            <div><?php echo $respostaimagem->CadastroImagemResposta(filter_input_array(INPUT_POST, FILTER_DEFAULT)); ?></div>
+            <h2 class="produtos-titulos mt-3 mb-5"><?php echo $id_perguntainserida;?></h2>
         </div>
     </div>
 </div>
