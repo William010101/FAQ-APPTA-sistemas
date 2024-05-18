@@ -40,9 +40,7 @@ class Pergunta
             $stmt->bindParam(':visivel', $pergunta->visivel, PDO::PARAM_BOOL);
             $stmt->bindParam(':fk_id_subcategoria', $pergunta->fk_id_subcategoria, PDO::PARAM_INT);
             $stmt->execute();
-            return "deu certo";
-            
-           // return $pdo->lastInsertId();
+            return $pdo->lastInsertId();
         } catch (PDOException $e) {
             echo "Erro ao inserir a pergunta: " . $e->getMessage();
         }

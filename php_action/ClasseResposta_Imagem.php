@@ -1,6 +1,5 @@
 <?php
 require_once 'ClasseConnection.php'; 
-require_once 'ClassePergunta.php'; 
 
 class Respostaimagem
 {
@@ -25,40 +24,32 @@ class Respostaimagem
         $this->Conexao->conectar();
     }
 
-    public function CadastroImagemResposta($dados)
+    public function CadastroImagemResposta(Respostaimagem $respostaimagem)
     {
-        var_dump($dados);
         try {
-
-            if (isset($_FILES['imagem'])) {
-                $imagens = $_FILES['imagem'];
-                foreach ($imagens['tmp_name'] as $key => $tmp_name) {
-                    $imagem_tmp = $tmp_name;
-                    if (is_uploaded_file($imagem_tmp)) {
-                        $imagem = file_get_contents($imagem_tmp);
-                        $imagemcod = base64_encode($imagem);
-                        $descricao = isset($dados['descricao'][$key]) ? $dados['descricao'][$key] : '';
-                        $ordem = isset($dados['ordem'][$key]) ? $dados['ordem'][$key] : '';
-                        $id_fk_pergunta = isset($dados['id_fk_pergunta'][$key]) ? $dados['id_fk_pergunta'][$key] : '';
-                        $respostaimagem = isset($dados['respostaimagem'][$key]) ? $dados['respostaimagem'][$key] : '';
-                        echo '<div>';
-                        echo '<img src="data:image/jpeg;base64,' . $imagemcod . '" alt="Imagem">';
-                        echo '<p>Descrição: ' . $descricao . '</p>';
-                        echo '<p>Resposta da Imagem: ' . $respostaimagem . '</p>';
-                        echo '<p>ordem da Imagem: ' . $ordem . '</p>';
-                        echo '<p>id pergunta da Imagem: ' . $id_fk_pergunta . '</p>';
-                        echo '</div>';
-                    } else {
-                        echo "Erro ao carregar a imagem.";
-                    }
-                }
-            } else {
-                echo "Nenhuma imagem enviada.";
-            }
+            $pdo = $this->Conexao->getPdo();
+            
+            $query = "INSERT INTO resposta_imagem (ordem, imagem, descricao, resposta, fk_id_pergunta) VALUES (:ordem, :imagem, :descricao, :resposta, :fk_id_pergunta)";
+            
+            // Prepare a consulta uma vez fora do loop
+            $stmt = $pdo->prepare($query);
+            
+           // foreach ($respostasImagem as $respostaImagem) {
+                // Use bindValue para evitar referências problemáticas
+                $stmt->bindValue(':ordem', $respostaimagem->ordem, PDO::PARAM_INT);
+                $stmt->bindValue(':imagem', $respostaimagem->imagem, PDO::PARAM_LOB);
+                $stmt->bindValue(':descricao', $respostaimagem->descricao, PDO::PARAM_STR);
+                $stmt->bindValue(':resposta', $respostaimagem->resposta, PDO::PARAM_STR);
+                $stmt->bindValue(':fk_id_pergunta', $respostaimagem->fk_id_pergunta, PDO::PARAM_INT);
+                $stmt->execute();
+            //}
+            
+            echo "Imagens inseridas com sucesso.";
         } catch (PDOException $e) {
-            echo "Erro ao inserir a Imagem: " . $e->getMessage();
+            echo "Erro ao inserir as imagens: " . $e->getMessage();
         }
     }
+    
 
     
     public function GetImagemResposta($id_pergunta)

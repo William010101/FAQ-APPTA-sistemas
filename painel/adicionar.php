@@ -84,7 +84,6 @@ $service->PostPergunta();
                 </div>
                 <script>
                     var controleCampo = 0;
-                    console.log(idfkpergunta);
                     function adicionarCampo() {
                         controleCampo++;
                         document.getElementById('formulario-imagem').insertAdjacentHTML(
@@ -95,7 +94,7 @@ $service->PostPergunta();
                             '<input class="form-control form-control-sm mb-3" id="formFileSm" type="file" name="imagem[]" id="imagem">' +
 
                             '<input type="hidden" id="ordem" name="ordem[]" value="' + controleCampo + '">' +
-                            '<input type="hidden" id="id_fk_pergunta" name="id_fk_pergunta[]" value="' + idfkpergunta + '">' +
+                            '<input type="hidden" id="id_fk_pergunta" name="id_fk_pergunta[]" value="">' +
 
                             '<h6><label class="mb-0">Descrição </label></h6>' +
                             '<input class="border border w-100 p-2 mb-3" name="descricao[]" id="descricao" placeholder="Descrição da imagem" data-role="tagsinput">' +
