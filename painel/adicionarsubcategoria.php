@@ -47,7 +47,7 @@ $categoria = new Categoria();
                 <a href="categoria.php" class="btn btn-success mt-4" data-toggle="modal"
                     data-target="#confirmarsaidaproduto" id="voltar"> Voltar </a>
             </form>
-            <h2 class="produtos-titulos mt-5 mb-0"> <?php echo $subcategoria->CadastrarSubategoria(); ?></h2>
+            <h2 class="produtos-titulos mt-5 mb-0"> <?php echo $subcategoria->CadastrarSubCategoria(); ?></h2>
 
 
         </div>

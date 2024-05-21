@@ -1,7 +1,7 @@
 <footer>
     <div class="container h-50">
-        <div class="row ">
-            <div class="col-12 col-sm-6 p-0"> 
+        <div class="row col-12 mx-auto">
+            <div class=" w-50 col-sm-6 p-0 mx-auto"> 
                 <button type="button" class="btn qrpptafooter m-0 mt-5" data-toggle="modal"
                     data-target="#myModal2">Quero ser
                     APPTA</button>
@@ -14,32 +14,7 @@
                     Endereço: R. Evaldo Carlos Basch, 158 - Centro, Palhoça - SC, 88130-170</p>
 
             </div>
-            <div class="col-12 col-sm-2 pl-5 pl-sm-2 mt-0">
-                <div class="produtos">Nossos produtos</div>
-
-                <div class="menufooter text-left">
-
-                    <a href="../appta">
-                        <p class="menufooter">APPTA</p>
-                    </a>
-                    <a href="../food">
-                        <p class="menufooter">APPTA Food</p>
-                    </a>
-                    <a href="../fidelizappta">
-                        <p class="menufooter">FidelizAPPTA</p>
-                    </a>
-
-                </div>
-            </div>
-            <div class="col-12 col-sm-2 pl-5 pl-sm-2 mt-0">
-                <div class="produtos">Sobre Nós</div>
-                <div class="menufooter">
-                    <a href="../quemsomos">
-                        <p class="menufooter text-left">Quem somos</p>
-                    </a>
-                </div>
-            </div>
-            <div class="col-12 col-sm-2 pl-5 pl-sm-2 mt-0">
+            <div class="w-50 col-sm-2  mx-ato">
                 <div class="produtos">Redes Socias</div>
                 <div class=" menufooter">
                     <a href="https://www.facebook.com/ApptaSistemas/"><i class="fab fa-facebook-f"></i></a>

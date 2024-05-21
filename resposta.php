@@ -45,7 +45,7 @@ $respostaimagem = new Respostaimagem();
                     </nav>
          
                <?php
-               $perguntas = $pergunta->GetResposta($_GET['id']);
+               $perguntas = $pergunta->GetPergunta($_GET['id']);
                foreach ($perguntas as $perg):
                    ?>
                 <h1 class="titulo-pergunta mb-1"><?php echo $perg->pergunta ?></h1>

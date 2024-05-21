@@ -39,7 +39,7 @@ class Subcategoria
             echo "Erro ao alterar a categoria: " . $e->getMessage();
         }
     }
-    public function CadastrarSubategoria()
+    public function CadastrarSubCategoria()
     {
         try {
             $pdo = $this->Conexao->getPdo();
@@ -81,6 +81,20 @@ class Subcategoria
             $pdo = $this->Conexao->getPdo();
 
             $query = "SELECT * FROM subcategoria";
+            $stmt = $pdo->prepare($query);
+            $stmt->execute();
+            $stmt->setFetchMode(PDO::FETCH_CLASS, 'subcategoria');
+            return $stmt->fetchALL();
+        } catch (PDOException $e) {
+            throw new PDOException($e->getMessage(), (int)$e->getCode());
+        }
+    }
+    public function GetTodasSubcategoriasVisiveis()
+    {
+        try {
+            $pdo = $this->Conexao->getPdo();
+
+            $query = "SELECT * FROM subcategoria where visivel = true";
             $stmt = $pdo->prepare($query);
             $stmt->execute();
             $stmt->setFetchMode(PDO::FETCH_CLASS, 'subcategoria');
@@ -131,7 +145,6 @@ class Subcategoria
             $stmt->bindParam(':id_categoria', $id_categoria, PDO::PARAM_INT);
             $stmt->execute();
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
-             //$stmt->fetchAll();
         } catch (PDOException $e) {
             throw new PDOException($e->getMessage(), (int)$e->getCode());
         }

@@ -32,8 +32,8 @@ $service->PostPergunta();
                 <div id="formulario-imagem" class="form-group col-12 p-0">
 
                 </div>
-                <h3 class="font-weight-light mt-1 mb-3"> Inserir uma seção <button onclick="adicionarCampo()"
-                        type="button" class="btn btn-outline-dark">+</button></h3>
+                <h3 class="font-weight-light mt-1 mb-3"> Inserir uma seção 
+                    <button onclick="adicionarCampo()" type="button" class="btn btn-outline-dark">+</button></h3>
                 <div class="form-group">
 
                     <h6><label class="mb-0" for="chave">Chave </label></h6>

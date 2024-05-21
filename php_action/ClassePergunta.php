@@ -77,13 +77,13 @@ class Pergunta
         }
     }
 
-    public function GetResposta($id_pergunta)
+    public function GetPergunta($id_pergunta)
     {
         
         try {
             $pdo = $this->Conexao->getPdo();
 
-            $query = "SELECT * FROM pergunta where id_pergunta = :id_pergunta AND visivel = true";
+            $query = "SELECT * FROM pergunta where id_pergunta = :id_pergunta";
             $stmt = $pdo->prepare($query);
             $stmt->bindParam(':id_pergunta', $id_pergunta, PDO::PARAM_INT);
             $stmt->execute();

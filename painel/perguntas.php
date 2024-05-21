@@ -39,7 +39,17 @@ $subcategoria = new Subcategoria();
 
                         <td width="42%" data-toggle="collapse" href="#collapse<?php echo $perg->id_pergunta; ?>">
                             <?php echo $perg->pergunta ?>
-                            <div class="collapse" id="collapse<?php echo $perg->id_pergunta; ?>">
+                            <div class="collapse" id="collapse<?php echo $perg->id_pergunta; ?>"></div>
+                                <div class="">
+
+                                    <?php if ($perg->visivel == 'true') 
+                                        {
+                                            echo '<div class="text-success">Pergunta visivel no site!</div>';
+                                        }else {
+                                            echo '<div class="text-danger">Pergunta ocultada do site!</div>';
+                                        } 
+                                    ?>
+                                </div>
                             </div>
                         </td>
                             <?php 
@@ -55,7 +65,7 @@ $subcategoria = new Subcategoria();
                            ?>
                         </td>
                         <?php endforeach; ?>
-                        <td><a href="editar.php?id=<?php echo $perg->id_pergunta; ?>" class="btn btn-warning"><i
+                        <td><a href="editarpergunta.php?id=<?php echo $perg->id_pergunta; ?>" class="btn btn-warning"><i
                                     class="material-icons">edit</i></a></td>
 
                         <td>
