@@ -77,11 +77,10 @@ $imagem = new Respostaimagem();
                         if ($img->ordem > $maior_ordem):
                             $maior_ordem = $img->ordem;
                             ?>
-                            <input type="hidden" id="ordemcontrole_campo" value="<?php echo $maior_ordem; ?>">
+                            <!-- <input type="hidden" id="ordemcontrole_campo" value="<?php //echo $maior_ordem; ?>"> -->
                         <?php endif; ?>
                         <script>
-                            var ordemcontrole = getElementById('ordemcontrole_campo');
-                            var controleCampo = ordemcontrole.value;
+                            var controleCampo = <?php echo $maior_ordem; ?>;
                             function adicionarCampo() {
                                 controleCampo++;
                                 document.getElementById('formulario-imagem').insertAdjacentHTML(

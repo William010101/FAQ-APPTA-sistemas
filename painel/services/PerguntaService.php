@@ -1,7 +1,7 @@
 <?php
 include_once '../php_action/ClassePergunta.php';
 include_once '../php_action/ClasseResposta_Imagem.php';
-class AdicionarService
+class PerguntaService
 {
 
    public function PostPergunta()

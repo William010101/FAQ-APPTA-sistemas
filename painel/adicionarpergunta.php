@@ -8,7 +8,7 @@ include_once '../php_action/ClasseSubcategoria.php';
 require_once '../php_action/ClasseUsuario.php';
 $subcategoria = new Subcategoria();
 $usuario = new Usuario();
-$service = new AdicionarService();
+$service = new PerguntaService();
 $service->PostPergunta();
 ?>
 

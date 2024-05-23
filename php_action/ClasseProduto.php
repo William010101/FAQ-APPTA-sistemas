@@ -4,12 +4,22 @@ class Produto
 {
     public int $id_produto;
     public string $nomeproduto;
+
+    public string $imagem;
     public bool $visivel; 
     private $Conexao;
 
-    public function __construct(){
-        $this->Conexao = new Conexao();
+    public function __construct(int $id_produto = 0, string $nomeproduto = "", string $imagem = "", bool $visivel = false)
+    {
+        $this->id_produto = $id_produto;
+        $this->nomeproduto = $nomeproduto;
+        $this->imagem = $imagem; 
+        $this->visivel = $visivel;
+
+         $this->Conexao = new Conexao();
+         $this->Conexao->conectar();
     }
+    
 
     public function DeletarProduto()
     {
@@ -51,20 +61,18 @@ class Produto
         }
     }
 
-    public function CadastroProduto()
+    public function CadastroProduto(Produto $produto)
     {
         try {
             $pdo = $this->Conexao->getPdo();
-            if(isset($_POST['btn-cadastrarproduto'])) {
-                $this->nomeproduto = $_POST['nomeproduto'];
-                $this->visivel = $_POST['visivel'];
-                $query = "INSERT INTO produto (nomeproduto, visivel) VALUES (:nomeproduto, :visivel)";
+            
+                $query = "INSERT INTO produto (nomeproduto, imagem, visivel) VALUES (:nomeproduto, :imagem, :visivel)";
                 $stmt = $pdo->prepare($query);
-                $stmt->bindParam(':nomeproduto', $this->nomeproduto, PDO::PARAM_STR);
-                $stmt->bindParam(':visivel', $this->visivel, PDO::PARAM_BOOL);
+                $stmt->bindParam(':nomeproduto', $produto->nomeproduto, PDO::PARAM_STR);
+                $stmt->bindValue(':imagem', $produto->imagem, PDO::PARAM_LOB);
+                $stmt->bindParam(':visivel', $produto->visivel, PDO::PARAM_BOOL);
                 $stmt->execute();
-                echo "Produto inserido com sucesso!";
-            } 
+                echo "Produto inserido com sucesso!"; 
         } catch (PDOException $e) {
             echo "Erro ao inserir o produto: " . $e->getMessage();
         }
@@ -86,31 +94,58 @@ class Produto
     }
 
     public function GetTodosProdutos()
-    {
-        try {
-            $pdo = $this->Conexao->getPdo();
+{
+    try {
+        $pdo = $this->Conexao->getPdo();
 
-            $query = "SELECT * FROM produto";//
-            $stmt = $pdo->prepare($query);
-            $stmt->execute();
-            $stmt->setFetchMode(PDO::FETCH_CLASS, 'Produto');
-            return $stmt->fetchALL();
-        } catch (PDOException $e) {
-            throw new PDOException($e->getMessage(), (int)$e->getCode());
-        }
-    }
-    public function GetProdutos()
-    {
-        try {
-            $pdo = $this->Conexao->getPdo();
+        $query = "SELECT * FROM produto";
+        $stmt = $pdo->prepare($query);
+        $stmt->execute();
 
-            $query = "SELECT * FROM produto WHERE visivel = true";//
-            $stmt = $pdo->prepare($query);
-            $stmt->execute();
-            $stmt->setFetchMode(PDO::FETCH_CLASS, 'Produto');
-            return $stmt->fetchALL();
-        } catch (PDOException $e) {
-            throw new PDOException($e->getMessage(), (int)$e->getCode());
+        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        $produtos = [];
+        foreach ($results as $row) {
+            $produto = new Produto();
+            $produto->id_produto = $row['id_produto'];
+            $produto->nomeproduto = $row['nomeproduto'];
+            $produtos[] = $produto;
         }
+
+        return $produtos;
+    } catch (PDOException $e) {
+        throw new PDOException($e->getMessage(), (int)$e->getCode());
     }
+}
+
+public function GetProdutos()
+{
+    try {
+        $pdo = $this->Conexao->getPdo();
+
+        $query = "SELECT id_produto, nomeproduto, imagem FROM produto WHERE visivel = true";
+        $stmt = $pdo->prepare($query);
+        $stmt->execute();
+        
+        // Obtém os resultados como um array associativo
+        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        
+        // Cria objetos Produto e preenche-os com os dados obtidos
+        $produtos = [];
+        foreach ($results as $row) {
+            $produto = new Produto();
+            $produto->id_produto = $row['id_produto'];
+            $produto->nomeproduto = $row['nomeproduto'];
+            $produto->imagem = stream_get_contents($row['imagem']);
+            // Adicione outros atributos do produto, se necessário
+            $produtos[] = $produto;
+        }
+        
+        return $produtos;
+    } catch (PDOException $e) {
+        throw new PDOException($e->getMessage(), (int)$e->getCode());
+    }
+}
+
+
 }
