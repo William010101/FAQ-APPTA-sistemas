@@ -18,11 +18,12 @@ $produto = new Produto();
             $produtos = $produto->GetProdutos();
             foreach ($produtos as $prod):  
                 ?>
-                    <div class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-3  mx-auto h-50">
-                        <div class="card w-75 m-3 text-center mx-auto bg-primary" >                         
-                             <img class="img-fluid w-75 mx-auto" src="data:image/png;base64,<?= base64_encode($prod->imagem) ?>" alt="">
-                            <div class="card-header p-1">                                
-                                <a href="categoria?id=<?php echo $prod->id_produto ?>"
+                
+                    <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3 mx-auto mt-4" >
+                        <div class="card w-75 mb-0 m-0 text-center mx-auto bg-primary " style=" height: 100%;">                         
+                             <img class="img-fluid  mx-auto" style="width:97%; height: 97%;" src="data:image/png;base64,<?= base64_encode($prod->imagem) ?>" alt="">
+                            <div class="card-header p-1 w-100" style="height: 18%;">                                
+                                <a style="height: 100%;" href="categoria?id=<?php echo $prod->id_produto ?>"
                             class="btn btn-produtos-primario p-0"><?php echo $prod->nomeproduto ?></a>                               
                             </div>
                         </div>

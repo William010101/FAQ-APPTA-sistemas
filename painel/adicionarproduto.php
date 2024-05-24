@@ -22,7 +22,10 @@ $service = new ProdutoService();
                         placeholder="Titulo do produto">
 
                 </div>
+                <div class="form-group">
+                <h6> <label class="mb-0" for="imagem">Escolha a imagem do produto</label><br></h6>
                 <input class="form-control form-control-sm mb-3" id="formFileSm" type="file" name="imagem" id="imagem">
+                </div>
                 <div class="custom-control custom-checkbox mt-4">
                     <input type="checkbox" class="custom-control-input" id="customControlValidation1" name="visivel" value="1">
                     <label class="custom-control-label" for="customControlValidation1">Mostrar produto no site!</label>

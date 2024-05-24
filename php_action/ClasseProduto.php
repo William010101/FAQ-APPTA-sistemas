@@ -36,26 +36,22 @@ class Produto
             echo "Erro ao deletar o produto: " . $e->getMessage();
         }
     }
-    public function SetProduto()
+    public function SetProduto(Produto $produto)
     {
         try {
             $pdo = $this->Conexao->getPdo();
-            if(isset($_POST['btn-editar-produto'])) {
-                $this->nomeproduto = $_POST['nomeproduto'];
-                $this->visivel = isset($_POST['visivel']) ? ($_POST['visivel'] == '1' ? true : false) : false;
-                $this->id_produto = $_POST['id_produto'];
                 if($this->visivel == 1){
-                $query = "UPDATE produto SET nomeproduto =  :nomeproduto , visivel = :visivel WHERE id_produto = :id_produto";
+                $query = "UPDATE produto SET nomeproduto =  :nomeproduto, imagem = :imagem, visivel = :visivel WHERE id_produto = :id_produto";
                 }else{
-                $query= "UPDATE produto SET nomeproduto = :nomeproduto , visivel = :visivel WHERE id_produto = :id_produto";
+                $query= "UPDATE produto SET nomeproduto = :nomeproduto, imagem = :imagem, visivel = :visivel WHERE id_produto = :id_produto";
                 }
                 $stmt = $pdo->prepare($query);
-                $stmt->bindParam(':id_produto', $this->id_produto, PDO::PARAM_INT);
-                $stmt->bindParam(':nomeproduto', $this->nomeproduto, PDO::PARAM_STR);
-                $stmt->bindParam(':visivel', $this->visivel, PDO::PARAM_BOOL);
+                $stmt->bindParam(':id_produto', $produto->id_produto, PDO::PARAM_INT);
+                $stmt->bindParam(':nomeproduto', $produto->nomeproduto, PDO::PARAM_STR);
+                $stmt->bindValue(':imagem', $produto->imagem, PDO::PARAM_LOB);
+                $stmt->bindParam(':visivel', $produto->visivel, PDO::PARAM_BOOL);
                 $stmt->execute();
-                echo "Produto alterado com sucesso!";
-            } 
+                return "Produto alterado com sucesso!";
         } catch (PDOException $e) {
             echo "Erro ao alterar produto: " . $e->getMessage();
         }
@@ -72,9 +68,9 @@ class Produto
                 $stmt->bindValue(':imagem', $produto->imagem, PDO::PARAM_LOB);
                 $stmt->bindParam(':visivel', $produto->visivel, PDO::PARAM_BOOL);
                 $stmt->execute();
-                echo "Produto inserido com sucesso!"; 
+                return "Produto inserido com sucesso!"; 
         } catch (PDOException $e) {
-            echo "Erro ao inserir o produto: " . $e->getMessage();
+            return "Erro ao inserir o produto: " . $e->getMessage();
         }
     }
 
@@ -86,8 +82,16 @@ class Produto
             $stmt = $pdo->prepare($query);
             $stmt->bindParam(":idproduto", $idproduto, PDO::PARAM_INT);
             $stmt->execute();
-            $stmt->setFetchMode(PDO::FETCH_CLASS, 'Produto');
-            return $stmt->fetchALL();
+            $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            $produtos = [];
+            foreach ($results as $row) {
+            $produto = new Produto();
+            $produto->id_produto = $row['id_produto'];
+            $produto->nomeproduto = $row['nomeproduto'];
+            $produto->imagem = stream_get_contents($row['imagem']);
+            $produtos[] = $produto;
+        }
+            return $produtos;
         } catch (PDOException $e) {
             throw new PDOException($e->getMessage(), (int)$e->getCode());
         }
@@ -127,17 +131,14 @@ public function GetProdutos()
         $stmt = $pdo->prepare($query);
         $stmt->execute();
         
-        // Obtém os resultados como um array associativo
         $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        
-        // Cria objetos Produto e preenche-os com os dados obtidos
+    
         $produtos = [];
         foreach ($results as $row) {
             $produto = new Produto();
             $produto->id_produto = $row['id_produto'];
             $produto->nomeproduto = $row['nomeproduto'];
             $produto->imagem = stream_get_contents($row['imagem']);
-            // Adicione outros atributos do produto, se necessário
             $produtos[] = $produto;
         }
         

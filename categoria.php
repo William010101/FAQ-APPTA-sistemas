@@ -23,21 +23,19 @@ $subcategoria = new Subcategoria();
         <div class="container">
             <?php
             $produtos = $produto->GetProduto($_GET['id']);
-            $produto = $produtos[0];
-            $idproduto = $produto->id_produto;
-            $nomeproduto = $produto->nomeproduto;
+            foreach($produtos as $prod):
             ?>
-            <?php //endforeach; ?>
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb mt-5">
                         <li class="breadcrumb-item text-uppercase">
                             <a id="breadcrumb"
-                                href="categoria?id=<?php echo $idproduto; ?>"><?php echo $nomeproduto ?></a>
+                                href="categoria?id=<?php echo $prod->id_produto; ?>"><?php echo $prod->nomeproduto; ?></a>
                         </li>
                     </ol>
-                    <h2 class="produtos-titulos mt-5 mb-5 ml-2"><?php echo strtoupper($nomeproduto); ?></h2>
+            <?php endforeach; ?>  
+                    <h2 class="produtos-titulos mt-5 mb-5 ml-2"><?php echo strtoupper($prod->nomeproduto); ?></h2>
                     <div class="row">
-                    
+  
                     <?php
                     $categorias = $categoria->GetCategorias($_GET['id']);
                     foreach ($categorias as $cat):
