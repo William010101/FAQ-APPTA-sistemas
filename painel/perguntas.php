@@ -37,9 +37,9 @@ $subcategoria = new Subcategoria();
                     ?>
                     <tr>
 
-                        <td width="42%" data-toggle="collapse" href="#collapse<?php echo $perg->id_pergunta; ?>">
-                            <?php echo $perg->pergunta ?>
-                            <div class="collapse" id="collapse<?php echo $perg->id_pergunta; ?>"></div>
+                    <td width="42%" data-toggle="collapse" href="#collapse<?php echo $perg->id_pergunta; ?>">
+                            <?php echo $perg->pergunta; ?>
+                            <div class="collapse" id="collapse<?php echo $perg->id_pergunta; ?>">
                                 <div class="">
 
                                     <?php if ($perg->visivel == 'true') 
@@ -47,7 +47,7 @@ $subcategoria = new Subcategoria();
                                             echo '<div class="text-success">Pergunta visivel no site!</div>';
                                         }else {
                                             echo '<div class="text-danger">Pergunta ocultada do site!</div>';
-                                        } 
+                                        }
                                     ?>
                                 </div>
                             </div>

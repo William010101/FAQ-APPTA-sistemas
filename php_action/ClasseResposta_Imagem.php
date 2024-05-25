@@ -24,6 +24,45 @@ class Respostaimagem
         $this->Conexao->conectar();
     }
 
+    // public function SetImagem(Respostaimagem $respostaimagem)
+    // {
+    //     try {
+    //         $pdo = $this->Conexao->getPdo();
+    //             $query = "  UPDATE pergunta SET pergunta = :pergunta, resposta = :resposta, datacadastro = :datacadastro, chave = :chave, video = :video, usuario = :usuario, idusuario = :idusuario, visivel = :visivel WHERE fk_id_subcategoria = :fk_id_subcategoria";
+    //         }else{
+    //             $query = "  UPDATE pergunta SET pergunta = :pergunta, resposta = :resposta, datacadastro = :datacadastro, chave = :chave, video = :video, usuario = :usuario, idusuario = :idusuario, visivel = :visivel WHERE fk_id_subcategoria = :fk_id_subcategoria";
+    //         }
+    //         $stmt = $pdo->prepare($query);
+    //         $stmt->bindParam(':pergunta', $pergunta->pergunta, PDO::PARAM_STR);
+    //         $stmt->bindParam(':resposta', $pergunta->resposta, PDO::PARAM_STR);
+    //         $stmt->bindParam(':datacadastro', $pergunta->datacadastro, PDO::PARAM_STR);
+    //         $stmt->bindParam(':chave', $pergunta->chave, PDO::PARAM_STR);
+    //         $stmt->bindParam(':video', $pergunta->video, PDO::PARAM_STR);
+    //         $stmt->bindParam(':usuario', $pergunta->usuario, PDO::PARAM_STR);
+    //         $stmt->bindParam(':idusuario', $pergunta->idusuario, PDO::PARAM_INT);
+    //         $stmt->bindParam(':visivel', $pergunta->visivel, PDO::PARAM_BOOL);
+    //         $stmt->bindParam(':fk_id_subcategoria', $pergunta->fk_id_subcategoria, PDO::PARAM_INT);
+    //         $stmt->execute();
+    //         return $pdo->lastInsertId();
+        
+    //     } catch (PDOException $e) {
+    //         echo "Erro ao editar a pergunta: " . $e->getMessage();
+    //     }
+    // }
+
+    public function DeletarImagem($idrespostaimagem)
+    {
+        try {
+            $pdo = $this->Conexao->getPdo();
+                $query = "DELETE FROM resposta_imagem WHERE id_respostaimagem = :idrespostaimagem";
+                $stmt = $pdo->prepare($query);
+                $stmt->bindParam(':idrespostaimagem', $idrespostaimagem, PDO::PARAM_INT);
+                $stmt->execute();
+                return true;
+        } catch (PDOException $e) {
+            echo "Erro ao deletar o imagem: " . $e->getMessage();
+        }
+    }
     public function CadastroImagemResposta(Respostaimagem $respostaimagem)
 {
     try {
