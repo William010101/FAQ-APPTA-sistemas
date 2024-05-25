@@ -73,7 +73,7 @@ class PerguntaService
           $pergunta->video = $_POST['video'];
           $pergunta->fk_id_subcategoria = $_POST['fk_id_subcategoria'];
           $pergunta->usuario = $_POST['usuarioCadastro'];
-          $pergunta->idusuario = (int) $_POST['usuarioId'];
+          $pergunta->idusuario = $_POST['usuarioId'];
           $pergunta->visivel = $_POST['visivel'];
    
           return var_dump($pergunta);
