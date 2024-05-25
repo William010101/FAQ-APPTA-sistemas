@@ -76,8 +76,8 @@ class PerguntaService
           $pergunta->idusuario = (int) $_POST['usuarioId'];
           $pergunta->visivel = $_POST['visivel'];
    
-
-          $pergunta->SetPergunta($pergunta);
+          return var_dump($pergunta);
+          //$pergunta->SetPergunta($pergunta);
 
          // if (isset($_FILES['imagem'])) {
          //    $imagens = $_FILES['imagem'];

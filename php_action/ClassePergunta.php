@@ -26,7 +26,7 @@ class Pergunta
     {
         try {
             $pdo = $this->Conexao->getPdo();
-            if($this->visivel == 1){
+            if($pergunta->visivel == 1){
                 $query = "  UPDATE pergunta SET pergunta = :pergunta, resposta = :resposta, datacadastro = :datacadastro, chave = :chave, video = :video, usuario = :usuario, idusuario = :idusuario, visivel = :visivel, fk_id_subcategoria = :fk_id_subcategoria WHERE id_pergunta = :id_pergunta";
             }else{
                 $query = "  UPDATE pergunta SET pergunta = :pergunta, resposta = :resposta, datacadastro = :datacadastro, chave = :chave, video = :video, usuario = :usuario, idusuario = :idusuario, visivel = :visivel, fk_id_subcategoria = :fk_id_subcategoria WHERE id_pergunta = :id_pergunta";

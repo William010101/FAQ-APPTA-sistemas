@@ -10,7 +10,7 @@ $subcategoria = new Subcategoria();
 $imagem = new Respostaimagem();
 $service = new PerguntaService();
 $service->DeletarSecao();
-$service->SetPergunta();
+
 
 ?>
 
@@ -175,8 +175,8 @@ $service->SetPergunta();
                             <label class="custom-control-label" for="customControlValidation1">Mostrar produto no site!</label>
                         </div>
                     <?php endif; ?>
-                        <input type="hidden" id="usuarioCadastro" name="usuarioCadastro" value="<?php echo $usuario; ?>">
-                        <input type="hidden" id="usuarioId" name="usuarioId" value="<?php echo $idUsuario; ?>">
+                        <input type="hidden" id="usuarioCadastro" name="usuarioCadastro" value="<?php echo $perg->usuario; ?>">
+                        <input type="hidden" id="usuarioId" name="usuarioId" value="<?php echo $perg->idusuario; ?>">
                 <?php endforeach; ?>
                 <div class="mt-2">
                     <button type="submit" name="btn-editarpergunta" class="btn btn-primary mb-4"> Atualizar</button>
@@ -185,6 +185,7 @@ $service->SetPergunta();
                 </div>
             </form>
         </div>
+        <?php echo $service->SetPergunta();?>
     </div>
 
 </div>
