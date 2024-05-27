@@ -66,21 +66,21 @@ $respostaimagem = new Respostaimagem();
             <div class="col-xs-12 col-md-12 mb-50 body resposta-perguntalink">
                 <?php echo $perg->resposta ?>
                 <div class="social-icons-footer">
+                    <div class="row">
+                        <div class="imagemresposta">
+                            <?php
+                            $imagens = $respostaimagem->GetImagemRespostaPergunta($perg->id_pergunta);
+                            foreach ($imagens as $imagem):
+                                ?>
+                                <img class="mx-auto img-fluid" src="data:image/png;base64,<?= base64_encode($imagem->imagem) ?>"
+                                    alt="Imagem">
+                                <p id="autorArtigo"><?php echo $imagem->descricao; ?></p><br>
+                                <p id="autorArtigo"><?php echo $imagem->resposta; ?></p>
+                            <?php endforeach; ?>
 
-                    <?php if ($perg->video != "") { ?>
-                        <div class="row">
-                            <div class="imagemresposta">
-                                <?php
-                                $imagens = $respostaimagem->GetImagemResposta($perg->id_pergunta);
-                                foreach ($imagens as $imagem):
-                                    ?>
-                                    <img class="mx-auto img-fluid" src="data:image/png;base64,<?= base64_encode($imagem->imagem) ?>"
-                                        alt="Imagem">
-                                    <p id="autorArtigo"><?php echo $imagem->descricao; ?></p><br>
-                                    <p id="autorArtigo"><?php echo $imagem->resposta; ?></p>
-                                <?php endforeach; ?>
+                        </div>
+                        <?php if ($perg->video != "") { ?>
 
-                            </div>
                             <div class="col-12">
                                 <div class="card video mt-5">
                                     <div class="card-header video mx-auto" id="headvideo">
@@ -91,7 +91,7 @@ $respostaimagem = new Respostaimagem();
                             </div>
                         </div>
                     <?php } else {
-                    } ?>
+                        } ?>
                     <hr>
                     <span class="RobotoRegular">Compartilhe esse conteúdo:</span><br>
                     <a target="_blank" class="btn btn-outline-success" id="whatsapp-share-btt"><i

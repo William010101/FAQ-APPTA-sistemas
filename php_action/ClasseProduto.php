@@ -36,12 +36,25 @@ class Produto
             echo "Erro ao deletar o produto: " . $e->getMessage();
         }
     }
-    public function SetProduto(Produto $produto)
+    public function SetProduto(Produto $produto) //Nota Fiscal Eletronica
     {
+
+        // $palavraChave = $produto.str_split(' ');
+
+        // $clausulaWhere = "";
+
+        // for ($i=0; $i < $palavraChave.lenght; $i++) { 
+        //     # code...
+        //     if (i==0)
+        //     $clausulaWhere += ' chave like ' + '%' + $palavraChave[i] + '%';
+        //     else
+        //     $clausulaWhere += ' and chave like ' + %$palavraChave[i]%;
+        // }
+
         try {
             $pdo = $this->Conexao->getPdo();
                 if($this->visivel == 1){
-                $query = "UPDATE produto SET nomeproduto =  :nomeproduto, imagem = :imagem, visivel = :visivel WHERE id_produto = :id_produto";
+                $query = "UPDATE produto SET nomeproduto =  :nomeproduto, imagem = :imagem, visivel = :visivel WHERE  id_produto = :id_produto"; //+ $clausulaWhere
                 }else{
                 $query= "UPDATE produto SET nomeproduto = :nomeproduto, imagem = :imagem, visivel = :visivel WHERE id_produto = :id_produto";
                 }
@@ -88,6 +101,7 @@ class Produto
             $produto = new Produto();
             $produto->id_produto = $row['id_produto'];
             $produto->nomeproduto = $row['nomeproduto'];
+            $produto->visivel = $row['visivel'];
             $produto->imagem = stream_get_contents($row['imagem']);
             $produtos[] = $produto;
         }
@@ -105,14 +119,13 @@ class Produto
         $query = "SELECT * FROM produto";
         $stmt = $pdo->prepare($query);
         $stmt->execute();
-
         $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
         $produtos = [];
         foreach ($results as $row) {
             $produto = new Produto();
             $produto->id_produto = $row['id_produto'];
             $produto->nomeproduto = $row['nomeproduto'];
+            $produto->visivel = $row['visivel'];
             $produtos[] = $produto;
         }
 

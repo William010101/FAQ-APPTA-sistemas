@@ -24,6 +24,25 @@ $service->PostPergunta();
                         placeholder="Titulo da pergunta">
 
                 </div>
+                <h6> <label class="mb-0" for="pergunta">Nome da Subcategoria relacionada</label><br></h6>
+
+                <select class="form-select mb-3" id="floatingSelect" aria-label="Floating label select example"
+                    name="fk_id_subcategoria" id="fk_id_subcategoria" required>
+                    <option selected>Selecione </option>
+                    <?php
+                    $subcategorias = $subcategoria->GetTodasSubcategorias();
+                    foreach ($subcategorias as $sub):
+                        ?>
+                        <option value="<?php echo $sub->id_subcategoria; ?>"><?php echo $sub->nomesubcategoria; ?></option>
+                    <?php endforeach; ?>
+                </select>
+                <div class="form-group">
+
+                <h6><label class="mb-0" for="chave">Chave </label></h6>
+                <input class="border border w-100 p-2" name="chave" id="chave" placeholder="Palavra Chave"
+                    data-role="tagsinput">
+
+                </div>
 
                 <div class="form-group">
                     <h6><label class="mb-0 " for="resposta">Resposta</label></h6>
@@ -34,13 +53,7 @@ $service->PostPergunta();
                 </div>
                 <h3 class="font-weight-light mt-1 mb-3"> Inserir uma seção 
                     <button onclick="adicionarCampo()" type="button" class="btn btn-outline-dark">+</button></h3>
-                <div class="form-group">
 
-                    <h6><label class="mb-0" for="chave">Chave </label></h6>
-                    <input class="border border w-100 p-2" name="chave" id="chave" placeholder="Palavra Chave"
-                        data-role="tagsinput">
-
-                </div>
 
                 <div class="form-group">
 
@@ -49,18 +62,7 @@ $service->PostPergunta();
                         placeholder="Cole aqui o código de incorporação do vídeo"></in>
                 </div>
 
-                <h6> <label class="mb-0" for="pergunta">Nome da Subcategoria relacionada</label><br></h6>
-
-                <select class="form-select" id="floatingSelect" aria-label="Floating label select example"
-                    name="fk_id_subcategoria" id="fk_id_subcategoria" required>
-                    <option selected>Selecione </option>
-                    <?php
-                    $subcategorias = $subcategoria->GetTodasSubcategorias();
-                    foreach ($subcategorias as $sub):
-                        ?>
-                        <option value="<?php echo $sub->id_subcategoria; ?>"><?php echo $sub->nomesubcategoria; ?></option>
-                    <?php endforeach; ?>
-                </select>
+                
 
                 <input type="hidden" id="dataCadastro" name="dataCadastro" value="<?php
                 date_default_timezone_set('America/Sao_Paulo');

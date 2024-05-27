@@ -33,7 +33,32 @@ $service->DeletarSecao();
                                 value="<?php echo $perg->pergunta; ?>" placeholder="pergunta">
 
                         </div>
+                        <div class="form-group">
+                            <h6><label class="mb-0" for="chave">SubCategoria</label></h6>
 
+                            <select class="form-select" id="floatingSelect" aria-label="Floating label select example"
+                                name="fk_id_subcategoria" id="fk_id_subcategoria">
+
+                                <?php
+                                $subcategorias = $subcategoria->GetTodasSubcategoriasVisiveis();
+                                foreach ($subcategorias as $sub):
+                                    ?>
+                                        <option value="<?php echo $sub->id_subcategoria; ?>"><?php echo $sub->nomesubcategoria; ?>
+                                        </option>
+                                <?php endforeach; ?>
+                                <?php if ($perg->fk_id_subcategoria == $sub->id_subcategoria): ?>
+                                        <option selected value="<?php echo $sub->id_subcategoria; ?>">
+                                            <?php echo $sub->nomesubcategoria; ?>
+                                        </option>
+                                <?php endif ?>
+                            </select>
+
+                        </div>
+                        <div class="form-group">
+                            <h6><label class="mb-0" for="chave">Palavras Chave</label></h6>
+                            <input class="border border w-100 p-2" name="chave" id="chave" value="<?php echo $perg->chave; ?>"
+                                placeholder="Palavra Chave">
+                        </div>
                         <div class="form-group">
 
                             <h6><label class="mb-0 " for="resposta">Resposta</label></h6>
@@ -43,7 +68,7 @@ $service->DeletarSecao();
                         </div>
                         <div id="formulario-imagem" class="form-group col-12 p-0">
                             <?php
-                            $imagens = $imagem->GetImagemResposta($perg->id_pergunta);
+                            $imagens = $imagem->GetImagemRespostaPergunta($perg->id_pergunta);
                             foreach ($imagens as $img):
                                 if ($perg->id_pergunta == $img->fk_id_pergunta):
 
@@ -52,11 +77,11 @@ $service->DeletarSecao();
                                                 style="background-color: #f6f6f6;">
                                                 <hr class="w-75 mx-auto" />
                                                     <h6><label class="mb-0" for="imagem">Imagem atual:</label><br></h6>
-                                                    <img class="mb-3 mx-auto w-50 h-50" src="data:image/jpeg;base64,<?php echo base64_encode($img->imagem); ?>"
+                                                    <img class="mb-3 mx-auto w-50 h-50" src="data:image/png;base64,<?php echo base64_encode($img->imagem); ?>"
                                                         alt="Imagem do Produto">
-                                                <h6><label class="mb-0">Seleicone a imagem</label></h6>
-                                                <input class="form-control form-control-sm mb-3" id="formFileSm" type="file" name="imagem[]"
-                                                    id="imagem" value="<?php $img->imagem; ?>">
+                                                <h6><label class="mb-0">Seleiconar nova imagem</label></h6>
+                                                <input class="form-control form-control-sm mb-3" id="formFileSm" type="file" name="nova_imagem[]"
+                                                    id="imagem">
 
                                                 <input type="hidden" id="ordem" name="ordem[]" value="<?php echo $img->ordem; ?>">
                                                 <input type="hidden" id="idrespostaimagem" name="idrespostaimagem" value="<?php echo $img->id_respostaimagem; ?>">
@@ -89,6 +114,7 @@ $service->DeletarSecao();
                             <?php endif; ?>
                             <script>
                                 var controleCampo = <?php echo $maior_ordem; ?>;
+                                var fkidpergunta = <?php echo $perg->id_pergunta?>;
                                 function adicionarCampo() {
                                     controleCampo++;
                                     document.getElementById('formulario-imagem').insertAdjacentHTML(
@@ -99,7 +125,7 @@ $service->DeletarSecao();
                                         '<input class="form-control form-control-sm mb-3" id="formFileSm" type="file" name="imagem[]" id="imagem">' +
 
                                         '<input type="hidden" id="ordem" name="ordem[]" value="' + controleCampo + '">' +
-                                        '<input type="hidden" id="id_fk_pergunta" name="id_fk_pergunta[]" value="">' +
+                                        '<input type="hidden" id="id_fk_pergunta" name="id_fk_pergunta[]" value="'+fkidpergunta+'">' +
 
                                         '<h6><label class="mb-0">Descrição </label></h6>' +
                                         '<input class="border border w-100 p-2 mb-3" name="descricao[]" id="descricao" placeholder="Descrição da imagem" data-role="tagsinput">' +
@@ -125,11 +151,7 @@ $service->DeletarSecao();
                             <button onclick="adicionarCampo()" type="button" class="btn btn-outline-dark">+</button>
                         </h3>
 
-                        <div class="form-group">
-                            <h6><label class="mb-0" for="chave">Palavras Chave</label></h6>
-                            <input class="border border w-100 p-2" name="chave" id="chave" value="<?php echo $perg->chave; ?>"
-                                placeholder="Palavra Chave">
-                        </div>
+                        
 
                         <div class="form-group">
 
@@ -141,27 +163,7 @@ $service->DeletarSecao();
                         <input type="hidden" id="dataCadastro" name="dataCadastro" value="<?php echo $perg->datacadastro; ?>">
 
 
-                        <div class="form-group">
-                            <h6><label class="mb-0" for="chave">Sub Categoria</label></h6>
-
-                            <select class="form-select" id="floatingSelect" aria-label="Floating label select example"
-                                name="fk_id_subcategoria" id="fk_id_subcategoria">
-
-                                <?php
-                                $subcategorias = $subcategoria->GetTodasSubcategoriasVisiveis();
-                                foreach ($subcategorias as $sub):
-                                    ?>
-                                        <option value="<?php echo $sub->id_subcategoria; ?>"><?php echo $sub->nomesubcategoria; ?>
-                                        </option>
-                                <?php endforeach; ?>
-                                <?php if ($perg->fk_id_subcategoria == $sub->id_subcategoria): ?>
-                                        <option selected value="<?php echo $sub->id_subcategoria; ?>">
-                                            <?php echo $sub->nomesubcategoria; ?>
-                                        </option>
-                                <?php endif ?>
-                            </select>
-
-                        </div>
+                        
                         <?php if ($perg->visivel == true): ?>
                         <div class="custom-control custom-checkbox mt-4">
                             <input type="checkbox" class="custom-control-input" id="customControlValidation1" name="visivel"
