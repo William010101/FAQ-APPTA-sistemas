@@ -84,7 +84,7 @@ class Respostaimagem
         try {
             $pdo = $this->Conexao->getPdo();
 
-            $query = "SELECT * FROM resposta_imagem WHERE id_respostaimagem = :id_respostaimagem";
+            $query = "SELECT * FROM resposta_imagem WHERE id_respostaimagem = :id_respostaimagem ";
             $stmt = $pdo->prepare($query);
             $stmt->bindParam(':id_respostaimagem', $id_respostaimagem, PDO::PARAM_INT);
             $stmt->execute();
@@ -115,7 +115,7 @@ class Respostaimagem
         try {
             $pdo = $this->Conexao->getPdo();
 
-            $query = "SELECT * FROM resposta_imagem WHERE fk_id_pergunta = :id_pergunta";
+            $query = "SELECT * FROM resposta_imagem WHERE fk_id_pergunta = :id_pergunta ORDER BY ordem";
             $stmt = $pdo->prepare($query);
             $stmt->bindParam(':id_pergunta', $id_pergunta, PDO::PARAM_INT);
             $stmt->execute();
