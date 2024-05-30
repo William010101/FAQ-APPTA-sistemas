@@ -1,10 +1,20 @@
 <?php
-include_once '../php_action/ClassePergunta.php';
-include_once '../php_action/ClasseResposta_Imagem.php';
-class PerguntaService
+// Inclua os arquivos necessários usando caminhos absolutos
+$rootPath = dirname(__DIR__,2);
+
+// Inclua os arquivos necessários usando caminhos absolutos
+include $rootPath . '\php_action\ClassePergunta.php';
+include $rootPath . '\php_action\ClasseResposta_Imagem.php';
+$service = new PerguntaService();
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+   if (isset($_POST['deletar-secao']) && $_POST['deletar-secao'] === 'deletar') {
+       $service->DeletarSecao();
+   }
+}
+ class PerguntaService
 {
 
-   public function PostPergunta()
+     function PostPergunta()
    {
 
       if (isset($_POST['btn-cadastrar-pergunta'])) {
@@ -46,21 +56,31 @@ class PerguntaService
 
    }
 
-   public function DeletarSecao()
+   function DeletarSecao()
    {
-      if (isset($_POST['deletar-secao'])) {
-
-         $respostaimagem = new Respostaimagem();
-         $idrespostaimagem = $_POST['idrespostaimagemdel'];
-
-         $veirificaDelete = $respostaimagem->DeletarImagem($idrespostaimagem);
-         if ($veirificaDelete == true) {
-            header("Refresh: 0");
-         }
-      }
+       if (isset($_POST['idrespostaimagem'])) {
+           $idrespostaimagem = $_POST['idrespostaimagem'];
+   
+           // Exibir o ID para verificar se está chegando corretamente
+           echo "ID da seção a ser excluída: " . $idrespostaimagem . "\n";
+   
+           // Agora você pode usar $idrespostaimagem conforme necessário
+           $respostaimagem = new Respostaimagem();
+           $veirificaDelete = $respostaimagem->DeletarImagem($idrespostaimagem);
+   
+           if ($veirificaDelete == true) {
+               echo "Seção excluída com sucesso!";
+           } else {
+               echo "Erro ao excluir a seção.";
+           }
+       } else {
+           echo "ID da seção não foi fornecido.";
+       }
    }
 
-   public function SetPergunta()
+   
+
+     function SetPergunta()
    {
       if (isset($_POST['btn-editarpergunta'])) {
          $pergunta = new Pergunta();
@@ -130,7 +150,6 @@ class PerguntaService
             }
            
          }
-         
             
          }
       }
