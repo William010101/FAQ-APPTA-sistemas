@@ -72,11 +72,11 @@ $service = new PerguntaService();
                                     if ($perg->id_pergunta == $img->fk_id_pergunta):
 
                                         ?>
-                                                        <div id="campo<?php echo $img->ordem; ?>" class="p-3 mx-auto mb-3 row"
-                                                            style="background-color: #f6f6f6;">
-                                                            <hr class="w-75 mx-auto" />
-                                                            <h6><label class="mb-0" for="imagem">Imagem atual:</label><br></h6>
-                                                            <img class="mb-3 mx-auto w-50 h-50"
+                                                   <div id="campo<?php echo $img->ordem; ?>" class="p-3 mx-auto mb-3 row"
+                                                        style="background-color: #f6f6f6;">
+                                                        <hr class="w-75 mx-auto" />
+                                                        <h6><label class="mb-0" for="imagem">Imagem atual:</label><br></h6>
+                                                        <img class="mb-3 mx-auto w-50 h-50"
                                                                 src="data:image/png;base64,<?php echo base64_encode($img->imagem); ?>"
                                                                 alt="Imagem do Produto">
                                                             <h6><label class="mb-0">Seleiconar nova imagem</label></h6>
@@ -103,51 +103,25 @@ $service = new PerguntaService();
 
                                                             <button onclick="excluirSecao(<?php echo $img->id_respostaimagem; ?>)" type="button" class="btn btn-outline-dark mx-auto w-25 mb-3" name="deletar-secao">Excluir</button>
                                                             <hr class="w-75 mx-auto"> 
-                                                            <!-- <button id="<?php //echo $img->ordem; ?>" type="button" class="btn btn-outline-dark mx-auto w-25 mb-3" data-toggle="modal"
-                                        data-target="#modal<? php// echo $img->ordem; ?>">
-                                        <i class="material-icons">delete</i>
-                                    </button>
-                                    <div id="modal<?php //echo $img->ordem; ?>" class="modal fade" tabindex="-1" role="dialog"
-                                        aria-labelledby="TituloModalCentralizado" aria-hidden="true">
-
-                                        <div class="modal-dialog modal-dialog-centered" role="document">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title" id="TituloModalCentralizado">Excluir</h5>
-                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
-                                                        <span aria-hidden="true">&times;</span>
-                                                    </button>
-                                                </div>
-
-                                                <div class="modal-body">
-                                                    Tem certeza que deseja deletar essa pergunta?
-                                                </div>
-
-                                                <div class="modal-footer">
-                                                    <button type="submit" name="deletar-secao" class="btn btn-danger">Sim, quero
-                                                        deletar!
-                                                    </button>
-                                                    <button type="button" href="#!" class="btn btn-light"
-                                                        data-dismiss="modal">Cancelar
-                                                    </button>
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div> -->
+                                                        
                                                         </div>
                                                         <!-- Modal -->
 
                                                         <?php
                                     endif;
                                 endforeach;
+
                                 $maior_ordem = 0;
-                                if ($img->ordem > $maior_ordem):
+                                if (isset($img->ordem) && $img->ordem > $maior_ordem):
                                     $maior_ordem = $img->ordem;
                                     ?>
                                 <?php endif; ?>
                                 <script>
-                                    var controleCampo = <?php echo $maior_ordem; ?>;
+                                    var controleCampo = <?php 
+                                    if(!isset($maior_ordem)){
+                                    echo $maior_ordem; 
+                                    }else{echo 0;}
+                                    ?>;
                                     var fkidpergunta = <?php echo $perg->id_pergunta ?>;
                                     function adicionarCampo() {
                                         controleCampo++;
@@ -176,36 +150,46 @@ $service = new PerguntaService();
                                     }
 
                                     function removerCampo(idcampo) {
+                                        if (confirm("Tem certeza de que deseja excluir esta seção?")) {
                                         document.getElementById('campo' + idcampo).remove();
+                                        }
                                     }
 
                                     
                                     function excluirSecao(idRespostaImagem) {
-                                        // Confirmar a exclusão antes de enviar a solicitação
+    // Confirmar a exclusão antes de enviar a solicitação
                                         if (confirm("Tem certeza de que deseja excluir esta seção?")) {
-                                            
-                                            // Enviar uma solicitação AJAX para PerguntaService.php
-                                            $.ajax({
-                                                type: "POST",
-                                                url: "services/PerguntaService.php",
-                                                data: {
+                                            // Enviar uma solicitação Fetch para PerguntaService.php
+                                            fetch("services/PerguntaService.php", {
+                                                method: "POST",
+                                                headers: {
+                                                    "Content-Type": "application/x-www-form-urlencoded"
+                                                },
+                                                body: new URLSearchParams({
                                                     idrespostaimagem: idRespostaImagem,
                                                     'deletar-secao': "deletar" // Passar o atributo 'deletar-secao'
-                                                },
-                                                success: function(response) {
-                                                    // Lidar com a resposta do servidor
-                                                    alert("Seção excluída com sucesso!");
-                                                    // Recarregar a página ou fazer outras atualizações necessárias
-                                                    location.reload(); // Recarrega a página após a exclusão
-                                                },
-                                                error: function(xhr, status, error) {
-                                                    // Lidar com erros de solicitação
-                                                    alert("Ocorreu um erro ao tentar excluir a seção.");
-                                                    console.error(error);
+                                                })
+                                            })
+                                            .then(response => {
+                                                if (!response.ok) {
+                                                    throw new Error('Erro na rede');
                                                 }
+                                                return response.text();
+                                            })
+                                            .then(data => {
+                                                // Lidar com a resposta do servidor
+                                                alert("Seção excluída com sucesso!");
+                                                // Recarregar a página ou fazer outras atualizações necessárias
+                                                location.reload(); // Recarrega a página após a exclusão
+                                            })
+                                            .catch(error => {
+                                                // Lidar com erros de solicitação
+                                                alert("Ocorreu um erro ao tentar excluir a seção.");
+                                                console.error(error);
                                             });
                                         }
                                     }
+
                                     
 
                                 </script>

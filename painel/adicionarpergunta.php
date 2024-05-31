@@ -113,7 +113,9 @@ $service->PostPergunta();
                     }
 
                     function removerCampo(idcampo) {
-                        document.getElementById('campo' + idcampo).remove();
+                        if (confirm("Tem certeza de que deseja excluir esta seção?")) {
+                                        document.getElementById('campo' + idcampo).remove();
+                        }
                     }
                 </script>
 

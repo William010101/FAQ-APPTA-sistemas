@@ -9,6 +9,7 @@
  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
  <script src="js/bootstrap-tagsinput.min.js"></script>
+ 
  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
  <link rel="shortcut icon" href="img/favicon.ico" sizes="32x32" type="image/ico">
  <link rel="stylesheet" href="css/bootstrap-tagsinput.css">

@@ -2,11 +2,14 @@
 session_start();
 // Conexão
 include_once 'includes/header.php';
+include_once 'services/PerguntaService.php';
 include_once '../php_action/ClasseSubcategoria.php';
 include_once '../php_action/ClassePergunta.php';
 include_once '../php_action/ClasseConnection.php';
 $pergunta = new Pergunta();
 $subcategoria = new Subcategoria();
+$service = new PerguntaService();
+$service->DeletarPergunta();
 ?>
 
 <?php include_once 'includes/menufaq.php'; ?>
@@ -33,82 +36,82 @@ $subcategoria = new Subcategoria();
                 <tbody id="tabela">
                     <?php
                     $perguntas = $pergunta->GetTodasPerguntas();
-                    foreach($perguntas as $perg):
-                    ?>
-                    <tr>
+                    foreach ($perguntas as $perg):
+                        ?>
+                        <tr>
 
-                    <td width="42%" data-toggle="collapse" href="#collapse<?php echo $perg->id_pergunta; ?>">
-                            <?php echo $perg->pergunta; ?>
-                            <div class="collapse" id="collapse<?php echo $perg->id_pergunta; ?>">
-                                <div class="">
+                        <td width="42%" data-toggle="collapse" href="#collapse<?php echo $perg->id_pergunta; ?>">
+                                <?php echo $perg->pergunta; ?>
+                                <div class="collapse" id="collapse<?php echo $perg->id_pergunta; ?>">
+                                    <div class="">
 
-                                    <?php if ($perg->visivel == 'true') 
-                                        {
+                                        <?php if ($perg->visivel == 'true') {
                                             echo '<div class="text-success">Pergunta visivel no site!</div>';
-                                        }else {
+                                        } else {
                                             echo '<div class="text-danger">Pergunta ocultada do site!</div>';
                                         }
+                                        ?>
+                                    </div>
+                                </div>
+                            </td>
+                                
+                                <td width="45%">
+                                    <?php
+                                $subcategorias = $subcategoria->GetTodasSubcategorias();
+                                foreach ($subcategorias as $sub):
                                     ?>
-                                </div>
-                            </div>
-                        </td>
-                            <?php 
-                            $subcategorias = $subcategoria->GetTodasSubcategorias();
-                            foreach ($subcategorias as $sub):
-                            ?>
-                        <td width="28%">
-                           <?php 
-                           if($perg->fk_id_subcategoria == $sub->id_subcategoria)
-                           {
-                            echo $sub->nomesubcategoria;
-                           }
-                           ?>
-                        </td>
-                        <?php endforeach; ?>
-                        <td><a href="editarpergunta.php?id=<?php echo $perg->id_pergunta; ?>" class="btn btn-warning"><i
-                                    class="material-icons">edit</i></a></td>
+                                   <?php
+                                   if ($perg->fk_id_subcategoria == $sub->id_subcategoria) {
+                                       echo $sub->nomesubcategoria;
+                                   }
+                                   ?>
+                                  <?php endforeach; ?>
+                                </td>
+                            
+                            <td ><a href="editarpergunta.php?id=<?php echo $perg->id_pergunta; ?>" class="btn btn-warning"><i
+                                        class="material-icons">edit</i></a></td>
 
-                        <td>
-                            <button type="button" class="btn btn-danger" data-toggle="modal"
-                                data-target="#modal<?php echo $perg->id_pergunta; ?>">
-                                <i class="material-icons">delete</i>
-                            </button>
-                        </td>
+                            <td>
+                                <button type="button" class="btn btn-danger" data-toggle="modal"
+                                    data-target="#modal<?php echo $perg->id_pergunta; ?>">
+                                    <i class="material-icons">delete</i>
+                                </button>
+                            </td>
 
-                        <!-- Modal -->
-                        <div id="modal<?php echo $perg->id_pergunta; ?>" class="modal fade" tabindex="-1"
-                            role="dialog" aria-labelledby="TituloModalCentralizado" aria-hidden="true">
+                            <!-- Modal -->
+                            <div id="modal<?php echo $perg->id_pergunta; ?>" class="modal fade" tabindex="-1"
+                                role="dialog" aria-labelledby="TituloModalCentralizado" aria-hidden="true">
 
-                            <div class="modal-dialog modal-dialog-centered" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="TituloModalCentralizado">Excluir</h5>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-
-                                    <div class="modal-body">
-                                        Tem certeza que deseja deletar essa pergunta?
-                                    </div>
-
-                                    <div class="modal-footer">
-                                        <form action="php_action/delete.php" method="POST">
-                                            <input type="hidden" name="id_pergunta"
-                                                value="<?php echo $perg->id_pergunta; ?>">
-
-                                            <button type="submit" name="btn-deletar" class="btn btn-danger">Sim, quero
-                                                deletar!
+                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="TituloModalCentralizado">Excluir</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                                                <span aria-hidden="true">&times;</span>
                                             </button>
+                                        </div>
 
-                                            <button type="button" href="#!" class="btn btn-light"
-                                                data-dismiss="modal">Cancelar
-                                            </button>
-                                        </form>
+                                        <div class="modal-body">
+                                            Tem certeza que deseja deletar essa pergunta?
+                                        </div>
+
+                                        <div class="modal-footer">
+                                            <form action="" method="POST">
+                                                <input type="hidden" name="id_pergunta"
+                                                    value="<?php echo $perg->id_pergunta; ?>">
+
+                                                <button type="submit" name="btn-deletar-pergunta" class="btn btn-danger">Sim, quero
+                                                    deletar!
+                                                </button>
+
+                                                <button type="button" href="#!" class="btn btn-light"
+                                                    data-dismiss="modal">Cancelar
+                                                </button>
+                                            </form>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
 
 
                         <?php endforeach; ?>
@@ -139,6 +142,6 @@ $(document).ready(function() {
 
 
 <?php
-    // Footer
-    include_once 'includes/footer.php';
+// Footer
+include_once 'includes/footer.php';
 ?>

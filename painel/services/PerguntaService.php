@@ -56,6 +56,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
    }
 
+   function DeletarPergunta()
+   {  
+      if (isset($_POST['btn-deletar-pergunta'])) {
+      $pergunta = new Pergunta();
+      $idpergunta = $_POST['id_pergunta'];
+      $pergunta->DeletarPergunta($idpergunta);
+      }
+   }
    function DeletarSecao()
    {
        if (isset($_POST['idrespostaimagem'])) {
@@ -77,9 +85,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
            echo "ID da seção não foi fornecido.";
        }
    }
-
-   
-
      function SetPergunta()
    {
       if (isset($_POST['btn-editarpergunta'])) {
@@ -96,14 +101,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
          $pergunta->fk_id_subcategoria = $_POST['fk_id_subcategoria'];
 
          $pergunta->SetPergunta($pergunta);
+         
          $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
-         $tamanho = count($dados['idrespostaimagem']);
-         echo '<pre>'; // Usando <pre> para manter a formatação
-         var_dump($dados);
-         echo '</pre>';
-
-
-         $novassecoes = new Respostaimagem();
          if (isset($_FILES['imagem'])) {
             $imagens = $_FILES['imagem'];
             foreach ($imagens['tmp_name'] as $key => $tmp_name) {
@@ -121,6 +120,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                }
             }
          }
+         if(isset($dados['idrespostaimagem']))
+         {
+         $tamanho = count($dados['idrespostaimagem']);
+         }else{
+            $tamanho = 0;
+         }
+         $novassecoes = new Respostaimagem();
+         
          for ($i = 0; $i < $tamanho; $i++) {
             if (isset($_FILES['nova_imagem']['tmp_name'][$i]) && !empty($_FILES['nova_imagem']['tmp_name'][$i])) {
 
@@ -149,9 +156,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             }
            
+            }  
          }
-            
-         }
+         
       }
    }
 

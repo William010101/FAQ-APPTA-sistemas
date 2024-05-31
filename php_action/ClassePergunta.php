@@ -21,6 +21,26 @@ class Pergunta
         $this->Conexao = new Conexao();
     }
 
+   public function DeletarPergunta($idpergunta)
+   {
+    try {
+        $pdo = $this->Conexao->getPdo();
+        $sql1 = "DELETE FROM resposta_imagem WHERE fk_id_pergunta = :id_pergunta";
+        $stmt1 = $pdo->prepare($sql1);
+        $stmt1->bindParam(':id_pergunta', $idpergunta, PDO::PARAM_INT);
+        $stmt1->execute();
+    
+        // Deletar da tabela pergunta em seguida
+        $sql2 = "DELETE FROM pergunta WHERE id_pergunta = :id_pergunta";
+        $stmt2 = $pdo->prepare($sql2);
+        $stmt2->bindParam(':id_pergunta', $idpergunta, PDO::PARAM_INT);
+        $stmt2->execute();
+
+        }catch (PDOException $e) {
+        echo "Erro ao deletar a pergunta: " . $e->getMessage();
+        }
+   } 
+
 
     public function SetPergunta(Pergunta $pergunta)
     {
