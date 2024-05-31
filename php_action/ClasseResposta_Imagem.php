@@ -71,8 +71,6 @@ class Respostaimagem
             $stmt->bindValue(':resposta', $respostaimagem->resposta, PDO::PARAM_STR);
             $stmt->bindValue(':fk_id_pergunta', $respostaimagem->fk_id_pergunta, PDO::PARAM_INT);
             $stmt->execute();
-
-            echo "Imagens inseridas com sucesso.";
         } catch (PDOException $e) {
             echo "Erro ao inserir as imagens: " . $e->getMessage();
         }

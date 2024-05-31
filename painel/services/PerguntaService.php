@@ -69,10 +69,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
        if (isset($_POST['idrespostaimagem'])) {
            $idrespostaimagem = $_POST['idrespostaimagem'];
    
-           // Exibir o ID para verificar se está chegando corretamente
            echo "ID da seção a ser excluída: " . $idrespostaimagem . "\n";
-   
-           // Agora você pode usar $idrespostaimagem conforme necessário
            $respostaimagem = new Respostaimagem();
            $veirificaDelete = $respostaimagem->DeletarImagem($idrespostaimagem);
    

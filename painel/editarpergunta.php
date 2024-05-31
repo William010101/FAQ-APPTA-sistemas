@@ -83,7 +83,7 @@ $service = new PerguntaService();
                                                             <input class="form-control form-control-sm mb-3" id="formFileSm" type="file"
                                                                 name="nova_imagem[]" id="imagem">
 
-                                                            <input type="hidden" id="ordem" name="ordemcad[]" value="<?php echo $img->ordem; ?>">
+                                                            
                                                             <input type="hidden" id="idrespostaimagem" name="idrespostaimagem[]"
                                                                 value="<?php echo $img->id_respostaimagem; ?>">
                                                             <input type="hidden" id="id_fk_pergunta" name="id_fk_pergunta[]"
@@ -100,14 +100,15 @@ $service = new PerguntaService();
                                                                     placeholder="Leave a comment here" id="floatingTextarea2"
                                                                     style="height: 100px"><?php echo $img->resposta; ?></textarea>
                                                             </div>
-
+                                                            <h6><label class="mb-0">Ordem da seção</label></h6>
+                                                            <input class="border border w-100 p-2 mb-3" id="ordem" name="ordemcad[]" value="<?php echo $img->ordem; ?>">
                                                             <button onclick="excluirSecao(<?php echo $img->id_respostaimagem; ?>)" type="button" class="btn btn-outline-dark mx-auto w-25 mb-3" name="deletar-secao">Excluir</button>
                                                             <hr class="w-75 mx-auto"> 
                                                         
                                                         </div>
                                                         <!-- Modal -->
 
-                                                        <?php
+                                <?php
                                     endif;
                                 endforeach;
 

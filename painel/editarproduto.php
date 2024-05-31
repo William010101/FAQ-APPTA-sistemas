@@ -44,7 +44,7 @@ $service->SetProduto();
                         <div class="custom-control custom-checkbox mt-4">
                             <input type="checkbox" class="custom-control-input" id="customControlValidation1" name="visivel"
                                 checked value='0'>
-                            <label class="custom-control-label" for="customControlValidation1">Mostrar categoria no
+                            <label class="custom-control-label" for="customControlValidation1">Mostrar Produto no
                                 site!</label>
                         </div>
                     <?php else: ?>
