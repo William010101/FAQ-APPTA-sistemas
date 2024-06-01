@@ -42,18 +42,16 @@ $service->SetProduto();
                     </div>
                     <?php if ($prod->visivel == true): ?>
                         <div class="custom-control custom-checkbox mt-4">
-                            <input type="checkbox" class="custom-control-input" id="customControlValidation1" name="visivel"
-                                checked value='0'>
-                            <label class="custom-control-label" for="customControlValidation1">Mostrar Produto no
-                                site!</label>
-                        </div>
+                                <input type="checkbox" class="custom-control-input" id="customControlValidation1" name="visivel"
+                                value='0'>
+                                <label class="custom-control-label" for="customControlValidation1">Não exibir produto no site?</label>
+                            </div>
                     <?php else: ?>
-                        <div class="custom-control custom-checkbox mt-4">
-                            <input type="checkbox" class="custom-control-input" id="customControlValidation1" name="visivel"
+                            <div class="custom-control custom-checkbox mt-4">
+                                <input type="checkbox" class="custom-control-input" id="customControlValidation1" name="visivel"
                                 value='1'>
-                            <label class="custom-control-label" for="customControlValidation1">Mostrar categoria no
-                                site!</label>
-                        </div>
+                                <label class="custom-control-label" for="customControlValidation1">Exibir produto no site?</label>
+                            </div>
                     <?php endif; ?>
                     <div class="mt-2">
                         <button type="submit" name="btn-editar-produto" class="btn btn-primary mb-4"> Atualizar</button>

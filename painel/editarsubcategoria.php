@@ -50,19 +50,21 @@
                 </select>
 
                 <?php if($sub->visivel == true):?>
-                <div class="custom-control custom-checkbox mt-4">
-                    <input type="checkbox" class="custom-control-input" id="customControlValidation1" name="visivel" checked value='0'>
-                    <label class="custom-control-label" for="customControlValidation1">Mostrar subcategoria no site!</label>
-                </div>
-                <?php else:?>
                     <div class="custom-control custom-checkbox mt-4">
-                    <input type="checkbox" class="custom-control-input" id="customControlValidation1" name="visivel" value='1'>
-                    <label class="custom-control-label" for="customControlValidation1">Mostrar subcategoria no site!</label>
-                </div>
+                        <input type="checkbox" class="custom-control-input" id="customControlValidation1" name="visivel"
+                            value='0'>
+                            <label class="custom-control-label" for="customControlValidation1">Não exibir subcategoria no site?</label>
+                            </div>
+                <?php else: ?>
+                            <div class="custom-control custom-checkbox mt-4">
+                            <input type="checkbox" class="custom-control-input" id="customControlValidation1" name="visivel"
+                            value='1'>
+                            <label class="custom-control-label" for="customControlValidation1">Exibir subcategoria no site?</label>
+                            </div>
                 <?php endif; ?>
                 <div class="mt-2">
                     <button type="submit" name="btn-editar-subcategoria" class="btn btn-primary mb-4"> Atualizar</button>
-                    <a href="categoria.php" class="btn btn-success mb-4" data-toggle="modal" data-target="#confirmarsaidaproduto">Lista de subcategorias</a>
+                    <a href="subcategoria.php" class="btn btn-success mb-4" data-toggle="modal" data-target="#confirmarsaidasubcategoria">Lista de subcategorias</a>
                 </div>
                 <?php endforeach;?> 
                 <?php $sub->SetSubcategoria();?>

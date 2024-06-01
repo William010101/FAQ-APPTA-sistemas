@@ -48,10 +48,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                   $respostaImagemObj->CadastroImagemResposta($respostaImagemObj);
                }
             }
-            echo 'Imagens inseridas';
+            
 
          }
-
+         header('Location: perguntas.php');
       }
 
    }
@@ -153,11 +153,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             }
            
-            }  
-         }
-         
+         } 
+         if (!isset($_SESSION['reloaded'])) {
+            $_SESSION['reloaded'] = true;
+            echo '<script type="text/javascript">location.reload();</script>';
+            exit();
+        } else {
+            unset($_SESSION['reloaded']);
+        }
+
       }
+         
    }
+}
 
 
 
