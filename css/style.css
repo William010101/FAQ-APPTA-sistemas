@@ -510,34 +510,6 @@
     font-weight: 700;
 }
 
-.bodyrecentes {
-    height: 50px;
-    background-color: red;
-}
-
-#naoencontrou {
-    background-position-x: right;
-    background-image: url(../img/bgnaoencontrou.jpg);
-    background-repeat: no-repeat;
-}
-
-.naoencontrou-title {
-    font-family: PoppinsBold;
-    font-size: 36px;
-    line-height: 40px;
-    letter-spacing: 0.07em;
-    text-transform: uppercase;
-    color: #07AEFF;
-    padding-top: 441px;
-}
-
-.nãoencontrou-sub-title {
-    font-family: RobotoRegular;
-    font-size: 18px;
-    line-height: 24px;
-    letter-spacing: 0.07em;
-    color: #6B6B6B;
-}
 
 .btn.btn-contato {
     margin-bottom: 140px;

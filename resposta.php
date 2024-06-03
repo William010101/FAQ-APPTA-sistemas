@@ -18,7 +18,7 @@ $respostaimagem = new Respostaimagem();
 
     <?php include_once 'include/header.php'; ?>
 
-    <div class="container">
+    <div class="container ">
 
 
         <nav aria-label="breadcrumb">
@@ -53,9 +53,7 @@ $respostaimagem = new Respostaimagem();
             ?>
             <h1 class="titulo-pergunta mb-1"><?php echo $perg->pergunta ?></h1>
             <div class="author d-flex align-items-center">
-                <a href="">
-                    <img src="<?php echo $perg->fotoPerfil; ?>" class="rounded-circle m-3" id="fotoAutorArtigo">
-                </a>
+                
                 <p id="autorArtigo">Escrito por <b><?php echo $perg->usuario; ?></b><br>
                     Data de publicação:
                     <?php echo date("d/m/Y", strtotime($perg->datacadastro)); ?>
@@ -93,18 +91,12 @@ $respostaimagem = new Respostaimagem();
                     <?php } else {
                         } ?>
                     <hr>
-                    <span class="RobotoRegular">Compartilhe esse conteúdo:</span><br>
-                    <a target="_blank" class="btn btn-outline-success" id="whatsapp-share-btt"><i
-                            class="fab fa-whatsapp"></i>
-                        <span>Whatsapp</span></a>
-                    <a target="_blank" class="btn btn-outline-primary" id="facebook-share-btt"><i
-                            class="fab fa-facebook"></i>
-                        <span>Facebook</span></a>
                 </div>
             </div>
         <?php endforeach; ?>
     </div>
-    <?php include_once 'include/footer.php' ?>
+    
 
 </body>
+<?php include_once 'include/footer.php' ?>
 <script src="js/conteudo.js"></script>

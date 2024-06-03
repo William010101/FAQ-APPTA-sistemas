@@ -1,7 +1,7 @@
 <footer>
     <div class="container-fluid">
         <div class="row">
-            <div class="container w-50 col-12 col-sm-6 mx-auto">
+            <div class="container w-50 col-12 col-sm-6 col-xl-6 mx-auto">
                 <a class="hvr-sweep-to-right btn ajudafooter m-0 mt-5 mb-3 mx-auto" href="#">
                     <i class="far fa-question-circle"></i>Ajuda</a>
                 <div class="container mx-auto">

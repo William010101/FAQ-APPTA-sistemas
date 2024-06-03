@@ -1,8 +1,9 @@
 <?php 
   include_once 'include/ref.php';
-  include_once 'php_action/db_connect.php';
-  include_once 'php_action/ClassePergunta.php';
-  $perguntas = new Pergunta();
+  include_once 'painel/services/PerguntaService.php';
+  $service = new PerguntaService();
+  
+
 ?>
 
 <html lang="pt-br">
@@ -35,30 +36,31 @@
 
         <div class="container mt-4">
         <?php
-            $pergunta = $perguntas->Pesquisa();
-            if(empty($pergunta)) {
-                // Se $pergunta estiver vazia, exibir mensagem de nenhum resultado encontrado
-                ?>
-                <div class="container" id="semresultado">
-                    <a>Nenhum resultado encontrado!</a>
-                </div>
-            <?php
-            } else {
-                // Se $pergunta não estiver vazia, exibir as perguntas encontradas
-                foreach ($pergunta as $perg): 
-            ?>
-                <div class="card search">
-                    <div class="card-header video text-left" id="headvideo">
-                        <p class="blockquote pesquisa"><?php echo $perg->pergunta?></p>
-                        <span class="d-inline-block text-truncate ml-4" style="max-width: 100%; max-height: 36px;">
-                            <?php echo $perg->resposta;?>
-                        </span>
-                        </h5>
-                    </div>
-                    <a href="resposta?id=<?php echo $perg->id_pergunta; ?>" class="btn btn-recentes">Visualizar resposta completa</a>
-                </div>
-            <?php endforeach;
-            } ?>
+            var_dump($service->Pesquisa());
+            //$pergunta = $perguntas->Pesquisa();
+            // if(empty($pergunta)) {
+            //     // Se $pergunta estiver vazia, exibir mensagem de nenhum resultado encontrado
+            //     ?>
+            <!-- //     <div class="container" id="semresultado">
+            //         <a>Nenhum resultado encontrado!</a>
+            //     </div> -->
+            // <?php
+            // } else {
+            //     // Se $pergunta não estiver vazia, exibir as perguntas encontradas
+            //     foreach ($pergunta as $perg): 
+            // ?>
+            <!-- //     <div class="card search">
+            //         <div class="card-header video text-left" id="headvideo">
+            //             <p class="blockquote pesquisa"><?php //echo $perg->pergunta?></p>
+            //             <span class="d-inline-block text-truncate ml-4" style="max-width: 100%; max-height: 36px;">
+            //                 <?php //echo $perg->resposta;?>
+            //             </span>
+            //             </h5>
+            //         </div>
+            //         <a href="resposta?id=<?php //echo $perg->id_pergunta; ?>" class="btn btn-recentes">Visualizar resposta completa</a>
+            //     </div> -->
+            // <?php //endforeach;
+            //} ?>
 
         </div>
 

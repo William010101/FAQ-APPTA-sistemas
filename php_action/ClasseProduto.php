@@ -36,21 +36,8 @@ class Produto
             echo "Erro ao deletar o produto: " . $e->getMessage();
         }
     }
-    public function SetProduto(Produto $produto) //Nota Fiscal Eletronica
+    public function SetProduto(Produto $produto) 
     {
-
-        // $palavraChave = $produto.str_split(' ');
-
-        // $clausulaWhere = "";
-
-        // for ($i=0; $i < $palavraChave.lenght; $i++) { 
-        //     # code...
-        //     if (i==0)
-        //     $clausulaWhere += ' chave like ' + '%' + $palavraChave[i] + '%';
-        //     else
-        //     $clausulaWhere += ' and chave like ' + %$palavraChave[i]%;
-        // }
-
         try {
             $pdo = $this->Conexao->getPdo();
                 if($this->visivel == 1){

@@ -21,6 +21,8 @@ class Pergunta
         $this->Conexao = new Conexao();
     }
 
+
+
    public function DeletarPergunta($idpergunta)
    {
     try {
@@ -178,19 +180,48 @@ class Pergunta
         }
     }
 
-    public function Pesquisa(){
-        $pesquisar = $_POST['pesquisar'];
+    public function Pesquisa($palavraChave)
+    {
+        //Nota Fiscal Eletronica
+        var_dump($palavraPesquisa = explode(" ", $palavraChave));
+         $clausulaWhere = "";
+
+        for ($i=0; $i < count($palavraPesquisa); $i++) { 
+            # code...
+            if ($i==0){
+            $clausulaWhere .= "chave like " . "'%".$palavraChave[$i]."%'";
+            }else{
+            $clausulaWhere .= "and chave like " . "'%".$palavraChave[$i]."%'";
+            }
+            
+        }
+        var_dump ($clausulaWhere);  
         try {
             $pdo = $this->Conexao->getPdo();
 
-            $query = "SELECT * FROM pergunta where pergunta iLIKE '%$pesquisar%' OR resposta iLIKE '%$pesquisar%'  AND visivel = true";
+            $query = 
+            "SELECT 1 AS ordem, id_pergunta FROM pergunta WHERE $clausulaWhere 
+            UNION 
+            SELECT 2 AS ordem, id_pergunta FROM pergunta WHERE pergunta like '%$palavraChave%'
+            UNION
+            SELECT 3 AS ordem, id_pergunta FROM pergunta JOIN subcategoria ON (id_subcategoria = fk_id_subcategoria)
+            WHERE nomesubcategoria LIKE '%$palavraChave%'
+            UNION 
+            SELECT 4 AS ordem, id_pergunta FROM pergunta 
+            JOIN subcategoria ON (id_subcategoria = fk_id_subcategoria)
+            JOIN categoria on (id_categoria = fk_id_categoria)
+            WHERE nomesubcategoria LIKE '%$palavraChave%'
+            ORDER BY ordem
+            ";
             $stmt = $pdo->prepare($query);
             $stmt->execute();
-            $stmt->setFetchMode(PDO::FETCH_CLASS, 'Pergunta');
-            return $stmt->fetchAll();
+            $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $stmt;
         } catch (PDOException $e) {
             throw new PDOException($e->getMessage(), (int)$e->getCode());
         }
     }
 
 }
+
+   

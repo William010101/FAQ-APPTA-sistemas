@@ -1,3 +1,10 @@
+<?php 
+  include_once 'include/ref.php';
+  include_once 'painel/services/PerguntaService.php';
+  $service = new PerguntaService();
+  $service->Pesquisa();
+?>
+
 <div class="" id="navbar">
     <div class="container">
 
@@ -6,12 +13,12 @@
                 <a class="navbar-brand" href="inicio" title="Página inicial">
                     <img src="img/logocentralajuda.svg" height="50" class="logocentral" alt="Logotipo">
                 </a>
-                <form method="POST" action="search" id="searchnav">
+                <form method="POST" action="" id="searchnav">
                     <div class="input-group" id="pesquisacategoria">
                         <input id="inputpesquisa" type="search" name="pesquisar" class="form-control"
                             placeholder="Tente buscar por tópicos ou palavras-chave">
                         <div class="input-group-append">
-                            <button class="btn " id="btnpesquisar" type="text"><i class="material-icons"
+                            <button type="submit" class="btn " name="btnpesquisar" id="btnpesquisar" type="text"><i class="material-icons"
                                     id="">search</i></button>
                         </div>
                     </div>
