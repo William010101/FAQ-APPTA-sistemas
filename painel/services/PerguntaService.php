@@ -13,14 +13,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
  class PerguntaService
 {
-   function Pesquisa()
-   {
-      if (isset($_POST['btnpesquisar'])){
-      $pergunta = new Pergunta();
-      $pesquisar = $_POST['pesquisar'];
-      $pergunta->Pesquisa($pesquisar);
-   }
-   }
 
      function PostPergunta()
    {

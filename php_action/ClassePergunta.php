@@ -1,5 +1,3 @@
-
-
 <?php
 require_once 'ClasseConnection.php';
 
@@ -17,40 +15,41 @@ class Pergunta
     public int $fk_id_subcategoria;
     private $Conexao;
 
-    public function __construct(){
+    public function __construct()
+    {
         $this->Conexao = new Conexao();
     }
 
 
 
-   public function DeletarPergunta($idpergunta)
-   {
-    try {
-        $pdo = $this->Conexao->getPdo();
-        $sql1 = "DELETE FROM resposta_imagem WHERE fk_id_pergunta = :id_pergunta";
-        $stmt1 = $pdo->prepare($sql1);
-        $stmt1->bindParam(':id_pergunta', $idpergunta, PDO::PARAM_INT);
-        $stmt1->execute();
-    
-        // Deletar da tabela pergunta em seguida
-        $sql2 = "DELETE FROM pergunta WHERE id_pergunta = :id_pergunta";
-        $stmt2 = $pdo->prepare($sql2);
-        $stmt2->bindParam(':id_pergunta', $idpergunta, PDO::PARAM_INT);
-        $stmt2->execute();
+    public function DeletarPergunta($idpergunta)
+    {
+        try {
+            $pdo = $this->Conexao->getPdo();
+            $sql1 = "DELETE FROM resposta_imagem WHERE fk_id_pergunta = :id_pergunta";
+            $stmt1 = $pdo->prepare($sql1);
+            $stmt1->bindParam(':id_pergunta', $idpergunta, PDO::PARAM_INT);
+            $stmt1->execute();
 
-        }catch (PDOException $e) {
-        echo "Erro ao deletar a pergunta: " . $e->getMessage();
+            // Deletar da tabela pergunta em seguida
+            $sql2 = "DELETE FROM pergunta WHERE id_pergunta = :id_pergunta";
+            $stmt2 = $pdo->prepare($sql2);
+            $stmt2->bindParam(':id_pergunta', $idpergunta, PDO::PARAM_INT);
+            $stmt2->execute();
+
+        } catch (PDOException $e) {
+            echo "Erro ao deletar a pergunta: " . $e->getMessage();
         }
-   } 
+    }
 
 
     public function SetPergunta(Pergunta $pergunta)
     {
         try {
             $pdo = $this->Conexao->getPdo();
-            if($pergunta->visivel == 1){
+            if ($pergunta->visivel == 1) {
                 $query = "  UPDATE pergunta SET pergunta = :pergunta, resposta = :resposta, datacadastro = :datacadastro, chave = :chave, video = :video, usuario = :usuario, idusuario = :idusuario, visivel = :visivel, fk_id_subcategoria = :fk_id_subcategoria WHERE id_pergunta = :id_pergunta";
-            }else{
+            } else {
                 $query = "  UPDATE pergunta SET pergunta = :pergunta, resposta = :resposta, datacadastro = :datacadastro, chave = :chave, video = :video, usuario = :usuario, idusuario = :idusuario, visivel = :visivel, fk_id_subcategoria = :fk_id_subcategoria WHERE id_pergunta = :id_pergunta";
             }
             $stmt = $pdo->prepare($query);
@@ -65,7 +64,7 @@ class Pergunta
             $stmt->bindParam(':visivel', $pergunta->visivel, PDO::PARAM_BOOL);
             $stmt->bindParam(':fk_id_subcategoria', $pergunta->fk_id_subcategoria, PDO::PARAM_INT);
             $stmt->execute();
-        
+
         } catch (PDOException $e) {
             echo "Erro ao editar a pergunta: " . $e->getMessage();
         }
@@ -74,14 +73,14 @@ class Pergunta
     {
         try {
             $pdo = $this->Conexao->getPdo();
-            
+
             $query = "INSERT INTO pergunta (pergunta, resposta, datacadastro, chave, video, usuario, idusuario, visivel, fk_id_subcategoria) VALUES 
             (:pergunta, :resposta, :datacadastro, :chave, :video, :usuario, :idusuario, :visivel, :fk_id_subcategoria)";
-            
+
             $stmt = $pdo->prepare($query);
             $stmt->bindParam(':pergunta', $pergunta->pergunta, PDO::PARAM_STR);
             $stmt->bindParam(':resposta', $pergunta->resposta, PDO::PARAM_STR);
-           $stmt->bindParam(':datacadastro', $pergunta->datacadastro, PDO::PARAM_STR);
+            $stmt->bindParam(':datacadastro', $pergunta->datacadastro, PDO::PARAM_STR);
             $stmt->bindParam(':chave', $pergunta->chave, PDO::PARAM_STR);
             $stmt->bindParam(':video', $pergunta->video, PDO::PARAM_STR);
             $stmt->bindParam(':usuario', $pergunta->usuario, PDO::PARAM_STR);
@@ -95,10 +94,10 @@ class Pergunta
         }
     }
 
-    
+
     public function GetTodasPerguntas()
     {
-        
+
         try {
             $pdo = $this->Conexao->getPdo();
             $query = "SELECT * FROM pergunta";
@@ -107,12 +106,12 @@ class Pergunta
             $stmt->setFetchMode(PDO::FETCH_CLASS, 'Pergunta');
             return $stmt->fetchAll();
         } catch (PDOException $e) {
-            throw new PDOException($e->getMessage(), (int)$e->getCode());
+            throw new PDOException($e->getMessage(), (int) $e->getCode());
         }
     }
     public function GetPerguntas($id_subcategoria)
     {
-        
+
         try {
             $pdo = $this->Conexao->getPdo();
 
@@ -123,13 +122,13 @@ class Pergunta
             $stmt->setFetchMode(PDO::FETCH_CLASS, 'Pergunta');
             return $stmt->fetchAll();
         } catch (PDOException $e) {
-            throw new PDOException($e->getMessage(), (int)$e->getCode());
+            throw new PDOException($e->getMessage(), (int) $e->getCode());
         }
     }
 
     public function GetPergunta($id_pergunta)
     {
-        
+
         try {
             $pdo = $this->Conexao->getPdo();
 
@@ -140,7 +139,7 @@ class Pergunta
             $stmt->setFetchMode(PDO::FETCH_CLASS, 'Pergunta');
             return $stmt->fetchAll();
         } catch (PDOException $e) {
-            throw new PDOException($e->getMessage(), (int)$e->getCode());
+            throw new PDOException($e->getMessage(), (int) $e->getCode());
         }
     }
 
@@ -158,7 +157,7 @@ class Pergunta
             $stmt->execute();
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
         } catch (PDOException $e) {
-            throw new PDOException($e->getMessage(), (int)$e->getCode());
+            throw new PDOException($e->getMessage(), (int) $e->getCode());
         }
     }
     public function BreadCrumbReposta($id_pergunta)
@@ -176,52 +175,56 @@ class Pergunta
             $stmt->execute();
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
         } catch (PDOException $e) {
-            throw new PDOException($e->getMessage(), (int)$e->getCode());
+            throw new PDOException($e->getMessage(), (int) $e->getCode());
         }
     }
 
-    public function Pesquisa($palavraChave)
+    public function Pesquisar()
     {
-        //Nota Fiscal Eletronica
-        var_dump($palavraPesquisa = explode(" ", $palavraChave));
-         $clausulaWhere = "";
+        if (isset($_POST['btnpesquisar'])) {
+            //    $pergunta = new Pergunta();$palavraChave
+            $palavraChave = $_POST['pesquisar'];
+            //    $pergunta->Pesquisar($pesquisar);
+            $palavraPesquisa = explode(" ", $palavraChave);
+            $clausulaWhere = "";
 
-        for ($i=0; $i < count($palavraPesquisa); $i++) { 
-            # code...
-            if ($i==0){
-            $clausulaWhere .= "chave like " . "'%".$palavraChave[$i]."%'";
-            }else{
-            $clausulaWhere .= "and chave like " . "'%".$palavraChave[$i]."%'";
+            // Construindo a cláusula WHERE
+            for ($i = 0; $i < count($palavraPesquisa); $i++) {
+                if ($i == 0) {
+                    $clausulaWhere .= " chave LIKE " . "'%" . $palavraPesquisa[$i] . "%'";
+                } else {
+                    $clausulaWhere .= " AND chave LIKE " . "'%" . $palavraPesquisa[$i] . "%'";
+                }
             }
-            
         }
-        var_dump ($clausulaWhere);  
         try {
             $pdo = $this->Conexao->getPdo();
 
-            $query = 
-            "SELECT 1 AS ordem, id_pergunta FROM pergunta WHERE $clausulaWhere 
+            $query =
+                "   SELECT 1 AS ordem, id_pergunta FROM pergunta WHERE $clausulaWhere 
             UNION 
-            SELECT 2 AS ordem, id_pergunta FROM pergunta WHERE pergunta like '%$palavraChave%'
+            SELECT 2 AS ordem, id_pergunta FROM pergunta WHERE pergunta LIKE '%$palavraChave%'
             UNION
-            SELECT 3 AS ordem, id_pergunta FROM pergunta JOIN subcategoria ON (id_subcategoria = fk_id_subcategoria)
+            SELECT 3 AS ordem, id_pergunta FROM pergunta 
+            JOIN subcategoria ON (id_subcategoria = fk_id_subcategoria)
             WHERE nomesubcategoria LIKE '%$palavraChave%'
             UNION 
             SELECT 4 AS ordem, id_pergunta FROM pergunta 
             JOIN subcategoria ON (id_subcategoria = fk_id_subcategoria)
-            JOIN categoria on (id_categoria = fk_id_categoria)
+            JOIN categoria ON (id_categoria = fk_id_categoria)
             WHERE nomesubcategoria LIKE '%$palavraChave%'
-            ORDER BY ordem
-            ";
+            ORDER BY ordem 
+        ";
+
             $stmt = $pdo->prepare($query);
             $stmt->execute();
-            $stmt->fetchAll(PDO::FETCH_ASSOC);
-            return $stmt;
+            $results = $stmt->fetchAll(PDO::FETCH_ASSOC);  // Pegando os resultados da consulta
+
+            return $results;  // Retornando os resultados
         } catch (PDOException $e) {
-            throw new PDOException($e->getMessage(), (int)$e->getCode());
+            throw new PDOException($e->getMessage(), (int) $e->getCode());
         }
     }
 
 }
 
-   

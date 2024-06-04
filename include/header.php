@@ -1,8 +1,8 @@
 <?php 
   include_once 'include/ref.php';
-  include_once 'painel/services/PerguntaService.php';
-  $service = new PerguntaService();
-  $service->Pesquisa();
+//   include_once 'php_action/ClassePergunta.php';
+//   $pergunta = new Pergunta();
+//   $pergunta->Pesquisar();
 ?>
 
 <div class="" id="navbar">

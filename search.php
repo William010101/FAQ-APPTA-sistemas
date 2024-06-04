@@ -1,7 +1,10 @@
 <?php 
   include_once 'include/ref.php';
-  include_once 'painel/services/PerguntaService.php';
-  $service = new PerguntaService();
+  include_once 'php_action/ClassePergunta.php';
+  $pergunta = new Pergunta();
+//   include_once 'painel/services/PerguntaService.php';
+//   $service = new PerguntaService();
+  
   
 
 ?>
@@ -36,7 +39,11 @@
 
         <div class="container mt-4">
         <?php
-            var_dump($service->Pesquisa());
+            $result = $pergunta->Pesquisar();
+            echo '<pre>';
+            print_r($result);  // Ou use var_dump($result);
+            echo '</pre>';
+            
             //$pergunta = $perguntas->Pesquisa();
             // if(empty($pergunta)) {
             //     // Se $pergunta estiver vazia, exibir mensagem de nenhum resultado encontrado
