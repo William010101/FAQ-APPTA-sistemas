@@ -72,7 +72,7 @@ $respostaimagem = new Respostaimagem();
                                 ?>
                                 <img class="mx-auto img-fluid" src="data:image/png;base64,<?= base64_encode($imagem->imagem) ?>"
                                     alt="Imagem">
-                                <p id="autorArtigo"><?php echo $imagem->descricao; ?></p><br>
+                                <p class="mt-3 mb-0" id="autorArtigo"><?php echo $imagem->descricao; ?></p><br>
                                 <p id="autorArtigo"><?php echo $imagem->resposta; ?></p>
                             <?php endforeach; ?>
 

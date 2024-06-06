@@ -31,7 +31,7 @@ include_once 'include/ref.php';
                                     <input type="search" class="form-control" name="pesquisar"
                                         placeholder="Tente buscar por tópicos ou palavras-chave" id="inputHeader">
                                     <div class="input-group-append">
-                                        <button class="btn " id="btnpesquisarhome" type="text"><i class="material-icons"
+                                        <button class="btn " id="btnpesquisarhome" name="btnpesquisar" type="text"><i class="material-icons"
                                                 id="">search</i></button>
                                     </div>
                                 </div>

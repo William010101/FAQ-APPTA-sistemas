@@ -64,8 +64,8 @@ class Subcategoria
         try {
             $pdo = $this->Conexao->getPdo();
             if(isset($_POST['btn-deletar-subcategoria'])) {
-                $this->id_categoria = $_POST['id_subcategoria'];
-                $query = "DELETE FROM subategoria WHERE id_subcategoria = :id_subcategoria";
+                $this->id_subcategoria = $_POST['id_subcategoria'];
+                $query = "DELETE FROM subcategoria WHERE id_subcategoria = :id_subcategoria";
                 $stmt = $pdo->prepare($query);
                 $stmt->bindParam(':id_subcategoria', $this->id_subcategoria, PDO::PARAM_INT);
                 $stmt->execute();

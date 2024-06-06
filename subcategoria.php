@@ -55,7 +55,7 @@ $subcategoria = new Subcategoria();
                                         $perguntas = $pergunta->GetPerguntas($sub->id_subcategoria);
                                         foreach ($perguntas as $perg):
                                             ?>
-                                                    <a href="resposta?id=<?php echo $sub->id_subcategoria ?>"
+                                                    <a href="resposta?id=<?php echo $perg->id_pergunta ?>"
                                                         class="link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">
                                                         <?php echo $perg->pergunta; ?>
                                                     </a><br>

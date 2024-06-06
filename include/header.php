@@ -13,7 +13,7 @@
                 <a class="navbar-brand" href="inicio" title="Página inicial">
                     <img src="img/logocentralajuda.svg" height="50" class="logocentral" alt="Logotipo">
                 </a>
-                <form method="POST" action="" id="searchnav">
+                <form method="POST" action="search" id="searchnav">
                     <div class="input-group" id="pesquisacategoria">
                         <input id="inputpesquisa" type="search" name="pesquisar" class="form-control"
                             placeholder="Tente buscar por tópicos ou palavras-chave">

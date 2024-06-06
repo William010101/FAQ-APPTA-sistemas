@@ -178,53 +178,75 @@ class Pergunta
             throw new PDOException($e->getMessage(), (int) $e->getCode());
         }
     }
+ public function obterclausulawhere( $nomeDocampo,  $palavraChave)
+    {
 
+        $palavraPesquisa = explode(" ", $palavraChave);
+
+        for ($i = 0; $i < count($palavraPesquisa); $i++) {
+            if ($i == 0) {
+                $clausulaWhere .= " $nomeDocampo LIKE " . "'%" . $palavraPesquisa[$i] . "%'";
+            } else {
+                $clausulaWhere .= " AND $nomeDocampo LIKE " . "'%" . $palavraPesquisa[$i] . "%'";
+            }
+        }
+
+        return $clausulaWhere;
+    }
     public function Pesquisar()
     {
         if (isset($_POST['btnpesquisar'])) {
-            //    $pergunta = new Pergunta();$palavraChave
             $palavraChave = $_POST['pesquisar'];
-            //    $pergunta->Pesquisar($pesquisar);
-            $palavraPesquisa = explode(" ", $palavraChave);
-            $clausulaWhere = "";
-
-            // Construindo a cláusula WHERE
-            for ($i = 0; $i < count($palavraPesquisa); $i++) {
-                if ($i == 0) {
-                    $clausulaWhere .= " chave LIKE " . "'%" . $palavraPesquisa[$i] . "%'";
-                } else {
-                    $clausulaWhere .= " AND chave LIKE " . "'%" . $palavraPesquisa[$i] . "%'";
-                }
-            }
         }
         try {
             $pdo = $this->Conexao->getPdo();
 
             $query =
-                "   SELECT 1 AS ordem, id_pergunta FROM pergunta WHERE $clausulaWhere 
-            UNION 
-            SELECT 2 AS ordem, id_pergunta FROM pergunta WHERE pergunta LIKE '%$palavraChave%'
-            UNION
-            SELECT 3 AS ordem, id_pergunta FROM pergunta 
-            JOIN subcategoria ON (id_subcategoria = fk_id_subcategoria)
-            WHERE nomesubcategoria LIKE '%$palavraChave%'
-            UNION 
-            SELECT 4 AS ordem, id_pergunta FROM pergunta 
-            JOIN subcategoria ON (id_subcategoria = fk_id_subcategoria)
-            JOIN categoria ON (id_categoria = fk_id_categoria)
-            WHERE nomesubcategoria LIKE '%$palavraChave%'
-            ORDER BY ordem 
-        ";
+            "SELECT DISTINCT id_pergunta, pergunta, resposta, nomesubcategoria, nomecategoria, nomeproduto FROM (
+                SELECT 1 AS ordem, id_pergunta, pergunta, resposta, nomesubcategoria, nomecategoria, nomeproduto FROM pergunta
+                JOIN subcategoria ON (id_subcategoria = fk_id_subcategoria)
+                JOIN categoria ON (id_categoria = fk_id_categoria)
+                JOIN produto ON (fk_id_produto = id_produto)
+                WHERE chave LIKE " . obterclausulawhere("CHAVE", $palavraChave) . 
+                
+                "UNION 
+                
+                SELECT 2 AS ordem, id_pergunta, pergunta, resposta, nomesubcategoria, nomecategoria, nomeproduto FROM pergunta
+                JOIN subcategoria ON (id_subcategoria = fk_id_subcategoria)
+                JOIN categoria ON (id_categoria = fk_id_categoria)
+                JOIN produto ON (fk_id_produto = id_produto)
+                WHERE " . obterclausulawhere("pergunta", $palavraChave) . "
+                
+                UNION
+                
+                SELECT 3 AS ordem, id_pergunta, pergunta, resposta, nomesubcategoria, nomecategoria, nomeproduto FROM pergunta 
+                JOIN subcategoria ON (id_subcategoria = fk_id_subcategoria)
+                JOIN categoria ON (id_categoria = fk_id_categoria)
+                JOIN produto ON (fk_id_produto = id_produto)
+                WHERE " . obterclausulawhere("nomesubcategoria", $palavraChave) . "
+                        
+                UNION
+                
+                SELECT 4 AS ordem, id_pergunta, pergunta, resposta, nomesubcategoria, nomecategoria, nomeproduto FROM pergunta 
+                JOIN subcategoria ON (id_subcategoria = fk_id_subcategoria)
+                JOIN categoria ON (id_categoria = fk_id_categoria)
+                JOIN produto ON (fk_id_produto = id_produto)
+                WHERE " . obterclausulawhere("nomecategoria", $palavraChave) . "
+                ORDER BY ordem 
+                ) AS TAB";
+        
 
             $stmt = $pdo->prepare($query);
             $stmt->execute();
-            $results = $stmt->fetchAll(PDO::FETCH_ASSOC);  // Pegando os resultados da consulta
+            $results = $stmt->fetchAll(PDO::FETCH_ASSOC); 
 
-            return $results;  // Retornando os resultados
+            return $results; 
         } catch (PDOException $e) {
             throw new PDOException($e->getMessage(), (int) $e->getCode());
         }
     }
+
+   
 
 }
 
