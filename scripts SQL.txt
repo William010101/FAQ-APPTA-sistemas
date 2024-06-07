@@ -47,7 +47,6 @@ CREATE TABLE usuario
   nome character varying(30),
   senha character varying(32),
   email character varying(32),
-  fotoperfil character varying(50)
 );
 
 CREATE TABLE resposta_imagem (
