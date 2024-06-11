@@ -13,9 +13,6 @@ include_once 'include/ref.php';
 </head>
 
 <body>
-    <!-- Cabeçalho site "-->
-    <?php //include_once 'include/header.php';  ?>
-    <!-- Menu Pesquisa -->
     <section class="home-header ">
         <div class="container " id="menupesquisa">
             <div class="botao">

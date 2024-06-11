@@ -19,6 +19,8 @@ $subcategoria = new Subcategoria();
 <?php include_once 'include/header.php'; ?>
 
 <body>
+
+
     <div class="container-fluid">
         <div class="container">
             <?php
@@ -33,9 +35,9 @@ $subcategoria = new Subcategoria();
                         </li>
                     </ol>
             <?php endforeach; ?>  
-                    <h2 class="produtos-titulos mt-5 mb-5 ml-2"><?php echo strtoupper($prod->nomeproduto); ?></h2>
+                    <h2 class="produtos-titulos mt-2 mb-2 ml-2"><?php echo strtoupper($prod->nomeproduto); ?></h2>
                     <div class="row">
-  
+                    <h2 class="titulos mt-2 mb-5 ml-2 text-center" >Categorias</h2>
                     <?php
                     $categorias = $categoria->GetCategorias($_GET['id']);
                     foreach ($categorias as $cat):

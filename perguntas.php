@@ -36,9 +36,10 @@ $pergunta = new Pergunta();
                             </li>
                         </ol>
                     </nav>
-            <h2 class="produtos-titulos mt-5 mb-5 ml-2"><?php echo strtoupper($crumb['nomesubcategoria']); ?></h2>
+            <h2 class="produtos-titulos mt-2 mb-5 ml-2"><?php echo strtoupper($crumb['nomesubcategoria']); ?></h2>
             <?php endforeach; ?>
             <div class="row">
+            <h2 class="titulos mt-2 mb-5 ml-2 text-center" >Perguntas</h2>
                 <?php
                 $perguntas = $pergunta->GetPerguntas($_GET['id']);
                 foreach ($perguntas as $perg):
@@ -53,7 +54,7 @@ $pergunta = new Pergunta();
                                 <p class="card-text">
                                     <?php
                                     $texto = $perg->resposta;
-                                    // Verifica se o comprimento da resposta é maior que 342
+                                   
                                     if (strlen($texto) > 401) {
                                         $texto = substr($texto, 0, 401);
                                         $texto .= "...";

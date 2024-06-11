@@ -38,10 +38,11 @@ $subcategoria = new Subcategoria();
                             </li>
                         </ol>
                     </nav>
-                    <h2 class="produtos-titulos mt-5 mb-5 ml-2"><?php echo strtoupper($crumb['nomecategoria']); ?></h2>
+                    <h2 class="produtos-titulos mt-2 mb-5 ml-2"><?php echo strtoupper($crumb['nomecategoria']); ?></h2>
             <?php endforeach; ?>
 
             <div class="row">
+            <h2 class="titulos mt-2 mb-5 ml-2 text-center" >Subcategorias</h2>
             <?php
             $subcategorias = $subcategoria->GetSubcategorias($_GET['id']);
             foreach ($subcategorias as $sub):

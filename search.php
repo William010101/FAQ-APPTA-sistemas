@@ -1,11 +1,7 @@
-<?php 
-  include_once 'include/ref.php';
-  include_once 'php_action/ClassePergunta.php';
-  $pergunta = new Pergunta();
-//   include_once 'painel/services/PerguntaService.php';
-//   $service = new PerguntaService();
-  
-  
+<?php
+include_once 'include/ref.php';
+include_once 'php_action/ClassePergunta.php';
+$pergunta = new Pergunta();
 
 ?>
 
@@ -27,47 +23,59 @@
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb mt-4">
                 <li class="breadcrumb-item text-uppercase" id="breadcrumb"><a href="inicio">Inicio</a></li>
-                <li class="breadcrumb-item text-uppercase" id="breadcrumb" aria-current="page">Resultados da pesquisa</li>
+                <li class="breadcrumb-item text-uppercase" id="breadcrumb" aria-current="page">Resultados da pesquisa
+                </li>
             </ol>
         </nav>
 
         <h2 class="hResultadoPesquisa">Resultados da pesquisa</h2>
 
-        <div class="contagempesquisa mt-3 mb-4">
-            <!-- <?php //echo $contagem['count']?> <a> resultados para "</a><?php //echo $pesquisar ?><a>"</a> -->
-        </div>
-
         <div class="container mt-4">
-        <?php
-            $result = $pergunta->Pesquisar();
-            echo '<pre>';
-            print_r($result);  // Ou use var_dump($result);
-            echo '</pre>';
-            
-            //$pergunta = $perguntas->Pesquisa();
-            // if(empty($pergunta)) {
-            //     // Se $pergunta estiver vazia, exibir mensagem de nenhum resultado encontrado
-            //     ?>
-            <!-- //     <div class="container" id="semresultado">
-            //         <a>Nenhum resultado encontrado!</a>
-            //     </div> -->
-            // <?php
-            // } else {
-            //     // Se $pergunta não estiver vazia, exibir as perguntas encontradas
-            //     foreach ($pergunta as $perg): 
-            // ?>
-            <!-- //     <div class="card search">
-            //         <div class="card-header video text-left" id="headvideo">
-            //             <p class="blockquote pesquisa"><?php //echo $perg->pergunta?></p>
-            //             <span class="d-inline-block text-truncate ml-4" style="max-width: 100%; max-height: 36px;">
-            //                 <?php //echo $perg->resposta;?>
-            //             </span>
-            //             </h5>
-            //         </div>
-            //         <a href="resposta?id=<?php //echo $perg->id_pergunta; ?>" class="btn btn-recentes">Visualizar resposta completa</a>
-            //     </div> -->
-            // <?php //endforeach;
-            //} ?>
+            <?php
+            $perguntas = $pergunta->Pesquisar();
+            if (empty($perguntas)):
+                ?>
+                <div class="contagempesquisa mt-3 mb-4">
+                     <?php echo count($perguntas) ?> <a> resultados para "</a><?php echo $_POST['pesquisar'] ?><a>"</a>
+                </div>
+                <div class="container" id="semresultado">
+                    <a>Nenhum resultado encontrado!</a>
+                </div>
+            <?php else:
+                foreach ($perguntas as $perg):
+
+                    ?>
+                    <div class="col-12 col-sm-12 mb-5">
+                        <div class="card">
+
+                            <div class="card-header text-white">
+                                <p id="textocaminho" class="card-text h6 text-white">
+                                    <?php echo $perg['nomeproduto'] . "/" . $perg['nomecategoria'] . "/" . $perg['nomesubcategoria'] . "/" . $perg['pergunta']; ?>
+                                </p>
+                                <?php echo $perg['pergunta']; ?>
+                            </div>
+
+                            <div class="card-body p-2">
+                                <p class="card-text">
+                                    <?php
+                                    $texto = $perg['resposta'];
+                                    // Verifica se o comprimento da resposta é maior que 342
+                                    if (strlen($texto) > 401) {
+                                        $texto = substr($texto, 0, 401);
+                                        $texto .= "...";
+                                    }
+                                    echo $texto;
+                                    ?>
+                                </p>
+
+                                <a href="resposta?id=<?php echo $perg['id_pergunta']; ?>" class="btn-listar mt-2 ">visualizar
+                                    resposta completa</a>
+                            </div>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+            <?php endif; ?>
+
 
         </div>
 

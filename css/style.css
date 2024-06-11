@@ -213,11 +213,22 @@
     margin-top: 116px;
     margin-bottom: 71px;
     font-family: PoppinsBold;
-    font-size: 36px;
+    font-size: 30px;
     line-height: 40px;
     letter-spacing: 0.07em;
     text-transform: uppercase;
     color: #C7BD6C;
+}
+
+.titulos {
+    margin-top: 116px;
+    margin-bottom: 71px;
+    font-family: PoppinsBold;
+    font-size: 36px;
+    line-height: 40px;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: #07AEFF;
 }
 
 .titulo-pergunta {
@@ -654,7 +665,7 @@ footer {
 
  .card-header{
     background-color: #0485C4;
-    border-radius:0px 0px 5px 5px;
+    border-radius:5px 5px 5px 5px;
 }
 
 .bg-primary{
@@ -668,6 +679,7 @@ footer {
     border-radius: 5px;
     text-decoration: none;
 }
+
 
 
 

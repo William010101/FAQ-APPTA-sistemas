@@ -1,8 +1,5 @@
 <?php 
   include_once 'include/ref.php';
-//   include_once 'php_action/ClassePergunta.php';
-//   $pergunta = new Pergunta();
-//   $pergunta->Pesquisar();
 ?>
 
 <div class="" id="navbar">

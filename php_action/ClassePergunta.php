@@ -189,7 +189,7 @@ class Pergunta
             $pdo = $this->Conexao->getPdo();
             
             $query = 
-                "   SELECT DISTINCT id_pergunta, pergunta, resposta, nomesubcategoria, nomecategoria, nomeproduto FROM (
+                "   SELECT DISTINCT ordem, id_pergunta, pergunta, resposta, nomesubcategoria, nomecategoria, nomeproduto FROM (
                     SELECT 1 AS ordem, id_pergunta, pergunta, resposta, nomesubcategoria, nomecategoria, nomeproduto FROM pergunta
                     JOIN subcategoria ON (id_subcategoria = fk_id_subcategoria)
                     JOIN categoria ON (id_categoria = fk_id_categoria)
@@ -219,7 +219,7 @@ class Pergunta
                     JOIN categoria ON (id_categoria = fk_id_categoria)
                     JOIN produto ON (fk_id_produto = id_produto)
                     WHERE " . $pergunta->obterclausulawhere("nomecategoria", $palavraChave) . "
-                    ORDER BY ordem DESC
+                    ORDER BY ordem 
                 ) AS TAB";
 
             $stmt = $pdo->prepare($query);

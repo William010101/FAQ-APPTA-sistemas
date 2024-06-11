@@ -19,15 +19,15 @@ $produto = new Produto();
         foreach ($produtos as $prod):
             ?>
 
-            <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3 mx-auto mt-4 ">
-                <div class="card w-75 mb-0 m-0 text-center mx-auto bg-primary " style=" height: 250px;">
-                    <a style=" height: 87%;" href="categoria?id=<?php echo $prod->id_produto ?>">
-                        <img style="max-width:97%; height: 100%;"
+            <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3 mx-auto mt-4 " style="width: 270px; height: 250px;">
+                <div class="card w-75 mb-0 m-0 text-center mx-auto border-0 " style="width:100%; height:100%;">
+                    <a style="width:100%; height: 87%;" href="categoria?id=<?php echo $prod->id_produto ?>">
+                        <img style="max-width:100%; height: 100%;"
                             src="data:image/png;base64,<?= base64_encode($prod->imagem) ?>" alt="">
                     </a>
                     <div class="card-header p-1 w-100" style="height: 13%;">
                         <a style="height: 100%;" href="categoria?id=<?php echo $prod->id_produto ?>"
-                            class="btn btn-produtos-primario p-0"><?php echo $prod->nomeproduto ?></a>
+                            class="btn btn-produtos-primario p-0"><?php echo strtoupper($prod->nomeproduto) ?></a>
                     </div>
                 </div>
                 
