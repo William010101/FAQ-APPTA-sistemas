@@ -38,7 +38,7 @@ class Categoria
             if(isset($_POST['btn-editar-categoria'])) {
                 $this->nomecategoria = $_POST['nomecategoria'];
                 $this->fk_id_produto = $_POST['fk_id_produto'];
-                $this->visivel = isset($_POST['visivel']) ? ($_POST['visivel'] == '1' ? true : false) : false;
+                $this->visivel = isset($_POST['visivel']) ? 1  : 0;
                 $this->id_categoria = $_POST['id_categoria'];
                 if($this->visivel == 1){
                 $query = "UPDATE categoria SET nomecategoria =  :nomecategoria , visivel = :visivel , fk_id_produto = :fk_id_produto WHERE id_categoria = :id_categoria";

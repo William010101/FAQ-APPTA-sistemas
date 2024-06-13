@@ -40,25 +40,24 @@
                         $categorias = $categoria->GetTodasCategorias();
                         foreach ($categorias as $cat):
                     ?>
-                    <option value="<?php echo $cat->id_categoria; ?>"><?php echo  $cat->nomecategoria; ?></option>
-                    <?php endforeach; ?>
                     <?php if($sub->fk_id_categoria == $cat->id_categoria):?>
                     <option selected value="<?php echo  $cat->id_categoria; ?>">                       
                             <?php echo  $cat->nomecategoria;?> 
                     </option>
                     <?php endif?>
+                    <option value="<?php echo $cat->id_categoria; ?>"><?php echo  $cat->nomecategoria; ?></option>
+                    <?php endforeach; ?>
+                    
                 </select>
 
                 <?php if($sub->visivel == true):?>
                     <div class="custom-control custom-checkbox mt-4">
-                        <input type="checkbox" class="custom-control-input" id="customControlValidation1" name="visivel"
-                            value='0'>
-                            <label class="custom-control-label" for="customControlValidation1">Não exibir subcategoria no site?</label>
+                        <input type="checkbox" class="custom-control-input" checked id="customControlValidation1" name="visivel">
+                            <label class="custom-control-label" for="customControlValidation1">Exibir subcategoria no site?</label>
                             </div>
                 <?php else: ?>
                             <div class="custom-control custom-checkbox mt-4">
-                            <input type="checkbox" class="custom-control-input" id="customControlValidation1" name="visivel"
-                            value='1'>
+                            <input type="checkbox" class="custom-control-input" id="customControlValidation1" name="visivel">
                             <label class="custom-control-label" for="customControlValidation1">Exibir subcategoria no site?</label>
                             </div>
                 <?php endif; ?>

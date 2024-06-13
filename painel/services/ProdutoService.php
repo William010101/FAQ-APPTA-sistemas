@@ -44,7 +44,7 @@ class ProdutoService
                 $produto->imagem = $prod->imagem;
             }
         }
-        $produto->visivel = isset($_POST['visivel']) ? ($_POST['visivel'] == '1' ? true : false) : false;
+        $produto->visivel = isset($_POST['visivel']) ? 1  : 0;
         $produto->id_produto = $_POST['id_produto'];
         $produto->SetProduto($produto);
     }

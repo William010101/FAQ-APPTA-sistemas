@@ -42,14 +42,15 @@ $service = new PerguntaService();
                                         $subcategorias = $subcategoria->GetTodasSubcategoriasVisiveis();
                                         foreach ($subcategorias as $sub):
                                             ?>
-                                                        <option value="<?php echo $sub->id_subcategoria; ?>"><?php echo $sub->nomesubcategoria; ?>
-                                                        </option>
-                                        <?php endforeach; ?>
                                         <?php if ($perg->fk_id_subcategoria == $sub->id_subcategoria): ?>
-                                                        <option selected value="<?php echo $sub->id_subcategoria; ?>">
-                                                            <?php echo $sub->nomesubcategoria; ?>
-                                                        </option>
+                                        <option selected value="<?php echo $sub->id_subcategoria; ?>">
+                                            <?php echo $sub->nomesubcategoria; ?>
+                                        </option>
                                         <?php endif ?>
+                                        <option value="<?php echo $sub->id_subcategoria; ?>"><?php echo $sub->nomesubcategoria; ?>
+                                        </option>
+                                        <?php endforeach; ?>
+                                        
                                     </select>
 
                                 </div>
@@ -214,14 +215,12 @@ $service = new PerguntaService();
 
                                 <?php if ($perg->visivel == true): ?>
                                                 <div class="custom-control custom-checkbox mt-4">
-                                                    <input type="checkbox" class="custom-control-input" id="customControlValidation1" name="visivel"
-                                                     value='0'>
-                                                    <label class="custom-control-label" for="customControlValidation1">Não exibir pergunta no site?</label>
+                                                    <input type="checkbox" class="custom-control-input" checked id="customControlValidation1" name="visivel">
+                                                    <label class="custom-control-label" for="customControlValidation1">Exibir pergunta no site?</label>
                                                 </div>
                                 <?php else: ?>
                                                 <div class="custom-control custom-checkbox mt-4">
-                                                    <input type="checkbox" class="custom-control-input" id="customControlValidation1" name="visivel"
-                                                         value='1'>
+                                                    <input type="checkbox" class="custom-control-input" id="customControlValidation1" name="visivel">
                                                     <label class="custom-control-label" for="customControlValidation1">Exibir pergunta no site?</label>
                                                 </div>
                                 <?php endif; ?>

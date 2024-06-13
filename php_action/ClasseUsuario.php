@@ -6,7 +6,6 @@ require_once '../php_action/ClasseConnection.php';
 		public string $nome;
 		private string $senha;
 		private string $email;
-		public string $fotoperfil;
 		private $Conexao;
 		public function __construct(){
 			$this->Conexao = new Conexao();

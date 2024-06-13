@@ -94,7 +94,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
          $pergunta->video = $_POST['video'];
          $pergunta->usuario = $_POST['usuarioCadastro'];
          $pergunta->idusuario = $_POST['usuarioId'];
-         $pergunta->visivel = isset($_POST['visivel']) && $_POST['visivel'] == '1' ? true : false;
+         $pergunta->visivel = isset($_POST['visivel']) ? 1  : 0;
          $pergunta->fk_id_subcategoria = $_POST['fk_id_subcategoria'];
 
          $pergunta->SetPergunta($pergunta);

@@ -20,7 +20,7 @@ class Subcategoria
             if(isset($_POST['btn-editar-subcategoria'])) {
                 $this->nomesubcategoria = $_POST['nomesubcategoria'];
                 $this->fk_id_categoria = $_POST['fk_id_categoria'];
-                $this->visivel = isset($_POST['visivel']) ? ($_POST['visivel'] == '1' ? true : false) : false;
+                $this->visivel = isset($_POST['visivel']) ? 1  : 0;
                 $this->id_subcategoria = $_POST['id_subcategoria'];
                 if($this->visivel == 1){
                 $query = "UPDATE subcategoria SET nomesubcategoria =  :nomesubcategoria , visivel = :visivel , fk_id_categoria = :fk_id_categoria WHERE id_subcategoria = :id_subcategoria";
