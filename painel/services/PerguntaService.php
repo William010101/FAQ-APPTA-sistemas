@@ -25,7 +25,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
          $pergunta->resposta = $_POST['resposta'];
          $pergunta->chave = $_POST['chave'];
          $pergunta->video = $_POST['video'];
-         $pergunta->fk_id_subcategoria = $_POST['fk_id_subcategoria'];
+         $pergunta->fk_id_subcategoria = (int) $_POST['fk_id_subcategoria'] == 0 ?  null :  (int) $_POST['fk_id_subcategoria'];
+         $pergunta->fk_id_categoria = (int) $_POST['fk_id_categoria'] == 0 ? null : (int) $_POST['fk_id_categoria'];
          $pergunta->datacadastro = $_POST['dataCadastro'];
          $pergunta->usuario = $_POST['usuarioCadastro'];
          $pergunta->idusuario = $_POST['usuarioId'];
@@ -95,8 +96,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
          $pergunta->usuario = $_POST['usuarioCadastro'];
          $pergunta->idusuario = $_POST['usuarioId'];
          $pergunta->visivel = isset($_POST['visivel']) ? 1  : 0;
-         $pergunta->fk_id_subcategoria = $_POST['fk_id_subcategoria'];
-
+         $pergunta->fk_id_subcategoria = (int) $_POST['fk_id_subcategoria'] == 0 ?  null :  (int) $_POST['fk_id_subcategoria'];
+         $pergunta->fk_id_categoria = (int) $_POST['fk_id_categoria'] == 0 ? null : (int) $_POST['fk_id_categoria'];
          $pergunta->SetPergunta($pergunta);
          
          $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);

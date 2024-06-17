@@ -4,13 +4,13 @@ include_once 'includes/header.php';
 include_once 'services/PerguntaService.php';
 include_once '../php_action/ClassePergunta.php';
 include_once '../php_action/ClasseSubcategoria.php';
+include_once '../php_action/ClasseCategoria.php';
 include_once '../php_action/ClasseResposta_Imagem.php';
 $pergunta = new Pergunta();
 $subcategoria = new Subcategoria();
+$categoria = new Categoria();
 $imagem = new Respostaimagem();
 $service = new PerguntaService();
-
-
 ?>
 
 
@@ -23,8 +23,10 @@ $service = new PerguntaService();
                 <?php
                 $perguntas = $pergunta->GetPergunta($_GET['id']);
                 foreach ($perguntas as $perg):
+
                     ?>
                                 <input type="hidden" name="id_pergunta" value="<?php echo $perg->id_pergunta; ?>">
+                                <input type="hidden" name="id_pergunta" value="<?php echo $perg->fk_id_categoria;?>">
                                 <div class="form-group">
 
                                     <h6> <label class="mb-0" for="pergunta">Titulo</label><br></h6>
@@ -35,22 +37,35 @@ $service = new PerguntaService();
                                 <div class="form-group">
                                     <h6><label class="mb-0" for="chave">SubCategoria</label></h6>
 
-                                    <select class="form-select" id="floatingSelect" aria-label="Floating label select example"
-                                        name="fk_id_subcategoria" id="fk_id_subcategoria">
-
+                                    <select class="form-select" id="floatingSelect" aria-label="Floating label select example" name="fk_id_subcategoria" id="fk_id_subcategoria">
+                                    <option >Selecione </option>
                                         <?php
                                         $subcategorias = $subcategoria->GetTodasSubcategoriasVisiveis();
                                         foreach ($subcategorias as $sub):
                                             ?>
-                                        <?php if ($perg->fk_id_subcategoria == $sub->id_subcategoria): ?>
-                                        <option selected value="<?php echo $sub->id_subcategoria; ?>">
-                                            <?php echo $sub->nomesubcategoria; ?>
-                                        </option>
-                                        <?php endif ?>
-                                        <option value="<?php echo $sub->id_subcategoria; ?>"><?php echo $sub->nomesubcategoria; ?>
-                                        </option>
+                                            <?php if ($perg->fk_id_subcategoria == $sub->id_subcategoria): ?>
+                                                <option selected value="<?php echo $sub->id_subcategoria; ?>">
+                                                    <?php echo $sub->nomesubcategoria; ?>
+                                                </option>
+                                            <?php endif; ?>
+                                                <option value="<?php echo $sub->id_subcategoria; ?>"><?php echo $sub->nomesubcategoria; ?></option>                                           
                                         <?php endforeach; ?>
                                         
+                                    </select>
+
+                                    <h6> <label class="mb-0" for="pergunta"> Categoria </label><br></h6>
+                                    
+                                    <select class="form-select mb-3" id="floatingSelect" aria-label="Floating label select example"
+                                        name="fk_id_categoria" id="fk_id_categoria" required>
+                                        <option >Selecione </option>
+                                        <?php $categorias = $categoria->GetTodasCategorias(); 
+                                        foreach ($categorias as $cat):?>
+                                        <?php if($perg->fk_id_categoria == $cat->id_categoria):?>
+                                        <option selected value="<?php echo $cat->id_categoria ?>"><?php echo $cat->nomecategoria;?></option>
+                                        <?php endif?>
+                                        <option value="<?php echo $cat->id_categoria ?>"><?php echo $cat->nomecategoria; ?></option>
+                                        <?php endforeach; ?>
+                                             
                                     </select>
 
                                 </div>

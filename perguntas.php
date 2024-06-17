@@ -20,6 +20,7 @@ $pergunta = new Pergunta();
     <div class="container-fluid">
         <div class="container">
         <?php
+            
             $breadcrumb = $pergunta->BreadCrumbPergunta($_GET['id']);
             foreach ($breadcrumb as $crumb):
                 ?>
@@ -36,12 +37,12 @@ $pergunta = new Pergunta();
                             </li>
                         </ol>
                     </nav>
-            <h2 class="produtos-titulos mt-2 mb-5 ml-2"><?php echo strtoupper($crumb['nomesubcategoria']); ?></h2>
+            <h2 class="produtos-titulos mt-2 mb-5 ml-2"><?php echo strtoupper($crumb['nomesubcategoria']);?></h2>
             <?php endforeach; ?>
             <div class="row">
             <h2 class="titulos mt-2 mb-5 ml-2 text-center" >Perguntas</h2>
-                <?php
-                $perguntas = $pergunta->GetPerguntas($_GET['id']);
+                <?php 
+                $perguntas = $pergunta->GetPerguntas($_GET['categoria'], $_GET['id']);
                 foreach ($perguntas as $perg):
 
                     ?>

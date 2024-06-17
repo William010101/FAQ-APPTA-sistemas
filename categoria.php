@@ -3,6 +3,8 @@ include_once 'include/ref.php';
 include_once 'php_action/ClasseCategoria.php';
 include_once 'php_action/ClasseSubcategoria.php';
 include_once 'php_action/ClasseProduto.php';
+include_once 'php_action/ClassePergunta.php';
+$pergunta = new Pergunta();
 $produto = new Produto();
 $categoria = new Categoria();
 $subcategoria = new Subcategoria();
@@ -52,6 +54,8 @@ $subcategoria = new Subcategoria();
                                         <span class="d-inline-block text-truncate" style="max-width: 100%;">
                                             <?php
                                             $subcategorias = $subcategoria->GetSubcategorias($cat->id_categoria);
+                                            if ($subcategorias):
+                                            
                                             foreach ($subcategorias as $sub):
                                                 ?>
                                                     <a href="subcategoria?id=<?php echo $cat->id_categoria; ?>"
@@ -64,6 +68,22 @@ $subcategoria = new Subcategoria();
                                     <a href="subcategoria?id=<?php echo $cat->id_categoria; ?>" class="btn btn-recentes">
                                         Visualizar todas subcategorias
                                     </a>
+                                    <?php else: ?>
+                                    <?php
+                                        $perguntas = $pergunta->GetPerguntasCat( $cat->id_categoria );
+                                        foreach ($perguntas as $perg):
+                                            ?>
+                                                    <a href="resposta?id=<?php echo $perg->id_pergunta ?>"
+                                                        class="link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">
+                                                        <?php echo $perg->pergunta; ?>
+                                                    </a><br>
+                                        <?php endforeach; ?>
+                                        </span>
+                                    </div>
+                                    <a href="perguntas?categoria=<?php echo $cat->nomecategoria?>&id=<?php echo $cat->id_categoria?>" class="btn btn-recentes">
+                                        Visualizar todas as perguntas da Categoria
+                                    </a>
+                                    <?php endif; ?>
                                 </div>
                             </div>
                     <?php endforeach; ?>

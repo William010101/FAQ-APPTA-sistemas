@@ -12,12 +12,14 @@ class Pergunta
     public string $usuario;
     public int $idusuario;
     public bool $visivel;
-    public int $fk_id_subcategoria;
+    public ?int $fk_id_subcategoria; // Permite que seja nulo
+    public ?int $fk_id_categoria;    // Permite que seja nulo
     private $Conexao;
 
     public function __construct()
     {
         $this->Conexao = new Conexao();
+        
     }
 
 
@@ -48,9 +50,9 @@ class Pergunta
         try {
             $pdo = $this->Conexao->getPdo();
             if ($pergunta->visivel == 1) {
-                $query = "  UPDATE pergunta SET pergunta = :pergunta, resposta = :resposta, datacadastro = :datacadastro, chave = :chave, video = :video, usuario = :usuario, idusuario = :idusuario, visivel = :visivel, fk_id_subcategoria = :fk_id_subcategoria WHERE id_pergunta = :id_pergunta";
+                $query = "  UPDATE pergunta SET pergunta = :pergunta, resposta = :resposta, datacadastro = :datacadastro, chave = :chave, video = :video, usuario = :usuario, idusuario = :idusuario, visivel = :visivel, fk_id_subcategoria = :fk_id_subcategoria, fk_id_categoria = :fk_id_categoria WHERE id_pergunta = :id_pergunta";
             } else {
-                $query = "  UPDATE pergunta SET pergunta = :pergunta, resposta = :resposta, datacadastro = :datacadastro, chave = :chave, video = :video, usuario = :usuario, idusuario = :idusuario, visivel = :visivel, fk_id_subcategoria = :fk_id_subcategoria WHERE id_pergunta = :id_pergunta";
+                $query = "  UPDATE pergunta SET pergunta = :pergunta, resposta = :resposta, datacadastro = :datacadastro, chave = :chave, video = :video, usuario = :usuario, idusuario = :idusuario, visivel = :visivel, fk_id_subcategoria = :fk_id_subcategoria, fk_id_categoria = :fk_id_categoria WHERE id_pergunta = :id_pergunta";
             }
             $stmt = $pdo->prepare($query);
             $stmt->bindParam(':id_pergunta', $pergunta->id_pergunta, PDO::PARAM_INT);
@@ -63,6 +65,7 @@ class Pergunta
             $stmt->bindParam(':idusuario', $pergunta->idusuario, PDO::PARAM_INT);
             $stmt->bindParam(':visivel', $pergunta->visivel, PDO::PARAM_BOOL);
             $stmt->bindParam(':fk_id_subcategoria', $pergunta->fk_id_subcategoria, PDO::PARAM_INT);
+            $stmt->bindParam(':fk_id_categoria', $pergunta->fk_id_categoria, PDO::PARAM_INT);
             $stmt->execute();
 
         } catch (PDOException $e) {
@@ -74,8 +77,8 @@ class Pergunta
         try {
             $pdo = $this->Conexao->getPdo();
 
-            $query = "INSERT INTO pergunta (pergunta, resposta, datacadastro, chave, video, usuario, idusuario, visivel, fk_id_subcategoria) VALUES 
-            (:pergunta, :resposta, :datacadastro, :chave, :video, :usuario, :idusuario, :visivel, :fk_id_subcategoria)";
+            $query = "INSERT INTO pergunta (pergunta, resposta, datacadastro, chave, video, usuario, idusuario, visivel, fk_id_subcategoria,  fk_id_categoria) VALUES 
+            (:pergunta, :resposta, :datacadastro, :chave, :video, :usuario, :idusuario, :visivel, :fk_id_subcategoria, :fk_id_categoria)";
 
             $stmt = $pdo->prepare($query);
             $stmt->bindParam(':pergunta', $pergunta->pergunta, PDO::PARAM_STR);
@@ -87,6 +90,7 @@ class Pergunta
             $stmt->bindParam(':idusuario', $pergunta->idusuario, PDO::PARAM_INT);
             $stmt->bindParam(':visivel', $pergunta->visivel, PDO::PARAM_BOOL);
             $stmt->bindParam(':fk_id_subcategoria', $pergunta->fk_id_subcategoria, PDO::PARAM_INT);
+            $stmt->bindParam(':fk_id_categoria', $pergunta->fk_id_categoria, PDO::PARAM_INT);
             $stmt->execute();
             return $pdo->lastInsertId();
         } catch (PDOException $e) {
@@ -109,15 +113,34 @@ class Pergunta
             throw new PDOException($e->getMessage(), (int) $e->getCode());
         }
     }
-    public function GetPerguntas($id_subcategoria)
+    public function GetPerguntas($nome, $id_subcategoria)
+    {
+
+        try {
+            $pdo = $this->Conexao->getPdo();
+//fk_id_subcategoria = :id_subcategoria or
+            $query = "SELECT * FROM pergunta 
+            JOIN categoria ON (nomecategoria = :nome) WHERE fk_id_categoria = :id_categoria AND pergunta.visivel = true";
+            $stmt = $pdo->prepare($query);
+            //$stmt->bindParam(':id_subcategoria', $id_subcategoria, PDO::PARAM_INT);
+            $stmt->bindParam(':id_categoria', $id_subcategoria, PDO::PARAM_INT);
+            $stmt->bindParam(':nome', $nome, PDO::PARAM_STR);
+            $stmt->execute();
+            $stmt->setFetchMode(PDO::FETCH_CLASS, 'Pergunta');
+            return $stmt->fetchAll();
+        } catch (PDOException $e) {
+            throw new PDOException($e->getMessage(), (int) $e->getCode());
+        }
+    }
+    public function GetPerguntasCat($id_categoria)
     {
 
         try {
             $pdo = $this->Conexao->getPdo();
 
-            $query = "SELECT * FROM pergunta where fk_id_subcategoria = :id_subcategoria AND visivel = true";
+            $query = "SELECT * FROM pergunta where fk_id_categoria = :id_categoria AND visivel = true";
             $stmt = $pdo->prepare($query);
-            $stmt->bindParam(':id_subcategoria', $id_subcategoria, PDO::PARAM_INT);
+            $stmt->bindParam(':id_categoria', $id_categoria, PDO::PARAM_INT);
             $stmt->execute();
             $stmt->setFetchMode(PDO::FETCH_CLASS, 'Pergunta');
             return $stmt->fetchAll();

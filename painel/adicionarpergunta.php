@@ -5,8 +5,10 @@ include_once 'includes/ref.php';
 include_once 'services/PerguntaService.php';
 include_once 'includes/header.php';
 include_once '../php_action/ClasseSubcategoria.php';
+include_once '../php_action/ClasseCategoria.php';
 require_once '../php_action/ClasseUsuario.php';
 $subcategoria = new Subcategoria();
+$categoria = new Categoria();
 $usuario = new Usuario();
 $service = new PerguntaService();
 $service->PostPergunta();
@@ -24,7 +26,7 @@ $service->PostPergunta();
                         placeholder="Titulo da pergunta">
 
                 </div>
-                <h6> <label class="mb-0" for="pergunta">Nome da Subcategoria relacionada</label><br></h6>
+                <h6> <label class="mb-0" for="pergunta">Nome da Subcategoria </label><br></h6>
 
                 <select class="form-select mb-3" id="floatingSelect" aria-label="Floating label select example"
                     name="fk_id_subcategoria" id="fk_id_subcategoria" required>
@@ -34,6 +36,18 @@ $service->PostPergunta();
                     foreach ($subcategorias as $sub):
                         ?>
                         <option value="<?php echo $sub->id_subcategoria; ?>"><?php echo $sub->nomesubcategoria; ?></option>
+                    <?php endforeach; ?>
+                </select>
+                <h6> <label class="mb-0" for="pergunta">Nome da Categoria </label><br></h6>
+
+                <select class="form-select mb-3" id="floatingSelect" aria-label="Floating label select example"
+                    name="fk_id_categoria" id="fk_id_categoria" required>
+                    <option selected>Selecione </option>
+                    <?php
+                    $categorias = $categoria->GetTodasCategorias();
+                    foreach ($categorias as $cat):
+                        ?>
+                        <option value="<?php echo $cat->id_categoria; ?>"><?php echo $cat->nomecategoria; ?></option>
                     <?php endforeach; ?>
                 </select>
                 <div class="form-group">
