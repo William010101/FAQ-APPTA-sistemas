@@ -26,7 +26,7 @@ $service = new PerguntaService();
 
                     ?>
                                 <input type="hidden" name="id_pergunta" value="<?php echo $perg->id_pergunta; ?>">
-                                <input type="hidden" name="id_pergunta" value="<?php echo $perg->fk_id_categoria;?>">
+                                
                                 <div class="form-group">
 
                                     <h6> <label class="mb-0" for="pergunta">Titulo</label><br></h6>

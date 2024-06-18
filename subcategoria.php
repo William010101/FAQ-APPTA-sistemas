@@ -53,7 +53,7 @@ $subcategoria = new Subcategoria();
                                     <div class="card-text categoria">
                                         <span class="d-inline-block text-truncate" style="max-width: 100%;">
                                         <?php
-                                        $perguntas = $pergunta->GetPerguntas($sub->id_subcategoria);
+                                        $perguntas = $pergunta->GetPerguntaSub($sub->id_subcategoria);
                                         foreach ($perguntas as $perg):
                                             ?>
                                                     <a href="resposta?id=<?php echo $perg->id_pergunta ?>"
@@ -63,7 +63,7 @@ $subcategoria = new Subcategoria();
                                         <?php endforeach; ?>
                                         </span>
                                     </div>
-                                    <a href="perguntas?id=<?php echo $sub->id_subcategoria ?>" class="btn btn-recentes">
+                                    <a href="perguntas?subcategoria=<?php echo $sub->nomesubcategoria;?>&id=<?php echo $sub->id_subcategoria ?>" class="btn btn-recentes">
                                         Visualizar todas as perguntas da subcategoria
                                     </a>
 

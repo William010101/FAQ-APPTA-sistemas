@@ -24,6 +24,8 @@ $respostaimagem = new Respostaimagem();
         <nav aria-label="breadcrumb">
             <?php
             $breadcrumb = $pergunta->BreadCrumbReposta($_GET['id']);
+            if ($breadcrumb):
+           
             foreach ($breadcrumb as $crumb):
                 ?>
                 <ol class="breadcrumb mt-4">
@@ -45,6 +47,27 @@ $respostaimagem = new Respostaimagem();
                     </li>
                 </ol>
             <?php endforeach; ?>
+            <?php else: 
+                $breadcrumbcat = $pergunta->BreadCrumbRepostaCat($_GET['id']);
+                foreach ($breadcrumbcat as $crumb):
+                    ?>
+                    <ol class="breadcrumb mt-4">
+                        <li class="breadcrumb-item text-uppercase">
+                            <a id="breadcrumb"
+                                href="categoria?id=<?php echo $crumb['id_produto']; ?>"><?php echo $crumb['nomeproduto']; ?></a>
+                        </li>
+                        <li class="breadcrumb-item text-uppercase">
+                            <a id="breadcrumb"
+                                href="subcategoria?id=<?php echo $crumb['id_categoria']; ?>"><?php echo $crumb['nomecategoria']; ?></a>
+                        </li>
+                        <li class="breadcrumb-item text-uppercase">
+                            <a id="breadcrumb"
+                                href="resposta?id=<?php echo $crumb['id_pergunta']; ?>"><?php echo $crumb['pergunta']; ?></a>
+                        </li>
+                    </ol>
+                <?php endforeach; ?>
+            <?php endif; ?>
+             
         </nav>
 
         <?php
@@ -64,7 +87,7 @@ $respostaimagem = new Respostaimagem();
             <div class="col-xs-12 col-md-12 mb-50 body resposta-perguntalink">
                 <?php echo $perg->resposta ?>
                 <div class="social-icons-footer">
-                    <div class="row">
+                    <di class="row">
                         <div class="imagemresposta">
                             <?php
                             $imagens = $respostaimagem->GetImagemRespostaPergunta($perg->id_pergunta);
@@ -77,7 +100,7 @@ $respostaimagem = new Respostaimagem();
                             <?php endforeach; ?>
 
                         </div>
-                        <?php if ($perg->video != "") { ?>
+                        <?php if ($perg->video != ""): ?>
 
                             <div class="col-12">
                                 <div class="card video mt-5">
@@ -87,9 +110,10 @@ $respostaimagem = new Respostaimagem();
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    <?php } else {
-                        } ?>
+                        
+                    <?php else:?>
+                    
+                    <?php endif; ?>
                     <hr>
                 </div>
             </div>

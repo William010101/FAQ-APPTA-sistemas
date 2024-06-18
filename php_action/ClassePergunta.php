@@ -113,18 +113,33 @@ class Pergunta
             throw new PDOException($e->getMessage(), (int) $e->getCode());
         }
     }
-    public function GetPerguntas($nome, $id_subcategoria)
+    public function GetCatPerguntas($nome, $id_categoria)
     {
 
         try {
             $pdo = $this->Conexao->getPdo();
-//fk_id_subcategoria = :id_subcategoria or
             $query = "SELECT * FROM pergunta 
             JOIN categoria ON (nomecategoria = :nome) WHERE fk_id_categoria = :id_categoria AND pergunta.visivel = true";
             $stmt = $pdo->prepare($query);
-            //$stmt->bindParam(':id_subcategoria', $id_subcategoria, PDO::PARAM_INT);
-            $stmt->bindParam(':id_categoria', $id_subcategoria, PDO::PARAM_INT);
+            $stmt->bindParam(':id_categoria', $id_categoria, PDO::PARAM_INT);
             $stmt->bindParam(':nome', $nome, PDO::PARAM_STR);
+            $stmt->execute();
+            $stmt->setFetchMode(PDO::FETCH_CLASS, 'Pergunta');
+            return $stmt->fetchAll();
+        } catch (PDOException $e) {
+            throw new PDOException($e->getMessage(), (int) $e->getCode());
+        }
+    }
+    public function GetSubPerguntas($nomesub, $id_subcategoria)
+    {
+
+        try {
+            $pdo = $this->Conexao->getPdo();
+            $query = "SELECT * FROM pergunta 
+            JOIN subcategoria ON (nomesubcategoria = :nomesub) WHERE fk_id_subcategoria = :id_subcategoria AND pergunta.visivel = true";
+            $stmt = $pdo->prepare($query);
+            $stmt->bindParam(':id_subcategoria', $id_subcategoria, PDO::PARAM_INT);
+            $stmt->bindParam(':nomesub', $nomesub, PDO::PARAM_STR);
             $stmt->execute();
             $stmt->setFetchMode(PDO::FETCH_CLASS, 'Pergunta');
             return $stmt->fetchAll();
@@ -141,6 +156,22 @@ class Pergunta
             $query = "SELECT * FROM pergunta where fk_id_categoria = :id_categoria AND visivel = true";
             $stmt = $pdo->prepare($query);
             $stmt->bindParam(':id_categoria', $id_categoria, PDO::PARAM_INT);
+            $stmt->execute();
+            $stmt->setFetchMode(PDO::FETCH_CLASS, 'Pergunta');
+            return $stmt->fetchAll();
+        } catch (PDOException $e) {
+            throw new PDOException($e->getMessage(), (int) $e->getCode());
+        }
+    }
+    public function GetPerguntaSub($id_subcategoria)
+    {
+
+        try {
+            $pdo = $this->Conexao->getPdo();
+
+            $query = "SELECT * FROM pergunta where fk_id_subcategoria = :id_subcategoria AND visivel = true";
+            $stmt = $pdo->prepare($query);
+            $stmt->bindParam(':id_subcategoria', $id_subcategoria, PDO::PARAM_INT);
             $stmt->execute();
             $stmt->setFetchMode(PDO::FETCH_CLASS, 'Pergunta');
             return $stmt->fetchAll();
@@ -183,6 +214,22 @@ class Pergunta
             throw new PDOException($e->getMessage(), (int) $e->getCode());
         }
     }
+    public function BreadCrumbPerguntaCat($nome)
+    {
+        try {
+            $pdo = $this->Conexao->getPdo();
+            $query = "SELECT id_produto, nomeproduto , id_categoria, nomecategoria
+            FROM produto
+            INNER JOIN categoria ON id_produto = categoria.fk_id_produto
+            WHERE nomecategoria = :nome";
+            $stmt = $pdo->prepare($query);
+            $stmt->bindParam(':nome', $nome, PDO::PARAM_INT);
+            $stmt->execute();
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            throw new PDOException($e->getMessage(), (int) $e->getCode());
+        }
+    }
     public function BreadCrumbReposta($id_pergunta)
     {
         try {
@@ -201,21 +248,39 @@ class Pergunta
             throw new PDOException($e->getMessage(), (int) $e->getCode());
         }
     }
+    public function BreadCrumbRepostaCat($id_pergunta)
+    {
+        try {
+            $pdo = $this->Conexao->getPdo();
+            $query = "SELECT id_produto, nomeproduto , id_categoria, nomecategoria, id_pergunta, pergunta
+            FROM pergunta
+            INNER JOIN categoria ON fk_id_categoria = pergunta.fk_id_categoria
+            INNER JOIN produto ON id_produto = categoria.fk_id_produto
+            WHERE id_pergunta = :id_pergunta
+            LIMIT 1";
+            $stmt = $pdo->prepare($query);
+            $stmt->bindParam(':id_pergunta', $id_pergunta, PDO::PARAM_INT);
+            $stmt->execute();
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            throw new PDOException($e->getMessage(), (int) $e->getCode());
+        }
+    }
     public function Pesquisar()
     {
 
         if (isset($_POST['btnpesquisar'])) {
-            $palavraChave = $_POST['pesquisar'];
+            $palavraChave = strtolower($_POST['pesquisar']);
             $pergunta = new Pergunta();
         }
         try {
             $pdo = $this->Conexao->getPdo();
             
             $query = 
-                "   SELECT DISTINCT ordem, id_pergunta, pergunta, resposta, nomesubcategoria, nomecategoria, nomeproduto FROM (
+                "   SELECT DISTINCT id_pergunta, pergunta, resposta, nomesubcategoria, nomecategoria, nomeproduto FROM (
                     SELECT 1 AS ordem, id_pergunta, pergunta, resposta, nomesubcategoria, nomecategoria, nomeproduto FROM pergunta
                     JOIN subcategoria ON (id_subcategoria = fk_id_subcategoria)
-                    JOIN categoria ON (id_categoria = fk_id_categoria)
+                    JOIN categoria ON (id_categoria = subcategoria.fk_id_categoria)
                     JOIN produto ON (fk_id_produto = id_produto)
                     WHERE " . $pergunta->obterclausulawhere("chave", $palavraChave) . " 
 
@@ -223,7 +288,7 @@ class Pergunta
 
                     SELECT 2 AS ordem, id_pergunta, pergunta, resposta, nomesubcategoria, nomecategoria, nomeproduto FROM pergunta
                     JOIN subcategoria ON (id_subcategoria = fk_id_subcategoria)
-                    JOIN categoria ON (id_categoria = fk_id_categoria)
+                    JOIN categoria ON (id_categoria = subcategoria.fk_id_categoria)
                     JOIN produto ON (fk_id_produto = id_produto)
                     WHERE " . $pergunta->obterclausulawhere("pergunta", $palavraChave) . "
 
@@ -231,7 +296,7 @@ class Pergunta
 
                     SELECT 3 AS ordem, id_pergunta, pergunta, resposta, nomesubcategoria, nomecategoria, nomeproduto FROM pergunta 
                     JOIN subcategoria ON (id_subcategoria = fk_id_subcategoria)
-                    JOIN categoria ON (id_categoria = fk_id_categoria)
+                    JOIN categoria ON (id_categoria = subcategoria.fk_id_categoria)
                     JOIN produto ON (fk_id_produto = id_produto)
                     WHERE " . $pergunta->obterclausulawhere("nomesubcategoria", $palavraChave) . "
 
@@ -239,7 +304,7 @@ class Pergunta
 
                     SELECT 4 AS ordem, id_pergunta, pergunta, resposta, nomesubcategoria, nomecategoria, nomeproduto FROM pergunta 
                     JOIN subcategoria ON (id_subcategoria = fk_id_subcategoria)
-                    JOIN categoria ON (id_categoria = fk_id_categoria)
+                    JOIN categoria ON (id_categoria = subcategoria.fk_id_categoria)
                     JOIN produto ON (fk_id_produto = id_produto)
                     WHERE " . $pergunta->obterclausulawhere("nomecategoria", $palavraChave) . "
                     ORDER BY ordem 
@@ -261,7 +326,7 @@ class Pergunta
         $clausulaWhere = '';
         for ($i = 0; $i < count($palavraPesquisa); $i++) {
             if ($i == 0) {
-                $clausulaWhere .= " $nomeDocampo LIKE " . "'%" . $palavraPesquisa[$i] . "%'";
+                $clausulaWhere .= " LOWER($nomeDocampo) LIKE " . "'%" . $palavraPesquisa[$i] . "%'";
             } else {
                 $clausulaWhere .= " AND $nomeDocampo LIKE " . "'%" . $palavraPesquisa[$i] . "%'";
             }
