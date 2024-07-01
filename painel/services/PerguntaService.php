@@ -155,16 +155,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             }
            
          } 
-         if (!isset($_SESSION['reloaded'])) {
-            $_SESSION['reloaded'] = true;
-            echo '<script type="text/javascript">location.reload();</script>';
-            exit();
-        } else {
-            unset($_SESSION['reloaded']);
-        }
+         echo "<script>
+               window.location.href = 'perguntas.php';
+               </script>";
 
-      }
-         
+      }  
    }
 }
 

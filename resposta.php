@@ -18,7 +18,7 @@ $respostaimagem = new Respostaimagem();
 
     <?php include_once 'include/header.php'; ?>
 
-    <div class="container ">
+    <div class="container">
 
 
         <nav aria-label="breadcrumb">
@@ -84,7 +84,7 @@ $respostaimagem = new Respostaimagem();
 
             </div>
             <hr>
-            <div class="col-xs-12 col-md-12 mb-50 body resposta-perguntalink">
+            <div class="col-xs-12 col-md-12 mb-50 mx-auto resposta-perguntalink">
                 <?php echo $perg->resposta ?>
                 <div class="social-icons-footer">
                     <di class="row">
@@ -102,9 +102,9 @@ $respostaimagem = new Respostaimagem();
                         </div>
                         <?php if ($perg->video != ""): ?>
 
-                            <div class="col-12">
-                                <div class="card video mt-5">
-                                    <div class="card-header video mx-auto" id="headvideo">
+                            <div class="col-12 "">
+                                <div class="card video mt-5 mx-auto col-md-12 col-sm-12 col-12">
+                                    <div class="card-header video mx-auto col-sm-12 col-12" id="headvideo">
                                         <p class="blockquote video">ASSISTA AO VIDEO</p>
                                         <?php echo $perg->video ?>
                                     </div>
@@ -114,7 +114,7 @@ $respostaimagem = new Respostaimagem();
                     <?php else:?>
                     
                     <?php endif; ?>
-                    <hr>
+                    <hr class="mt-5">
                 </div>
             </div>
         <?php endforeach; ?>
