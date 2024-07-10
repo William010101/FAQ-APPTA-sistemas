@@ -39,7 +39,7 @@ $respostaimagem = new Respostaimagem();
                     </li>
                     <li class="breadcrumb-item text-uppercase">
                         <a id="breadcrumb"
-                            href="perguntas?id=<?php echo $crumb['id_subcategoria']; ?>"><?php echo $crumb['nomesubcategoria']; ?></a>
+                            href="perguntas?subcategoria=<?php echo $crumb['nomesubcategoria']; ?>&id=<?php echo $crumb['id_subcategoria']; ?>"><?php echo $crumb['nomesubcategoria']; ?></a>
                     </li>
                     <li class="breadcrumb-item text-uppercase">
                         <a id="breadcrumb"
@@ -58,7 +58,7 @@ $respostaimagem = new Respostaimagem();
                         </li>
                         <li class="breadcrumb-item text-uppercase">
                             <a id="breadcrumb"
-                                href="subcategoria?id=<?php echo $crumb['id_categoria']; ?>"><?php echo $crumb['nomecategoria']; ?></a>
+                                href="perguntas?categoria=<?php echo $crumb['nomecategoria']; ?>&id=<?php echo $crumb['id_categoria']; ?>"><?php echo $crumb['nomecategoria']; ?></a>
                         </li>
                         <li class="breadcrumb-item text-uppercase">
                             <a id="breadcrumb"
@@ -93,10 +93,10 @@ $respostaimagem = new Respostaimagem();
                             $imagens = $respostaimagem->GetImagemRespostaPergunta($perg->id_pergunta);
                             foreach ($imagens as $imagem):
                                 ?>
-                                <img class="mx-auto img-fluid" src="data:image/png;base64,<?= base64_encode($imagem->imagem) ?>"
+                                <img class="mx-auto img-fluid " src="data:image/png;base64,<?= base64_encode($imagem->imagem) ?>"
                                     alt="Imagem">
-                                <p class="mt-3 mb-0" id="autorArtigo"><?php echo $imagem->descricao; ?></p><br>
-                                <p id="autorArtigo"><?php echo $imagem->resposta; ?></p>
+                                <p class="mt-3 mb-0 font-weight-bold" ><?php echo $imagem->descricao; ?></p><br>
+                                <p class="font-weight-bold"><?php echo $imagem->resposta; ?></p>
                             <?php endforeach; ?>
 
                         </div>

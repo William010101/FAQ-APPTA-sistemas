@@ -33,7 +33,7 @@ $pergunta = new Pergunta();
 
                         <li class="breadcrumb-item text-uppercase">
                             <a id="breadcrumb"
-                                href="subcategoria?id=<?php echo $crumb['id_categoria']; ?>"><?php echo $crumb['nomecategoria']; ?></a>
+                                href="perguntas?categoria=<?php echo $crumb['nomecategoria']; ?>&id=<?php echo $crumb['id_categoria']; ?>"><?php echo $crumb['nomecategoria']; ?></a>
                     <?php endforeach; ?>
                     </ol>
                 </nav>
@@ -56,7 +56,7 @@ $pergunta = new Pergunta();
                         </li>
                         <li class="breadcrumb-item text-uppercase">
                             <a id="breadcrumb"
-                                href="perguntas?id=<?php echo $crumb['id_subcategoria']; ?>"><?php echo $crumb['nomesubcategoria']; ?></a>
+                                href="perguntas?subcategoria=<?php echo $crumb['nomesubcategoria']; ?>&id=<?php echo $crumb['id_subcategoria']; ?>"><?php echo $crumb['nomesubcategoria']; ?></a>
                         </li>
                         
                     <?php endforeach; ?>

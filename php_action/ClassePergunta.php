@@ -254,7 +254,7 @@ class Pergunta
             $pdo = $this->Conexao->getPdo();
             $query = "SELECT id_produto, nomeproduto , id_categoria, nomecategoria, id_pergunta, pergunta
             FROM pergunta
-            INNER JOIN categoria ON fk_id_categoria = pergunta.fk_id_categoria
+            INNER JOIN categoria ON id_categoria = pergunta.fk_id_categoria
             INNER JOIN produto ON id_produto = categoria.fk_id_produto
             WHERE id_pergunta = :id_pergunta
             LIMIT 1";
@@ -328,7 +328,7 @@ class Pergunta
             if ($i == 0) {
                 $clausulaWhere .= " LOWER($nomeDocampo) LIKE " . "'%" . $palavraPesquisa[$i] . "%'";
             } else {
-                $clausulaWhere .= " AND $nomeDocampo LIKE " . "'%" . $palavraPesquisa[$i] . "%'";
+                $clausulaWhere .= " AND LOWER($nomeDocampo) LIKE " . "'%" . $palavraPesquisa[$i] . "%'";
             }
         }
 
