@@ -84,19 +84,21 @@ $respostaimagem = new Respostaimagem();
 
             </div>
             <hr>
-            <div class="col-xs-12 pt-1 col-md-12 mb-50 mx-auto resposta-perguntalink">
+            <div class="col-xs-12 p-3 pt-1 col-md-12 mb-50 mx-auto resposta-perguntalink">
                 <div class="mb-5"><?php echo $perg->resposta ?></div>
                 <div class="social-icons-footer">
                     <di class="row">
-                        <div class="imagemresposta row">
+                        <div class="imagemresposta">
                             <?php
                             $imagens = $respostaimagem->GetImagemRespostaPergunta($perg->id_pergunta);
                             foreach ($imagens as $imagem):
                                 ?>
-                                <img class="mx-auto img-fluid " src="data:image/png;base64,<?= base64_encode($imagem->imagem) ?>"
-                                    alt="Imagem">
-                                <p class="mt-3 mb-0 font-weight-bold" ><?php echo $imagem->descricao; ?></p><br>
-                                <p class="font-weight-bold"><?php echo $imagem->resposta; ?></p>
+                            <div class="text-center w-100">
+                                <img class="mx-auto img-fluid" src="data:image/png;base64,<?= base64_encode($imagem->imagem) ?>" alt="Imagem">
+                                <p class="mb-0"><?php echo $imagem->descricao; ?></p><br>
+                            </div>        
+                                
+                                <p><?php echo $imagem->resposta; ?></p>
                             <?php endforeach; ?>
 
                         </div>
