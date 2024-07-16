@@ -4,10 +4,12 @@ session_start();
 include_once 'includes/header.php';
 include_once 'services/PerguntaService.php';
 include_once '../php_action/ClasseSubcategoria.php';
+include_once '../php_action/ClasseCategoria.php';
 include_once '../php_action/ClassePergunta.php';
 include_once '../php_action/ClasseConnection.php';
 $pergunta = new Pergunta();
 $subcategoria = new Subcategoria();
+$categoria = new Categoria();
 $service = new PerguntaService();
 $service->DeletarPergunta();
 ?>
@@ -27,7 +29,8 @@ $service->DeletarPergunta();
                 <thead class="thead-light ">
                     <tr>
                         <th>Pergunta</th>
-                        <th>Subcategoria relacionada</th>
+                        <th>Subcategoria</th>
+                        <th>Categoria</th>
                         <th>Editar</th>
                         <th>Deletar</th>
                     </tr>
@@ -55,7 +58,7 @@ $service->DeletarPergunta();
                                 </div>
                             </td>
                                 
-                                <td width="45%">
+                                <td width="22%">
                                     <?php
                                 $subcategorias = $subcategoria->GetTodasSubcategorias();
                                 foreach ($subcategorias as $sub):
@@ -63,6 +66,18 @@ $service->DeletarPergunta();
                                    <?php
                                    if ($perg->fk_id_subcategoria == $sub->id_subcategoria) {
                                        echo $sub->nomesubcategoria;
+                                   }
+                                   ?>
+                                  <?php endforeach; ?>
+                                </td>
+                                <td width="22%">
+                                    <?php
+                                $categorias = $categoria->GetTodasCategorias();
+                                foreach ($categorias as $cat):
+                                    ?>
+                                   <?php
+                                   if ($perg->fk_id_categoria == $cat->id_categoria) {
+                                       echo $cat->nomecategoria;
                                    }
                                    ?>
                                   <?php endforeach; ?>

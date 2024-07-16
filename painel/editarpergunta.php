@@ -31,42 +31,53 @@ $service = new PerguntaService();
 
                                     <h6> <label class="mb-0" for="pergunta">Titulo</label><br></h6>
                                     <input class="border w-100 p-2" type="text" name="pergunta" id="pergunta"
-                                        value="<?php echo $perg->pergunta; ?>" placeholder="pergunta">
+                                        value="<?php echo htmlspecialchars($perg->pergunta, ENT_QUOTES); ?>" placeholder="pergunta">
 
                                 </div>
                                 <div class="form-group">
+                                <script>
+                                    //script para que se um dos selects for selecionado o outro fica vazio
+                                    function resetSelect(selectId) {
+                                        const otherSelectId = selectId === 'select1' ? 'select2' : 'select1';
+                                        const otherSelect = document.getElementById(otherSelectId);
+                                        otherSelect.selectedIndex = 0; // Reseta para o valor padrão
+                                    }
+                                </script>
+
+                                    <h6> <label class="mb-0" for="pergunta"> Categoria </label><br></h6>
+
+                                    <h6 class="text-danger">A categoria só deve ser selecionada caso a pergunta não tenha uma subcategoria</h6>
+                                    
+                                    <select class="form-select mb-3" id="select1" onchange="resetSelect('select1')" aria-label="Floating label select example"
+                                        name="fk_id_categoria" id="fk_id_categoria" required>
+                                        <option >Selecione </option>
+                                        <?php $categorias = $categoria->GetTodasCategorias(); 
+                                        foreach ($categorias as $cat): ?>
+                                            <option value="<?php echo $cat->id_categoria; ?>" 
+                                                <?php if ($perg->fk_id_categoria == $cat->id_categoria): ?> selected <?php endif; ?>>
+                                                <?php echo $cat->nomecategoria; ?>
+                                            </option>
+                                        <?php endforeach; ?>
+                                             
+                                    </select>
+
                                     <h6><label class="mb-0" for="chave">SubCategoria</label></h6>
 
-                                    <select class="form-select" id="floatingSelect" aria-label="Floating label select example" name="fk_id_subcategoria" id="fk_id_subcategoria">
+                                    <select class="form-select" id="select2" onchange="resetSelect('select2')" aria-label="Floating label select example" name="fk_id_subcategoria" id="fk_id_subcategoria">
                                     <option >Selecione </option>
                                         <?php
                                         $subcategorias = $subcategoria->GetTodasSubcategoriasVisiveis();
                                         foreach ($subcategorias as $sub):
                                             ?>
-                                            <?php if ($perg->fk_id_subcategoria == $sub->id_subcategoria): ?>
-                                                <option selected value="<?php echo $sub->id_subcategoria; ?>">
-                                                    <?php echo $sub->nomesubcategoria; ?>
-                                                </option>
-                                            <?php endif; ?>
-                                                <option value="<?php echo $sub->id_subcategoria; ?>"><?php echo $sub->nomesubcategoria; ?></option>                                           
+                                            <option value="<?php echo $sub->id_subcategoria; ?>" 
+                                                <?php if ($perg->fk_id_subcategoria == $sub->id_subcategoria): ?> selected <?php endif; ?>>
+                                                <?php echo $sub->nomesubcategoria; ?>
+                                            </option>
                                         <?php endforeach; ?>
                                         
                                     </select>
 
-                                    <h6> <label class="mb-0" for="pergunta"> Categoria </label><br></h6>
-                                    
-                                    <select class="form-select mb-3" id="floatingSelect" aria-label="Floating label select example"
-                                        name="fk_id_categoria" id="fk_id_categoria" required>
-                                        <option >Selecione </option>
-                                        <?php $categorias = $categoria->GetTodasCategorias(); 
-                                        foreach ($categorias as $cat):?>
-                                        <?php if($perg->fk_id_categoria == $cat->id_categoria):?>
-                                        <option selected value="<?php echo $cat->id_categoria ?>"><?php echo $cat->nomecategoria;?></option>
-                                        <?php endif?>
-                                        <option value="<?php echo $cat->id_categoria ?>"><?php echo $cat->nomecategoria; ?></option>
-                                        <?php endforeach; ?>
-                                             
-                                    </select>
+
 
                                 </div>
                                 <div class="form-group">
@@ -108,17 +119,18 @@ $service = new PerguntaService();
                                                                         <h6><label class="mb-0">Descrição </label></h6>
                                                                         <input class="border border w-100 p-2 mb-3" name="descricaocad[]" id="descricao"
                                                                             placeholder="Descrição da imagem" data-role="tagsinput"
-                                                                            value="<?php echo $img->descricao; ?>">
+                                                                            value="<?php echo htmlspecialchars($img->descricao, ENT_QUOTES); ?>">
 
                                                                         <div class="form-floating">
                                                                             <h6><label class="mb-0">Resposta da imagem</label></h6>
-                                                                            <textarea class="form-control  mb-3" name="respostaimagemcad[]" id="respostaimagem"
+                                                                            <textarea class="form-control border ckeditor mb-3" rows="4" name="respostaimagemcad[]" id="respostaimagem"><?php echo $img->resposta; ?></textarea>
+                                                                            <!-- <textarea class="form-control  mb-3" name="respostaimagemcad[]" id="respostaimagem"
                                                                                 placeholder="Leave a comment here" id="floatingTextarea2"
-                                                                                style="height: 100px"><?php echo $img->resposta; ?></textarea>
+                                                                                style="height: 100px"><?php //echo $img->resposta; ?></textarea> -->
                                                                         </div>
                                                                         <h6><label class="mb-0">Ordem da seção</label></h6>
                                                                         <input class="border border w-100 p-2 mb-3" id="ordem" name="ordemcad[]" value="<?php echo $img->ordem; ?>">
-                                                                        <button onclick="excluirSecao(<?php echo $img->id_respostaimagem; ?>)" type="button" class="btn btn-outline-dark mx-auto w-25 mb-3" name="deletar-secao">Excluir</button>
+                                                                        <button onclick="excluirSecao(<?php echo htmlspecialchars($img->id_respostaimagem, ENT_QUOTES); ?>)" type="button" class="btn btn-outline-dark mx-auto w-25 mb-3" name="deletar-secao">Excluir</button>
                                                                         <hr class="w-75 mx-auto">                                                     
                                                                     </div>
                                                                     <!-- Modal -->
@@ -148,7 +160,7 @@ $service = new PerguntaService();
                                                 '<div id="campo' + controleCampo + '" class="p-3 mx-auto mb-3 row" style="background-color: #f6f6f6;">' +
                                                 '<hr class="w-75 mx-auto" />' +
                                                 '<h6><label class="mb-0">Seleicone a imagem</label></h6>' +
-                                                '<input class="form-control form-control-sm mb-3" id="formFileSm" type="file" name="imagem[]" id="imagem">' +
+                                                '<input required class="form-control form-control-sm mb-3" id="formFileSm" type="file" name="imagem[]" id="imagem">' +
 
                                                 '<input type="hidden" id="ordem" name="ordem[]" value="' + controleCampo + '">' +
                                                 '<input type="hidden" id="id_fk_pergunta" name="id_fk_pergunta[]" value="' + fkidpergunta + '">' +

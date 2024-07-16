@@ -30,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
          $pergunta->datacadastro = $_POST['dataCadastro'];
          $pergunta->usuario = $_POST['usuarioCadastro'];
          $pergunta->idusuario = $_POST['usuarioId'];
-         $pergunta->visivel = $_POST['visivel'];
+         $pergunta->visivel = isset($_POST['visivel']) ? 1  : 0;
 
          $idpergunta = $pergunta->CadastroPergunta($pergunta);
          if (isset($_FILES['imagem'])) {

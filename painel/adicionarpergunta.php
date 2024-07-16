@@ -25,22 +25,18 @@ $service->PostPergunta();
                     <input class="border w-100 p-2" type="text" name="pergunta" id="pergunta"
                         placeholder="Titulo da pergunta">
 
-                </div>
-                <h6> <label class="mb-0" for="pergunta">Nome da Subcategoria </label><br></h6>
-
-                <select class="form-select mb-3" id="floatingSelect" aria-label="Floating label select example"
-                    name="fk_id_subcategoria" id="fk_id_subcategoria" required>
-                    <option selected>Selecione </option>
-                    <?php
-                    $subcategorias = $subcategoria->GetTodasSubcategorias();
-                    foreach ($subcategorias as $sub):
-                        ?>
-                        <option value="<?php echo $sub->id_subcategoria; ?>"><?php echo $sub->nomesubcategoria; ?></option>
-                    <?php endforeach; ?>
-                </select>
+                </div>                
+                <script>
+                    //script para que se um dos selects for selecionado o outro fica vazio
+                    function resetSelect(selectId) {
+                        const otherSelectId = selectId === 'select1' ? 'select2' : 'select1';
+                        const otherSelect = document.getElementById(otherSelectId);
+                        otherSelect.selectedIndex = 0; // Reseta para o valor padrão
+                    }
+                </script>
                 <h6> <label class="mb-0" for="pergunta">Nome da Categoria </label><br></h6>
-
-                <select class="form-select mb-3" id="floatingSelect" aria-label="Floating label select example"
+                <h6 class="text-danger">A categoria só deve ser selecionada caso a pergunta não tenha uma subcategoria</h6>
+                <select class="form-select mb-3" id="select1"  onchange="resetSelect('select1')" aria-label="Floating label select example"
                     name="fk_id_categoria" id="fk_id_categoria" required>
                     <option selected>Selecione </option>
                     <?php
@@ -50,6 +46,19 @@ $service->PostPergunta();
                         <option value="<?php echo $cat->id_categoria; ?>"><?php echo $cat->nomecategoria; ?></option>
                     <?php endforeach; ?>
                 </select>
+                <h6> <label class="mb-0" for="pergunta">Nome da Subcategoria </label><br></h6>
+
+                <select class="form-select mb-3" id="select2"  onchange="resetSelect('select2')" aria-label="Floating label select example"
+                    name="fk_id_subcategoria" id="fk_id_subcategoria" required>
+                    <option selected>Selecione </option>
+                    <?php
+                    $subcategorias = $subcategoria->GetTodasSubcategorias();
+                    foreach ($subcategorias as $sub):
+                        ?>
+                        <option value="<?php echo $sub->id_subcategoria; ?>"><?php echo $sub->nomesubcategoria; ?></option>
+                    <?php endforeach; ?>
+                </select>
+
                 <div class="form-group">
 
                 <h6><label class="mb-0" for="chave">Chave </label></h6>
@@ -61,8 +70,11 @@ $service->PostPergunta();
                 <div class="form-group">
                     <h6><label class="mb-0 " for="resposta">Resposta</label></h6>
                     <textarea class="form-control border ckeditor" rows="4" name="resposta" id="resposta"></textarea>
+
                 </div>
-                <div id="formulario-imagem" class="form-group col-12 p-0">
+                
+
+                <div id="formulario-imagem"  class="form-group col-12 p-0">
 
                 </div>
                 <h3 class="font-weight-light mt-1 mb-3"> Inserir uma seção 
@@ -107,7 +119,7 @@ $service->PostPergunta();
                             '<div id="campo' + controleCampo + '" class="p-3 mx-auto mb-3 row" style="background-color: #f6f6f6;">' +
                             '<hr class="w-75 mx-auto" />' +
                             '<h6><label class="mb-0">Seleicone a imagem</label></h6>' +
-                            '<input class="form-control form-control-sm mb-3" id="formFileSm" type="file" name="imagem[]" id="imagem">' +
+                            '<input required class="form-control form-control-sm mb-3" id="formFileSm" type="file" name="imagem[]" id="imagem">' +
 
                             '<input type="hidden" id="ordem" name="ordem[]" value="' + controleCampo + '">' +
                             '<input type="hidden" id="id_fk_pergunta" name="id_fk_pergunta[]" value="">' +
@@ -117,13 +129,15 @@ $service->PostPergunta();
 
                             '<div class="form-floating">' +
                             '<h6><label class="mb-0">Resposta da imagem</label></h6>' +
+                            
                             '<textarea class="form-control  mb-3" name="respostaimagem[]" id="respostaimagem" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>' +
                             '</div>' +
                             '<button id="' + controleCampo + '" onclick="removerCampo(' + controleCampo + ')" type="button" class="btn btn-outline-dark mx-auto w-25 mb-3">Excluir</button>' +
                             '<hr class="w-75 mx-auto" />' +
+                            
                             '</div>'
                         );
-
+                        
                     }
 
                     function removerCampo(idcampo) {

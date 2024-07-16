@@ -279,32 +279,32 @@ class Pergunta
             $query = 
                 "   SELECT DISTINCT id_pergunta, pergunta, resposta, nomesubcategoria, nomecategoria, nomeproduto FROM (
                     SELECT 1 AS ordem, id_pergunta, pergunta, resposta, nomesubcategoria, nomecategoria, nomeproduto FROM pergunta
-                    JOIN subcategoria ON (id_subcategoria = fk_id_subcategoria)
-                    JOIN categoria ON (id_categoria = subcategoria.fk_id_categoria)
+                    LEFT JOIN subcategoria ON (id_subcategoria = fk_id_subcategoria)
+                    JOIN categoria ON (id_categoria = subcategoria.fk_id_categoria or id_categoria = pergunta.fk_id_categoria)
                     JOIN produto ON (fk_id_produto = id_produto)
                     WHERE " . $pergunta->obterclausulawhere("chave", $palavraChave) . " 
 
                     UNION  
 
                     SELECT 2 AS ordem, id_pergunta, pergunta, resposta, nomesubcategoria, nomecategoria, nomeproduto FROM pergunta
-                    JOIN subcategoria ON (id_subcategoria = fk_id_subcategoria)
-                    JOIN categoria ON (id_categoria = subcategoria.fk_id_categoria)
+                    LEFT JOIN subcategoria ON (id_subcategoria = fk_id_subcategoria)
+                    JOIN categoria ON (id_categoria = subcategoria.fk_id_categoria or id_categoria = pergunta.fk_id_categoria)
                     JOIN produto ON (fk_id_produto = id_produto)
                     WHERE " . $pergunta->obterclausulawhere("pergunta", $palavraChave) . "
 
                     UNION
 
                     SELECT 3 AS ordem, id_pergunta, pergunta, resposta, nomesubcategoria, nomecategoria, nomeproduto FROM pergunta 
-                    JOIN subcategoria ON (id_subcategoria = fk_id_subcategoria)
-                    JOIN categoria ON (id_categoria = subcategoria.fk_id_categoria)
+                    LEFT JOIN subcategoria ON (id_subcategoria = fk_id_subcategoria)
+                    JOIN categoria ON (id_categoria = subcategoria.fk_id_categoria or id_categoria = pergunta.fk_id_categoria)
                     JOIN produto ON (fk_id_produto = id_produto)
                     WHERE " . $pergunta->obterclausulawhere("nomesubcategoria", $palavraChave) . "
 
                     UNION
 
                     SELECT 4 AS ordem, id_pergunta, pergunta, resposta, nomesubcategoria, nomecategoria, nomeproduto FROM pergunta 
-                    JOIN subcategoria ON (id_subcategoria = fk_id_subcategoria)
-                    JOIN categoria ON (id_categoria = subcategoria.fk_id_categoria)
+                    LEFT JOIN subcategoria ON (id_subcategoria = fk_id_subcategoria)
+                    JOIN categoria ON (id_categoria = subcategoria.fk_id_categoria or id_categoria = pergunta.fk_id_categoria)
                     JOIN produto ON (fk_id_produto = id_produto)
                     WHERE " . $pergunta->obterclausulawhere("nomecategoria", $palavraChave) . "
                     ORDER BY ordem 

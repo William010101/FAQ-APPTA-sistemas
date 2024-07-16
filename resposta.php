@@ -85,7 +85,7 @@ $respostaimagem = new Respostaimagem();
             </div>
             <hr>
             <div class="col-xs-12 p-3 pt-1 col-md-12 mb-50 mx-auto resposta-perguntalink">
-                <div class="mb-5"><?php echo $perg->resposta ?></div>
+                <div class="mb-5" style="font-family:Verdana;"><?php echo $perg->resposta ?></div>
                 <div class="social-icons-footer">
                     <di class="row">
                         <div class="imagemresposta">
@@ -98,7 +98,7 @@ $respostaimagem = new Respostaimagem();
                                 <p class="mb-0"><?php echo $imagem->descricao; ?></p><br>
                             </div>        
                                 
-                                <p><?php echo $imagem->resposta; ?></p>
+                                <p style="font-family:Verdana;"><?php echo $imagem->resposta; ?></p>
                             <?php endforeach; ?>
 
                         </div>

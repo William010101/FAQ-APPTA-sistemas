@@ -40,6 +40,7 @@
 
 .appta-titulo {
     font-size: 36px;
+    
     color: white;
     margin-bottom: 35px;
     margin-top: 93px;
@@ -694,7 +695,9 @@ footer {
     text-decoration: none;
 }
 
-
+.resposta-perg{
+ font-family: Verdana !important;
+}
 
 
 
