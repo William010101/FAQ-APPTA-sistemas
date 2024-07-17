@@ -8,6 +8,7 @@ class Pergunta
     public string $resposta;
     public string $chave;
     public string $datacadastro;
+    public? string $solucao;
     public string $video;
     public string $usuario;
     public int $idusuario;
@@ -50,9 +51,9 @@ class Pergunta
         try {
             $pdo = $this->Conexao->getPdo();
             if ($pergunta->visivel == 1) {
-                $query = "  UPDATE pergunta SET pergunta = :pergunta, resposta = :resposta, datacadastro = :datacadastro, chave = :chave, video = :video, usuario = :usuario, idusuario = :idusuario, visivel = :visivel, fk_id_subcategoria = :fk_id_subcategoria, fk_id_categoria = :fk_id_categoria WHERE id_pergunta = :id_pergunta";
+                $query = "  UPDATE pergunta SET pergunta = :pergunta, resposta = :resposta, datacadastro = :datacadastro, chave = :chave, video = :video, usuario = :usuario, idusuario = :idusuario, visivel = :visivel, fk_id_subcategoria = :fk_id_subcategoria, fk_id_categoria = :fk_id_categoria, solucao = :solucao WHERE id_pergunta = :id_pergunta";
             } else {
-                $query = "  UPDATE pergunta SET pergunta = :pergunta, resposta = :resposta, datacadastro = :datacadastro, chave = :chave, video = :video, usuario = :usuario, idusuario = :idusuario, visivel = :visivel, fk_id_subcategoria = :fk_id_subcategoria, fk_id_categoria = :fk_id_categoria WHERE id_pergunta = :id_pergunta";
+                $query = "  UPDATE pergunta SET pergunta = :pergunta, resposta = :resposta, datacadastro = :datacadastro, chave = :chave, video = :video, usuario = :usuario, idusuario = :idusuario, visivel = :visivel, fk_id_subcategoria = :fk_id_subcategoria, fk_id_categoria = :fk_id_categoria, solucao = :solucao WHERE id_pergunta = :id_pergunta";
             }
             $stmt = $pdo->prepare($query);
             $stmt->bindParam(':id_pergunta', $pergunta->id_pergunta, PDO::PARAM_INT);
@@ -60,6 +61,7 @@ class Pergunta
             $stmt->bindParam(':resposta', $pergunta->resposta, PDO::PARAM_STR);
             $stmt->bindParam(':datacadastro', $pergunta->datacadastro, PDO::PARAM_STR);
             $stmt->bindParam(':chave', $pergunta->chave, PDO::PARAM_STR);
+            $stmt->bindParam(':solucao', $pergunta->solucao, PDO::PARAM_STR);
             $stmt->bindParam(':video', $pergunta->video, PDO::PARAM_STR);
             $stmt->bindParam(':usuario', $pergunta->usuario, PDO::PARAM_STR);
             $stmt->bindParam(':idusuario', $pergunta->idusuario, PDO::PARAM_INT);
@@ -77,14 +79,15 @@ class Pergunta
         try {
             $pdo = $this->Conexao->getPdo();
 
-            $query = "INSERT INTO pergunta (pergunta, resposta, datacadastro, chave, video, usuario, idusuario, visivel, fk_id_subcategoria,  fk_id_categoria) VALUES 
-            (:pergunta, :resposta, :datacadastro, :chave, :video, :usuario, :idusuario, :visivel, :fk_id_subcategoria, :fk_id_categoria)";
+            $query = "INSERT INTO pergunta (pergunta, resposta, datacadastro, chave, video, usuario, idusuario, visivel, fk_id_subcategoria,  fk_id_categoria, solucao) VALUES 
+            (:pergunta, :resposta, :datacadastro, :chave, :video, :usuario, :idusuario, :visivel, :fk_id_subcategoria, :fk_id_categoria, :solucao)";
 
             $stmt = $pdo->prepare($query);
             $stmt->bindParam(':pergunta', $pergunta->pergunta, PDO::PARAM_STR);
             $stmt->bindParam(':resposta', $pergunta->resposta, PDO::PARAM_STR);
             $stmt->bindParam(':datacadastro', $pergunta->datacadastro, PDO::PARAM_STR);
             $stmt->bindParam(':chave', $pergunta->chave, PDO::PARAM_STR);
+            $stmt->bindParam(':solucao', $pergunta->solucao, PDO::PARAM_STR);
             $stmt->bindParam(':video', $pergunta->video, PDO::PARAM_STR);
             $stmt->bindParam(':usuario', $pergunta->usuario, PDO::PARAM_STR);
             $stmt->bindParam(':idusuario', $pergunta->idusuario, PDO::PARAM_INT);

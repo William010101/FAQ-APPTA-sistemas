@@ -18,7 +18,8 @@ $service->PostPergunta();
     <div class="row ">
         <div class="col offset-md-1 mt-4 col-lg-8 mx-auto">
             <h3 class="font-weight-light mt-1 mb-3"> Cadastro E-Manual </h3>
-            <form name="form1" action="" method="POST" enctype="multipart/form-data">
+          
+            <form name="form1" action="" method="POST" enctype="multipart/form-data" >
 
                 <div class="form-group">
                     <h6> <label class="mb-0" for="pergunta">Titulo</label><br></h6>
@@ -80,6 +81,10 @@ $service->PostPergunta();
                 <h3 class="font-weight-light mt-1 mb-3"> Inserir uma seção 
                     <button onclick="adicionarCampo()" type="button" class="btn btn-outline-dark">+</button></h3>
 
+                <div class="form-group">
+                    <h6><label class="mb-0 " for="resposta">Solução</label></h6>
+                    <textarea class="form-control border ckeditor" rows="4" name="solucao" id="resposta"></textarea>
+                </div>
 
                 <div class="form-group">
 
@@ -137,6 +142,8 @@ $service->PostPergunta();
                             
                             '</div>'
                         );
+                        document.getElementById('cadastrar-btn').style.display = 'none';
+                        document.getElementById('validarImagens').style.display = 'inline-block';
                         
                     }
 
@@ -146,8 +153,10 @@ $service->PostPergunta();
                         }
                     }
                 </script>
+                    <button type="button" id="validarImagens" class="btn btn-primary mb-4 mt-4" style="display: inline-block;">Validar</button>
 
-                <button type="submit" name="btn-cadastrar-pergunta" class="btn btn-primary mb-4 mt-4"> Cadastrar
+                <button type="submit" name="btn-cadastrar-pergunta" class="btn btn-primary mb-4 mt-4"  style="display: none;" id="cadastrar-btn">
+                     Cadastrar
                 </button>
                 <a href="faq.php" class="btn btn-success mb-4 mt-4" data-toggle="modal" data-target="#confirmarsaida"
                     id="voltar"> Lista de perguntas </a>
@@ -157,7 +166,53 @@ $service->PostPergunta();
             </div>
         </div>
     </div>
+            <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    // Validação ao clicar no botão "Validar"
+                    document.getElementById('validarImagens').addEventListener('click', function() {
+                        validateImages();
+                    });
 
+                    // Monitorando mudanças no input de arquivo
+                    const inputFiles = document.querySelectorAll('input[type="file"][name="imagem[]"]');
+                    inputFiles.forEach(inputFile => {
+                        inputFile.addEventListener('change', function() {
+                            // Limpa a mensagem de validação ao alterar o input
+                            this.setCustomValidity(''); // Limpa a mensagem de erro padrão
+                        });
+                    });
+                });
+
+                // Função para validar as imagens
+                function validateImages() {
+                    const inputFiles = document.querySelectorAll('input[type="file"][name="imagem[]"]');
+                    let allValid = true;
+
+                    inputFiles.forEach(inputFile => {
+                        const files = inputFile.files;
+
+                        if (files.length === 0) {
+                            alert('Nenhuma imagem selecionada para esse campo.');
+                            allValid = false;
+                        } else {
+                            for (let i = 0; i < files.length; i++) {
+                                const file = files[i];
+                                if (file.size === 0) {
+                                    alert(`A imagem ${file.name} está vazia.`);
+                                    allValid = false;
+                                }
+                            }
+                        }
+                    });
+
+                    if (allValid) {
+                        alert('Todas as imagens são válidas!');
+                        document.getElementById('cadastrar-btn').style.display = 'inline-block';
+                        document.getElementById('validarImagens').style.display = 'none';
+                    }
+                }
+
+            </script>
 </div>
 
 <?php

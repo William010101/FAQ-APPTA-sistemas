@@ -39,6 +39,7 @@ CREATE TABLE pergunta
   visivel boolean,
   fk_id_subcategoria INT null,
   fk_id_categoria INT null,
+  solucao VARCHAR(50000),
   FOREIGN KEY (fk_id_subcategoria) REFERENCES subcategoria(id_subcategoria),
   FOREIGN KEY (fk_id_categoria) REFERENCES categoria(id_categoria)
 );

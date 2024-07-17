@@ -24,6 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
          $pergunta->pergunta = $_POST['pergunta'];
          $pergunta->resposta = $_POST['resposta'];
          $pergunta->chave = $_POST['chave'];
+         $pergunta->solucao = $_POST['solucao'];
          $pergunta->video = $_POST['video'];
          $pergunta->fk_id_subcategoria = (int) $_POST['fk_id_subcategoria'] == 0 ?  null :  (int) $_POST['fk_id_subcategoria'];
          $pergunta->fk_id_categoria = (int) $_POST['fk_id_categoria'] == 0 ? null : (int) $_POST['fk_id_categoria'];
@@ -49,8 +50,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                   $respostaImagemObj->CadastroImagemResposta($respostaImagemObj);
                }
             }
-            
-
          }
          header('Location: perguntas.php');
       }
@@ -92,6 +91,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
          $pergunta->resposta = $_POST['resposta'];
          $pergunta->datacadastro = $_POST['dataCadastro'];
          $pergunta->chave = $_POST['chave'];
+         $pergunta->solucao = $_POST['solucao'];
          $pergunta->video = $_POST['video'];
          $pergunta->usuario = $_POST['usuarioCadastro'];
          $pergunta->idusuario = $_POST['usuarioId'];

@@ -95,13 +95,16 @@ $respostaimagem = new Respostaimagem();
                                 ?>
                             <div class="text-center w-100">
                                 <img class="mx-auto img-fluid" src="data:image/png;base64,<?= base64_encode($imagem->imagem) ?>" alt="Imagem">
-                                <p class="mb-0"><?php echo $imagem->descricao; ?></p><br>
+                                <p class="mb-0" style="font-family:Verdana;"><?php echo $imagem->descricao; ?></p><br>
                             </div>        
                                 
                                 <p style="font-family:Verdana;"><?php echo $imagem->resposta; ?></p>
                             <?php endforeach; ?>
 
                         </div>
+                        <?php if($perg->solucao != ""):?>
+                        <div class="mb-5" style="font-family:Verdana;"><?php echo $perg->solucao ?></div>
+                        <?php endif; ?>
                         <?php if ($perg->video != ""): ?>
 
                             <div class="col-12 "">
