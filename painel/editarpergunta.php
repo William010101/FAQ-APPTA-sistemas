@@ -95,9 +95,10 @@ $service = new PerguntaService();
                         ?>
                                 <div id="campo<?php echo $img->ordem; ?>" class="p-3 mx-auto mb-3 row" style="background-color: #f6f6f6;">
                                     <hr class="w-75 mx-auto" />
+                                    <h6 class="text-danger text-center">Atenção ao selecionar a imagem, não apague antes de cadastrar a pergunta.</h6>
                                     <h6><label class="mb-0" for="imagem">Imagem atual:</label><br></h6>
                                     <img class="mb-3 mx-auto w-50 h-50" src="data:image/png;base64,<?php echo base64_encode($img->imagem); ?>" alt="Imagem do Produto">
-                                    <h6><label class="mb-0">Seleiconar nova imagem</label></h6>
+                                    <h6><label class="mb-0">Seleiconar nova imagem(imagem em PNG)</label></h6>
                                     <input class="form-control form-control-sm mb-3" id="formFileSm" type="file" name="nova_imagem[]" id="imagem" accept=".png">
 
 
@@ -147,7 +148,8 @@ $service = new PerguntaService();
                                     'beforeend',
                                     '<div id="campo' + controleCampo + '" class="p-3 mx-auto mb-3 row" style="background-color: #f6f6f6;">' +
                                     '<hr class="w-75 mx-auto" />' +
-                                    '<h6><label class="mb-0">Seleicone a imagem</label></h6>' +
+                                    '<h6 class="text-danger text-center">Atenção ao selecionar a imagem, não apague antes de cadastrar a pergunta.</h6>' +
+                                    '<h6><label class="mb-0">Seleicone a imagem(imagem em PNG)</label></h6>' +
                                     '<input required class="form-control form-control-sm mb-3" id="formFileSm" type="file" name="imagem[]" accept=".png" id="imagem">' +
 
                                     '<input type="hidden" id="ordem" name="ordem[]" value="' + controleCampo + '">' +
