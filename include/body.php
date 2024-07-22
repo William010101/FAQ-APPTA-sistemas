@@ -27,7 +27,7 @@ $produto = new Produto();
                     </a>
                     <div class="card-header p-1 w-100" style="height: 13%;">
                         <a style="height: 100%;" href="categoria?id=<?php echo $prod->id_produto ?>"
-                            class="btn btn-produtos-primario p-0"><?php echo strtoupper($prod->nomeproduto) ?></a>
+                            class="btn btn-produtos-primario p-0"><?php echo mb_strtoupper($prod->nomeproduto, 'UTF-8') ?></a>
                     </div>
                 </div>
                 

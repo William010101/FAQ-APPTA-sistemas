@@ -58,7 +58,7 @@ $subcategoria = new Subcategoria();
                                             
                                             foreach ($subcategorias as $sub):
                                                 ?>
-                                                    <a href="subcategoria?id=<?php echo $cat->id_categoria; ?>"
+                                                    <a href="perguntas?subcategoria=<?php echo $sub->nomesubcategoria; ?>&id=<?php echo $sub->id_subcategoria; ?>"
                                                         class="link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">
                                                         <?php echo $sub->nomesubcategoria ?>
                                                     </a><br>
