@@ -78,8 +78,12 @@ $respostaimagem = new Respostaimagem();
             <div class="author d-flex align-items-center">
                 
                 <p id="autorArtigo">Escrito por <b><?php echo $perg->usuario; ?></b><br>
-                    Data de publicação:
-                    <?php echo date("d/m/Y", strtotime($perg->datacadastro)); ?>
+                    Data de publicação: <?php echo date("d/m/Y", strtotime($perg->datacadastro)); ?><br>
+                    <?php
+                    if($perg->dataedicao != null):
+                    ?>
+                    Ultima edição em: <?php echo date("d/m/Y", strtotime($perg->dataedicao)); ?>
+                    <?php endif?>
                 </p>
 
             </div>

@@ -29,6 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
          $pergunta->fk_id_subcategoria = (int) $_POST['fk_id_subcategoria'] == 0 ?  null :  (int) $_POST['fk_id_subcategoria'];
          $pergunta->fk_id_categoria = (int) $_POST['fk_id_categoria'] == 0 ? null : (int) $_POST['fk_id_categoria'];
          $pergunta->datacadastro = $_POST['dataCadastro'];
+         $pergunta->dataedicao = null;
          $pergunta->usuario = $_POST['usuarioCadastro'];
          $pergunta->idusuario = $_POST['usuarioId'];
          $pergunta->visivel = isset($_POST['visivel']) ? 1  : 0;
@@ -90,6 +91,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
          $pergunta->pergunta = $_POST['pergunta'];
          $pergunta->resposta = $_POST['resposta'];
          $pergunta->datacadastro = $_POST['dataCadastro'];
+         date_default_timezone_set('America/Sao_Paulo');
+         $data = new DateTime();
+         $dataFormatada = $data->format('d-m-Y H:i:s');
+         $pergunta->dataedicao = $dataFormatada;
          $pergunta->chave = $_POST['chave'];
          $pergunta->solucao = $_POST['solucao'];
          $pergunta->video = $_POST['video'];

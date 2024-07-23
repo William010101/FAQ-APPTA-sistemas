@@ -32,6 +32,7 @@ CREATE TABLE pergunta
   pergunta VARCHAR(100),
   resposta VARCHAR(50000),
   datacadastro TIMESTAMP WITHOUT TIME ZONE,
+  dataedicao TIMESTAMP WITHOUT TIME ZONE,
   chave character varying(500),
   video VARCHAR(800),
   usuario VARCHAR(50),

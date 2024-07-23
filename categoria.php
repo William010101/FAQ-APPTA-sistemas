@@ -63,8 +63,11 @@ $subcategoria = new Subcategoria();
                                                         <?php echo $sub->nomesubcategoria ?>
                                                     </a><br>
                                             <?php endforeach; ?>
+                                            
                                         </span>
+                                        <p class="mt-1 mb-0">Para ver mais subcategorias clique no botão abaixo</p>
                                     </div>
+                                    
                                     <a href="subcategoria?id=<?php echo $cat->id_categoria; ?>" class="btn btn-recentes">
                                         Visualizar todas subcategorias
                                     </a>

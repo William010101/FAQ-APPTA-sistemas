@@ -62,6 +62,7 @@ $subcategoria = new Subcategoria();
                                                     </a><br>
                                         <?php endforeach; ?>
                                         </span>
+                                        <p class="mt-1 mb-0">Para ver mais perguntas clique no botão abaixo</p>
                                     </div>
                                     <a href="perguntas?subcategoria=<?php echo $sub->nomesubcategoria;?>&id=<?php echo $sub->id_subcategoria ?>" class="btn btn-recentes">
                                         Visualizar todas as perguntas da subcategoria

@@ -83,6 +83,12 @@ $service = new PerguntaService();
                     <div class="form-group">
 
                         <h6><label class="mb-0 " for="resposta">Resposta</label></h6>
+                        <h6 class="text-warning"><?php
+                                                    if ($perg->dataedicao != null) :
+                                                    ?>
+                                Ultima edição em: <?php echo date("d/m/Y", strtotime($perg->dataedicao)); ?>
+                            <?php endif ?>
+                        </h6>
                         <textarea class="form-control border ckeditor" rows="4" name="resposta" id="resposta"><?php echo $perg->resposta; ?></textarea>
 
                     </div>
