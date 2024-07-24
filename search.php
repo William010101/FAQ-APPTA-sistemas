@@ -50,7 +50,14 @@ $pergunta = new Pergunta();
 
                             <div class="card-header text-white">
                                 <p id="textocaminho" class="card-text h6 text-white">
-                                    <?php echo $perg['nomeproduto'] . "/" . $perg['nomecategoria'] . "/" . $perg['nomesubcategoria'] . "/" . $perg['pergunta']; ?>
+
+                                    <?php
+                                    if($perg['nomesubcategoria'] != ''){
+                                     echo $perg['nomeproduto'] . " / " . $perg['nomecategoria'] . " / " . $perg['nomesubcategoria'] . " / " . $perg['pergunta']; 
+                                    }else{
+                                    echo $perg['nomeproduto'] . " / " . $perg['nomecategoria'] . " / " . $perg['pergunta']; 
+                                    }
+                                     ?>
                                 </p>
                                 <?php echo $perg['pergunta']; ?>
                             </div>
