@@ -96,7 +96,7 @@ $pergunta = new Pergunta();
             <p class="nãoencontrou-sub-title">
                 Entre em contato com a gente para<br> receber suporte personalizado.
             </p>
-            <a href="#" class="btn btn-contato" role="button">Entre em contato</a>
+            <a href="https://wa.me/554891599584" class="btn btn-contato" role="button">Entre em contato</a>
         </div>
     </div>
 </body>

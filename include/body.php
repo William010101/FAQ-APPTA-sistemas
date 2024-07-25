@@ -12,25 +12,25 @@ $produto = new Produto();
             questão.
         </p>
     </div>
-    <div class="container row mx-auto m-2 text-center" id="corpo">
+    <div class="container row mx-auto mb-5 text-center" id="corpo">
 
         <?php
         $produtos = $produto->GetProdutos();
         foreach ($produtos as $prod):
             ?>
 
-            <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3 mx-auto mt-4 " style="width: 280px; height: 180px;">
+            <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3 mx-auto mt-5 " style="width: 200px; height: 180px;">
                 <div class="card w-75 mb-0 m-0 text-center mx-auto border-0 " style="width:100%; height:100%;">
                     <a style="width:100%; height: 87%;" href="categoria?id=<?php echo $prod->id_produto ?>">
                         <img class="mt-4" style="max-width:80%; height: 80%;"
                             src="data:image/png;base64,<?= base64_encode($prod->imagem) ?>" alt="">
                     </a>
-                    <div class="card-header p-1 w-100 " style="height: 15%;">
+                    
+                </div>
+                <div class="card-header p-1 w-100 " style="height: 15%;">
                         <a style="height: 100%;" href="categoria?id=<?php echo $prod->id_produto ?>"
                             class="btn btn-produtos-primario p-0"><?php echo mb_strtoupper($prod->nomeproduto, 'UTF-8') ?></a>
-                    </div>
                 </div>
-                
             </div>
         <?php endforeach; ?>
     </div>

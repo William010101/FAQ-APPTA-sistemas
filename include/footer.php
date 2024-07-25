@@ -2,8 +2,9 @@
     <div class="container-fluid">
         <div class="row">
             <div class="container w-50 col-12 col-sm-6 col-xl-6 mx-auto">
-                <a class="hvr-sweep-to-right btn ajudafooter m-0 mt-5 mb-3 mx-auto" href="#">
-                    <i class="far fa-question-circle"></i>Ajuda</a>
+                <a class="hvr-sweep-to-right btn ajudafooter m-0 mt-5 mb-3 mx-auto p-2" href="https://wa.me/554891599584"><p class="m-0">HELP</p>
+                    <img class=" h-100" src="../img/ico/seta.ico" alt="">
+                </a>
                 <div class="container mx-auto">
                     <p class="endereco m-1">Telefone: <span class="break-after-528">(48) 3283-0046</span></p>
                     <p class="endereco m-1">WhatsApp: <span class="break-after-528">(48) 9159-9584</span></p>
@@ -20,7 +21,7 @@
                 </div>
             </div>
             <div class="col-12 text-center mt-3">
-                <p id="direitossite">© 2019 APPTA - Todos os direitos reservados - As imagens deste
+                <p id="direitossite">© 2024 APPTA - Todos os direitos reservados - As imagens deste
                     site
                     foram retiradas de <a href="https://www.freepik.com/freepik"><i class="far fa-heart"></i></a> <a
                         href="https://www.freepik.com/pressfoto"><i class="far fa-heart"></i> </a> <a

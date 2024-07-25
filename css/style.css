@@ -577,20 +577,21 @@ footer {
 }
 
 .btn.ajudafooter {
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+    background: rgb(255,255,255);
+    background: linear-gradient(90deg, rgba(255,255,255,1) 73%, rgba(4,133,196,1) 73%);
     margin: auto;
     display: flex;
     align-items: center;
-    justify-content: center;
-    width: 140px;
-    height: 50px;
-    border: 1px solid #FFFFFF;
+    justify-content: space-between;
+    width: 125px;
+    height: 35px;
     box-sizing: border-box;
-    border-radius: 30px;
-    color: #FFFFFF;
-    font-family: RobotoBold;
-    font-size: 18px;
+    border: 1px solid #ffffff;
+    color: #0583c2;
+    font-family: Poppinsbold;
+    font-size: 20px;
 }
+
 
 .produtos {
     margin-bottom: 3%;
