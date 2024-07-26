@@ -235,7 +235,7 @@ $service = new PerguntaService();
 
                         <h6><label class="mb-0" for="chave">VIDEO </label></h6>
                         <h6>Atenção!</h6>
-                        <p>Substitua o "width" por class="col-12 col-md-12 mb-3"</p>
+                        <p>Substitua o valor do "width" por "100%", deve ficar como width="100%"</p>
 
                         <textarea class="border border w-100 p-2" id="video" name="video" rows="5" cols="33"><?php echo $perg->video; ?></textarea>
                     </div>

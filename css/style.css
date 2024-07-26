@@ -55,7 +55,11 @@
 
 .inputSearch {
     margin-top: 37px;
-    width: 100%;
+    
+}
+
+.inputSearch:focus{
+    outline: none;
 }
 
 .gridProdutos {
@@ -149,7 +153,8 @@
 
 #inputHeader {
     border: none;
-    height: 58px;
+    width: 90%;
+    height: 40px;
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
 }
@@ -165,13 +170,14 @@
 #btnpesquisar,
 #btnpesquisarhome {
     border-radius: 0px 10px 10px 0px;
-    height: 44px;
+    height: 40px;
     background-color: #FFF;
+    
     color: #ADADAD;
 }
 
 #btnpesquisarhome {
-    height: 58px;
+    height: 40px;
 }
 
 #btnpesquisar:hover {
@@ -472,7 +478,7 @@
 
 #inputpesquisa {
     height: 44px;
-    background: #FFFFFF;
+    background: #ffffff;
     border: 1px solid #F1F1F2;
     box-sizing: border-box;
     border-radius: 10px 0px 0px 10px;

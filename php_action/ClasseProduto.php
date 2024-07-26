@@ -51,7 +51,7 @@ class Produto
                 $stmt->bindValue(':imagem', $produto->imagem, PDO::PARAM_LOB);
                 $stmt->bindParam(':visivel', $produto->visivel, PDO::PARAM_BOOL);
                 $stmt->execute();
-                return "Produto alterado com sucesso!";
+                echo "Produto alterado com sucesso!";
         } catch (PDOException $e) {
             echo "Erro ao alterar produto: " . $e->getMessage();
         }
@@ -68,9 +68,9 @@ class Produto
                 $stmt->bindValue(':imagem', $produto->imagem, PDO::PARAM_LOB);
                 $stmt->bindParam(':visivel', $produto->visivel, PDO::PARAM_BOOL);
                 $stmt->execute();
-                return "Produto inserido com sucesso!"; 
+                echo "Produto inserido com sucesso!"; 
         } catch (PDOException $e) {
-            return "Erro ao inserir o produto: " . $e->getMessage();
+            echo "Erro ao inserir o produto: " . $e->getMessage();
         }
     }
 

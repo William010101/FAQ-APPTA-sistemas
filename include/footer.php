@@ -2,7 +2,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="container w-50 col-12 col-sm-6 col-xl-6 mx-auto">
-                <a class="hvr-sweep-to-right btn ajudafooter m-0 mt-5 mb-3 mx-auto p-2" href="https://wa.me/554891599584"><p class="m-0">HELP</p>
+                <a class="hvr-sweep-to-right btn ajudafooter m-0 mt-5 mb-3 mx-auto p-2" href="https://wa.me/554891599584"><p class="m-0">AJUDA?</p>
                     <img class=" h-100" src="../img/ico/seta.ico" alt="">
                 </a>
                 <div class="container mx-auto">

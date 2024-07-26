@@ -14,22 +14,19 @@ include_once 'include/ref.php';
 
 <body>
     <section class="home-header ">
-        <div class="container " id="menupesquisa">
+        <div class="container col-12" id="menupesquisa">
             <div class="botao">
-                <div class="row ">
+                <div class="row mt-1 ">
                     <img class="col-6 mt-4" src="img\appta.png" alt="" style=" width: 90px; height: 100px;">
-                    <h3 class="appta-titulo text-uppercase mt-4 mb-0 col-6"><span class="Poppins">Como podemos</span> <br><span
-                            class="PoppinsBold">ajudar?</span></h3>
-                    <div class="col-6 mx-auto">
+                    <h3 class="appta-titulo text-uppercase mt-4 mb-0 col-6"><span class="Poppins">Como podemos</span> <br><span class="PoppinsBold">ajudar?</span></h3>
+                    <div class=" col-12 mx-auto col-md-10 col-sm-12 col-lg-8 row">
 
-                        <div class="inputSearch">
+                        <div class="inputSearch col-12 ">
                             <form method="POST" action="search">
-                                <div class="input-group mb-3">
-                                    <input type="search" class="form-control" name="pesquisar"
-                                        placeholder="Tente buscar por tópicos ou palavras-chave" id="inputHeader">
+                                <div class="input-group mb-3 col-10">
+                                    <input type="search" class="form-control" name="pesquisar" placeholder="Tente buscar por tópicos ou palavras-chave" id="inputHeader">
                                     <div class="input-group-append">
-                                        <button class="btn " id="btnpesquisarhome" name="btnpesquisar" type="text"><i class="material-icons"
-                                                id="">search</i></button>
+                                        <button class="btn" id="btnpesquisarhome" name="btnpesquisar" type="text"><i class="material-icons" id="">search</i></button>
                                     </div>
                                 </div>
                             </form>

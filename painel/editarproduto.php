@@ -6,7 +6,7 @@ include_once 'services/ProdutoService.php';
 include_once '../php_action/ClasseConnection.php';
 $produto = new Produto();
 $service = new ProdutoService();
-$service->SetProduto();
+
 ?>
 
 <link href="css/style.css" rel="stylesheet" media="screen">
@@ -58,6 +58,7 @@ $service->SetProduto();
                     </div>
                 <?php endforeach; ?>
             </form>
+            <h1><?php $service->SetProduto();?></h1>
         </div>
     </div>
 

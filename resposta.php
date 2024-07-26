@@ -105,7 +105,7 @@ $respostaimagem = new Respostaimagem();
                         <?php endif; ?>
                         <?php if ($perg->video != "") : ?>
 
-                            <div class="col-12 "">
+                            <div class="col-12 col-md-8 col-sm-10 mx-auto "">
                                 <div class=" card video mt-5 mx-auto col-md-12 col-sm-12 col-12">
                                 <div class="card-header video mx-auto col-sm-12 col-12" id="headvideo">
                                     <p class="blockquote video">ASSISTA AO VIDEO</p>

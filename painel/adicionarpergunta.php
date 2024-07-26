@@ -84,8 +84,10 @@ $service->PostPergunta();
                 </div>
 
                 <div class="form-group">
-
-                    <h6><label class="mb-0" for="video">Video </label></h6>
+                
+                <h6><label class="mb-0" for="video">Video </label></h6>
+                <h6>Atenção!</h6>
+                <p>Substitua o valor do "width" por "100%", deve ficar como width="100%"</p>    
                     <input class="border border w-100 p-2" id="video" name="video" placeholder="Cole aqui o código de incorporação do vídeo"></in>
                 </div>
 

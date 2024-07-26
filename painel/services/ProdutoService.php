@@ -21,7 +21,7 @@ class ProdutoService
             }
             $produto->visivel = $_POST['visivel'];
             $produto->CadastroProduto($produto);
-
+            
         }              
     }
 
