@@ -92,7 +92,7 @@ $respostaimagem = new Respostaimagem();
                             ?>
                                 <div class="text-center w-100" style="background-color: #f6f6f6;">
                                     <img class="mx-auto mt-4 img-fluid" src="data:image/png;base64,<?= base64_encode($imagem->imagem) ?>" alt="Imagem">
-                                    <p class="mb-0" style="font-family:Verdana;"><?php echo $imagem->descricao; ?></p><br>
+                                    <p class="mb-0" style="font-family:Verdana;"><?php echo mb_strtoupper($imagem->descricao, 'UTF-8'); ?></p><br>
                                     
                                 </div>
                                 <p style="font-family:Verdana;"><?php echo $imagem->resposta; ?></p>
