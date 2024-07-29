@@ -82,6 +82,7 @@ $respostaimagem = new Respostaimagem();
             </div>
             <hr>
             <div class="col-xs-12 p-3 pt-1 col-md-12 mb-50 mx-auto resposta-perguntalink">
+                <p id="desc_resposta">DESCRIÇÃO:</p>
                 <div class="mb-5" style="font-family:Verdana;"><?php echo $perg->resposta ?></div>
                 <div class="social-icons-footer">
                     <di class="row">
