@@ -46,26 +46,27 @@ $subcategoria = new Subcategoria();
                         
                         ?>
                             <div class="col-12 col-sm-6 mb-5">
-                                <div class="card" style="height:100%; border-radius: 2.25rem;">
+                                <div class="card" style=" max-height:100%; border-radius: 2.25rem 2.25rem 1rem 1rem;">
                                     <h5 class="card-title recentes">
                                         <?php echo $cat->nomecategoria; ?>
                                     </h5>
-                                    <div class="card-text categoria">
-                                        <span class="d-inline-block text-truncate" style="max-width: 100%;">
+                                    <div class="card-text categoria pb-4 ">
+                                        <span class="d-inline-block d-flex flex-column" style="max-width: 100%; max-height: 100%; ">
                                             <?php
                                             $subcategorias = $subcategoria->GetSubcategorias($cat->id_categoria);
                                             if ($subcategorias):
                                             
                                             foreach ($subcategorias as $sub):
                                                 ?>
-                                                    <a href="perguntas?subcategoria=<?php echo $sub->nomesubcategoria; ?>&id=<?php echo $sub->id_subcategoria; ?>"
+                                                    <li><a href="perguntas?subcategoria=<?php echo $sub->nomesubcategoria; ?>&id=<?php echo $sub->id_subcategoria; ?>"
                                                         class="link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">
                                                         <?php echo $sub->nomesubcategoria ?>
-                                                    </a><br>
+                                                    </a></li>
                                             <?php endforeach; ?>
                                             
                                         </span>
-                                        <p class="mt-1 mb-0">Para ver mais subcategorias clique no botão abaixo</p>
+                                        <!-- //<p class="mt-1 mb-0">Para ver mais subcategorias clique no botão abaixo</p> -->
+                                        
                                     </div>
                                     
                                     <a href="subcategoria?id=<?php echo $cat->id_categoria; ?>" class="btn btn-recentes">

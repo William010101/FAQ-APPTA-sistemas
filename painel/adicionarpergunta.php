@@ -79,7 +79,9 @@ $service->PostPergunta();
                 </h3>
 
                 <div class="form-group">
+
                     <h6><label class="mb-0 " for="resposta">Solução</label></h6>
+
                     <textarea class="form-control border ckeditor" rows="4" name="solucao" id="resposta"></textarea>
                 </div>
 

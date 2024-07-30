@@ -590,7 +590,7 @@ footer {
     align-items: center;
     justify-content: space-between;
     width: 125px;
-    height: 35px;
+    height: 30px;
     box-sizing: border-box;
     border: 1px solid #ffffff;
     color: #0583c2;
@@ -701,6 +701,7 @@ footer {
     padding: 5px;
     border-radius: 5px;
     text-decoration: none;
+    font-size: 14px;
 }
 
 .resposta-perg{

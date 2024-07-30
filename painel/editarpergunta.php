@@ -84,8 +84,8 @@ $service = new PerguntaService();
 
                         <h6><label class="mb-0 " for="resposta">Resposta</label></h6>
                         <h6 class="text-danger"><?php
-                                                    if ($perg->dataedicao != null) :
-                                                    ?>
+                                                if ($perg->dataedicao != null) :
+                                                ?>
                                 Ultima edição em: <?php echo date("d/m/Y", strtotime($perg->dataedicao)); ?>
                             <?php endif ?>
                         </h6>
@@ -226,8 +226,7 @@ $service = new PerguntaService();
 
 
                     <div class="form-group">
-
-                        <h6><label class="mb-0 " for="resposta">Solução(Caso a pergunta seja sobre um erro)</label></h6>
+                        <h6><label class="mb-0 " for="resposta">Solução</label></h6>
                         <textarea class="form-control border ckeditor" rows="4" name="solucao" id="resposta"><?php echo $perg->solucao; ?></textarea>
 
                     </div>

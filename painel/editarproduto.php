@@ -58,7 +58,7 @@ $service = new ProdutoService();
                     </div>
                 <?php endforeach; ?>
             </form>
-            <h1><?php $service->SetProduto();?></h1>
+            <h2 class="produtos-titulos mt-5 mb-0"><?php $service->SetProduto();?></h2>
         </div>
     </div>
 

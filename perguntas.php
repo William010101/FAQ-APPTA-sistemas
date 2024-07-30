@@ -75,10 +75,11 @@ $pergunta = new Pergunta();
                         ?>
                         <div class="col-12 col-sm-12 mb-5">
                             <div class="card">
-                                <div class="card-header text-white">
-                                    <?php echo $perg->pergunta; ?>
+                            <div style="height: 36px;" class="card-header text-center text-white">
+                                    <?php echo  mb_strtoupper($perg->pergunta, 'UTF-8'); ?>
                                 </div>
                                 <div class="card-body p-2">
+                                <p id="desc_resposta">DESCRIÇÃO:</p>
                                     <p class="card-text">
                                         <?php
                                         $texto = $perg->resposta;
@@ -91,8 +92,7 @@ $pergunta = new Pergunta();
                                         ?>
                                     </p>
 
-                                    <a href="resposta?id=<?php echo $perg->id_pergunta; ?>" class="btn-listar mt-2 ">visualizar
-                                        resposta completa</a>
+                                    <a href="resposta?id=<?php echo $perg->id_pergunta; ?>" class="btn-listar mt-2 ">VISUALIZAR RESPOSTA COMPLETA</a>
                                 </div>
                             </div>
                         </div>
@@ -103,10 +103,11 @@ $pergunta = new Pergunta();
                         ?>
                         <div class="col-12 col-sm-12 mb-5">
                             <div class="card">
-                                <div class="card-header text-white">
-                                    <?php echo $perg->pergunta; ?>
+                                <div style="height: 36px;" class="card-header text-center text-white">
+                                    <?php echo mb_strtoupper($perg->pergunta, 'UTF-8');; ?>
                                 </div>
                                 <div class="card-body p-2">
+                                <p id="desc_resposta">DESCRIÇÃO:</p>
                                     <p class="card-text">
                                         <?php
                                         $texto = $perg->resposta;
@@ -119,8 +120,7 @@ $pergunta = new Pergunta();
                                         ?>
                                     </p>
 
-                                    <a href="resposta?id=<?php echo $perg->id_pergunta; ?>" class="btn-listar mt-2 ">visualizar
-                                        resposta completa</a>
+                                    <a href="resposta?id=<?php echo $perg->id_pergunta; ?>" class="btn-listar mt-2 ">VISUALIZAR RESPOSTA COMPLETA</a>
                                 </div>
                             </div>
                         </div>

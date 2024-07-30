@@ -91,7 +91,7 @@ $respostaimagem = new Respostaimagem();
                             $imagens = $respostaimagem->GetImagemRespostaPergunta($perg->id_pergunta);
                             foreach ($imagens as $imagem) :
                             ?>
-                                <div class="text-center w-100" style="background-color: #f6f6f6;">
+                                <div class="text-center w-100 " style="background-color: #f6f6f6; border-radius: 10px;">
                                     <img class="mx-auto mt-4 img-fluid" src="data:image/png;base64,<?= base64_encode($imagem->imagem) ?>" alt="Imagem">
                                     <p class="mb-0" style="font-family:Verdana;"><?php echo mb_strtoupper($imagem->descricao, 'UTF-8'); ?></p><br>
                                     
@@ -102,6 +102,7 @@ $respostaimagem = new Respostaimagem();
 
                         </div>
                         <?php if ($perg->solucao != "") : ?>
+                            <p class="mt-5" id="desc_resposta">SOLUCÃO:</pcla>
                             <div class="mb-5" style="font-family:Verdana;"><?php echo $perg->solucao ?></div>
                         <?php endif; ?>
                         <?php if ($perg->video != "") : ?>

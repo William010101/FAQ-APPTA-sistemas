@@ -66,7 +66,7 @@
                     <a href="subcategoria.php" class="btn btn-success mb-4" data-toggle="modal" data-target="#confirmarsaidasubcategoria">Lista de subcategorias</a>
                 </div>
                 <?php endforeach;?> 
-                <?php $sub->SetSubcategoria();?>
+                <h2 class="produtos-titulos mt-5 mb-0"><?php $sub->SetSubcategoria();?></h2>
             </form>
            
         </div>

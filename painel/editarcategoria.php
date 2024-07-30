@@ -68,7 +68,7 @@
                 
                 
                 <?php endforeach;?> 
-                <?php $cat->SetCategoria();?>
+                <h2 class="produtos-titulos mt-5 mb-0"><?php $cat->SetCategoria();?></h2>
             </form>
            
         </div>
