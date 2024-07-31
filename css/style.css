@@ -708,6 +708,20 @@ footer {
  font-family: Verdana !important;
 }
 
+.list-link-card{
+    overflow: hidden; 
+    text-overflow: ellipsis; 
+    white-space: nowrap;
+    line-height: 1rem;
+    text-decoration: underline; 
+}
+
+.list-link-card::marker{
+    font-size: 23px;
+    color: #C7BD6C;
+    margin: 1px;
+}
+
 #desc_resposta{
     font-size: 16px; 
     font-weight: bolder; 

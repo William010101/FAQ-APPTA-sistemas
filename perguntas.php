@@ -75,7 +75,7 @@ $pergunta = new Pergunta();
                         ?>
                         <div class="col-12 col-sm-12 mb-5">
                             <div class="card">
-                            <div style="height: 36px;" class="card-header text-center text-white">
+                            <div style="height: 36px; font-weight:bolder;" class="card-header text-center text-white">
                                     <?php echo  mb_strtoupper($perg->pergunta, 'UTF-8'); ?>
                                 </div>
                                 <div class="card-body p-2">
@@ -103,7 +103,7 @@ $pergunta = new Pergunta();
                         ?>
                         <div class="col-12 col-sm-12 mb-5">
                             <div class="card">
-                                <div style="height: 36px;" class="card-header text-center text-white">
+                                <div style="height: 36px; font-weight:bolder;" class="card-header text-center text-white">
                                     <?php echo mb_strtoupper($perg->pergunta, 'UTF-8');; ?>
                                 </div>
                                 <div class="card-body p-2">

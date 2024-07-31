@@ -54,16 +54,17 @@ $subcategoria = new Subcategoria();
                                         <span class="d-inline-block d-flex flex-column" style="max-width: 100%; max-height: 100%; ">
                                             <?php
                                             $subcategorias = $subcategoria->GetSubcategorias($cat->id_categoria);
-                                            if ($subcategorias):
+                                            $array_slice = array_slice($subcategorias, 0, 5);
+                                            if ($array_slice):
                                             
-                                            foreach ($subcategorias as $sub):
+                                            foreach ($array_slice as $sub):
                                                 ?>
-                                                    <li><a href="perguntas?subcategoria=<?php echo $sub->nomesubcategoria; ?>&id=<?php echo $sub->id_subcategoria; ?>"
-                                                        class="link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">
+                                                    <li class="list-link-card" "><a href="perguntas?subcategoria=<?php echo $sub->nomesubcategoria; ?>&id=<?php echo $sub->id_subcategoria; ?>"
+                                                        class="link-dark  link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">
                                                         <?php echo $sub->nomesubcategoria ?>
                                                     </a></li>
                                             <?php endforeach; ?>
-                                            
+                                            <img class="mx-auto mt-3" style="width: 10px; height:8px;" src="img/png/setabaixo.png" alt="">
                                         </span>
                                         <!-- //<p class="mt-1 mb-0">Para ver mais subcategorias clique no botão abaixo</p> -->
                                         
@@ -72,22 +73,29 @@ $subcategoria = new Subcategoria();
                                     <a href="subcategoria?id=<?php echo $cat->id_categoria; ?>" class="btn btn-recentes">
                                         Visualizar todas subcategorias
                                     </a>
+                                    
                                     <?php else: ?>
                                     <?php
                                         $perguntas = $pergunta->GetPerguntasCat( $cat->id_categoria );
-                                        foreach ($perguntas as $perg):
-                                            ?>
-                                                    <a href="resposta?id=<?php echo $perg->id_pergunta ?>"
+                                        $array_slice = array_slice($perguntas, 0, 5);
+                                        foreach ($array_slice as $perg):
+                                             ?>
+                                            
+                                                    <li class="list-link-card" "><a href="resposta?id=<?php echo $perg->id_pergunta ?>"
                                                         class="link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">
                                                         <?php echo $perg->pergunta; ?>
-                                                    </a><br>
+                                                    </a></li>
                                         <?php endforeach; ?>
-                                        </span>
+                                        <img class="mx-auto mt-3" style="width: 10px; height:8px;" src="img/png/setabaixo.png" alt="">
+                                        </span> 
+                                        
                                     </div>
+                                   
                                     <a href="perguntas?categoria=<?php echo $cat->nomecategoria?>&id=<?php echo $cat->id_categoria?>" class="btn btn-recentes">
                                         Visualizar todas as perguntas da Categoria
                                     </a>
                                     <?php endif; ?>
+                                    
                                 </div>
                             </div>
                     <?php endforeach; ?>
