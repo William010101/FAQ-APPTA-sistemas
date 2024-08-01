@@ -77,6 +77,10 @@
 
 .btn.btn-recentes {
     width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
     padding-top: 15px;
     padding-bottom: 15px;
     font-family: RobotoBold;
@@ -712,8 +716,7 @@ footer {
     overflow: hidden; 
     text-overflow: ellipsis; 
     white-space: nowrap;
-    line-height: 1rem;
-    text-decoration: underline; 
+    line-height: 1.2rem;
 }
 
 .list-link-card::marker{
@@ -728,6 +731,7 @@ footer {
     color: #0485c4; 
     font-family:Trebuchet MS, Helvetica, sans-serif;
 }
+
 
 @media only screen and (max-width: 480px) {
     button#btnLinkConheca {

@@ -64,7 +64,7 @@ $categoria->Deletarcategoria();
                         </td>
 
                         <td>
-                            <button type="button" class="btn btn-danger" data-toggle="modal"
+                            <button type="button" class="btn btn-danger btn_del" data-toggle="modal"
                                 data-target="#modal<?php echo $cat->id_categoria; ?>">
                                 <i class="material-icons">delete</i>
                             </button>

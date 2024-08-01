@@ -92,8 +92,9 @@ $pergunta = new Pergunta();
                                         ?>
                                     </p>
 
-                                    <a href="resposta?id=<?php echo $perg->id_pergunta; ?>" class="btn-listar mt-2 ">VISUALIZAR RESPOSTA COMPLETA</a>
+                                    
                                 </div>
+                                <a href="resposta?id=<?php echo $perg->id_pergunta; ?>" class="btn-listar m-2 w-25 text-center">VISUALIZAR RESPOSTA COMPLETA</a>
                             </div>
                         </div>
                     <?php endforeach; ?>
@@ -119,9 +120,8 @@ $pergunta = new Pergunta();
                                         echo $texto;
                                         ?>
                                     </p>
-
-                                    <a href="resposta?id=<?php echo $perg->id_pergunta; ?>" class="btn-listar mt-2 ">VISUALIZAR RESPOSTA COMPLETA</a>
                                 </div>
+                                <a href="resposta?id=<?php echo $perg->id_pergunta; ?>" class="btn-listar m-2 w-25 text-center">VISUALIZAR RESPOSTA COMPLETA</a>
                             </div>
                         </div>
                     <?php endforeach; ?>

@@ -54,12 +54,12 @@ $produto->DeletarProduto();
 
                         <td>
                             <a href="editarproduto.php?id=<?php echo $prod->id_produto; ?>"
-                                class="btn btn-warning"><i class="material-icons">edit</i>
+                                class="btn btn-warning"><i class=" material-icons">edit</i>
                             </a>
                         </td>
 
                         <td>
-                            <button type="button" class="btn btn-danger" data-toggle="modal"
+                            <button type="button" class="btn btn-danger btn_del" data-toggle="modal"
                                 data-target="#modal<?php echo $prod->id_produto; ?>">
                                 <i class="material-icons">delete</i>
                             </button>
@@ -84,7 +84,7 @@ $produto->DeletarProduto();
                                             <input type="hidden" name="id_produto"
                                             value="<?php echo $prod->id_produto; ?>">
 
-                                            <button type="submit" name="btn-deletar-produto" class="btn btn-danger">Sim,
+                                            <button type="submit" name="btn-deletar-produto" class="btn btn-danger ">Sim,
                                                 quero
                                                 deletar!
                                             </button>

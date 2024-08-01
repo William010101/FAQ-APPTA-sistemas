@@ -60,7 +60,7 @@ $subcategoria->DeletarSubcategoria();
                         </td>
 
                         <td>
-                            <button type="button" class="btn btn-danger" data-toggle="modal"
+                            <button type="button" class="btn btn-danger btn_del" data-toggle="modal"
                                 data-target="#modal<?php echo $sub->id_subcategoria; ?>">
                                 <i class="material-icons">delete</i>
                             </button>

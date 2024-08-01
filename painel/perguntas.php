@@ -87,7 +87,7 @@ $service->DeletarPergunta();
                                         class="material-icons">edit</i></a></td>
 
                             <td>
-                                <button type="button" class="btn btn-danger" data-toggle="modal"
+                                <button type="button" class="btn btn-danger btn_del" data-toggle="modal"
                                     data-target="#modal<?php echo $perg->id_pergunta; ?>">
                                     <i class="material-icons">delete</i>
                                 </button>

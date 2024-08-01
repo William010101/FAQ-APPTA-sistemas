@@ -50,19 +50,20 @@ $subcategoria = new Subcategoria();
                             <div class="col-12 col-sm-6 mb-5">
                                 <div class="card" style="height:100%; border-radius: 2.25rem;">
                                     <h5 class="card-title recentes"> <?php echo $sub->nomesubcategoria; ?> </h5>
-                                    <div class="card-text categoria">
-                                        <span class="d-inline-block text-truncate" style="max-width: 100%;">
+                                    <div class="d-flex flex-column card-text categoria pb-0">
+                                    <span class="d-flex flex-column" style="max-width: 100%; max-height: 100%; min-height:90px; ">
                                         <?php
                                         $perguntas = $pergunta->GetPerguntaSub($sub->id_subcategoria);
                                         foreach ($perguntas as $perg):
                                             ?>
-                                                    <a href="resposta?id=<?php echo $perg->id_pergunta ?>"
+                                                    <li class="list-link-card" "><a href="resposta?id=<?php echo $perg->id_pergunta ?>"
                                                         class="link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">
                                                         <?php echo $perg->pergunta; ?>
-                                                    </a><br>
+                                                    </a></li>
                                         <?php endforeach; ?>
                                         </span>
-                                        <p class="mt-1 mb-0">Para ver mais perguntas clique no botão abaixo</p>
+                                        <p class="mt-2 mb-0">Para ver mais perguntas clique no botão abaixo</p>
+                                        <img class="mx-auto mt-2 mb-3" style="width: 10px; height:8px;" src="img/png/setabaixo.png" alt="">
                                     </div>
                                     <a href="perguntas?subcategoria=<?php echo $sub->nomesubcategoria;?>&id=<?php echo $sub->id_subcategoria ?>" class="btn btn-recentes">
                                         Visualizar todas as perguntas da subcategoria
