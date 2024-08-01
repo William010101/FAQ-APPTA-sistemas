@@ -25,21 +25,21 @@
 
 	        <div class="row">
 	            <div class="col-12 col-sm-12">
-	                <div class="boxLogin pl-5 pr-5">
-	                    <div class="container">
+	                <div class="boxLogin pl-2 pr-2">
+	                    <div class="container mx-auto">
 	                        <form method="post">
 	                            <div class="form-group">
-	                                <label class="lblLogin mt-5" for="login">Login</label>
+	                                <label class="lblLogin mt-4" for="login">Email</label>
 	                                <input type="text" class="form-control form-control-lg"
-	                                    placeholder="Digite aqui seu login"  name="email">
+	                                      name="email">
 	                            </div>
 	                            <div class="form-group mb-0">
 	                                <label class="lblLogin" for="senha">Senha</label>
 	                                <input type="password" class="form-control form-control-lg"
-	                                    placeholder="Digite aqui sua senha" name="senha">
+	                                     name="senha">
 	                            </div>
 	                            <!-- Botao entrar -->
-	                            <input class="btn" id="btnLogin" type="submit" value="ENTRAR" name="entrar">
+	                            <input class="btn mt-3" id="btnLogin" type="submit" value="ENTRAR" name="entrar">
 
 	                            <div class="form-group">
 	                                <div class="pt-1 pb-1" id="erro">

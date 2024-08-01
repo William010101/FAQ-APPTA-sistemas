@@ -69,7 +69,7 @@ $subcategoria = new Subcategoria();
                                     <p class=" mt-2 mb-0">Para ver mais subcategorias clique no botão abaixo</p>
                                     <img class="mx-auto  mt-2 mb-3" style="width: 10px; height:8px;" src="img/png/setabaixo.png" alt="">
                                 </div>
-
+                                
                                 <a href="subcategoria?id=<?php echo $cat->id_categoria; ?>" class=" btn btn-recentes">
                                     VISUALIZAR TODAS AS SUBCATEGORIAS
                                 </a>
@@ -90,10 +90,15 @@ $subcategoria = new Subcategoria();
                                 <p class=" mt-2 mb-0">Para ver mais subcategorias clique no botão abaixo</p>
                                 <img class="mx-auto mt-1 mb-3" style="width: 10px; height:8px;" src="img/png/setabaixo.png" alt="">
                             </div>
-
+                            <?php if($array_slice): ?>                    
                             <a href="perguntas?categoria=<?php echo $cat->nomecategoria ?>&id=<?php echo $cat->id_categoria ?>" class="btn btn-recentes">
                                 VISUALIZAR PERGUNTAS DA CATEGORIA
                             </a>
+                            <?php else:?>
+                                <a href="#" class="btn btn-recentes" style="color: #FFFF;">
+                                EM BREVE...
+                            </a>
+                            <?php endif; ?>    
                         <?php endif; ?>
 
                         </div>

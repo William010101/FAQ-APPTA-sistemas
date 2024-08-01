@@ -137,19 +137,22 @@ $service = new PerguntaService();
                         if (isset($img->ordem) && $img->ordem > $maior_ordem) :
                             $maior_ordem = $img->ordem;
                             ?>
+                            
                         <?php endif; ?>
                         <script>
                             var controleCampo = <?php
-                                                if (!isset($maior_ordem)) {
+                                                if ($maior_ordem != 0) {
                                                     echo $maior_ordem;
                                                 } else {
                                                     echo 0;
                                                 }
                                                 ?>;
                             var fkidpergunta = <?php echo $perg->id_pergunta ?>;
-
+                            
+                                                   
                             function adicionarCampo() {
                                 controleCampo++;
+                            
                                 document.getElementById('formulario-imagem').insertAdjacentHTML(
                                     'beforeend',
                                     '<div id="campo' + controleCampo + '" class="p-3 mx-auto mb-3 row" style="background-color: #f6f6f6;">' +

@@ -121,7 +121,7 @@ $pergunta = new Pergunta();
                                         ?>
                                     </p>
                                 </div>
-                                <a href="resposta?id=<?php echo $perg->id_pergunta; ?>" class="btn-listar m-2 w-25 text-center">VISUALIZAR RESPOSTA COMPLETA</a>
+                                <a href="resposta?id=<?php echo $perg->id_pergunta; ?>" class="btn-listar col-9 col-sm-6 col-md-4 col-xl-3 m-2 text-center">VISUALIZAR RESPOSTA COMPLETA</a>
                             </div>
                         </div>
                     <?php endforeach; ?>

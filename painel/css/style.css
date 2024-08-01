@@ -70,11 +70,11 @@
 }
 
 #btnLogin {
-    width: 80%;
+    width: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 50px;
+    height: 40px;
     background: #07AEFF;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
@@ -83,7 +83,7 @@
     font-size: 18px;
     letter-spacing: 0.07em;
     color: #FFFFFF;
-    margin: 7% 10% 7% 10%;
+    margin: auto;
     transition: 0.3s;
 }
 
@@ -115,4 +115,11 @@
   align-items: center;  
   width: 35px; 
   height: 28px; 
+}
+
+.boxLogin{
+    border-radius: 15px;
+    width: 350px;
+    height: 300px;
+    padding: 0px;
 }
