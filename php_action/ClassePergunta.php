@@ -110,7 +110,7 @@ class Pergunta
 
         try {
             $pdo = $this->Conexao->getPdo();
-            $query = "SELECT * FROM pergunta";
+            $query = "SELECT * FROM pergunta ORDER BY id_pergunta";
             $stmt = $pdo->prepare($query);
             $stmt->execute();
             $stmt->setFetchMode(PDO::FETCH_CLASS, 'Pergunta');

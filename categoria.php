@@ -41,16 +41,18 @@ $subcategoria = new Subcategoria();
                     <h2 class="titulos mt-2 mb-5 ml-2 text-center">Categorias</h2>
                     <?php
                     $categorias = $categoria->GetCategorias($_GET['id']);
-                    if($categorias == null):?>
-                    
-                    <div class="h-100 w-100 row text-center mb-3 p-4 mx-auto" style="border: 3px solid #C7BD6C; border-radius:15px;" >
-                    <img class="mx-auto col-9 col-sm-6 col-md-4 col-xl-3 " src="img/png/emoji triste.png" alt="">
-                    <h1 style="color: #C7BD6C;">Ops... Ainda não há dúvidas sobre este produto</h1>
-                    <h2 style="color: #0485c4;">Caso tenha alguma dúvida sobre este produto, entre em contato com o nosso suporte</h2>
-                    <a href="https://wa.me/554891599584" class="btn btn-contato  col-9 col-sm-6 col-md-4 col-xl-3 mx-auto mt-2 mb-2" role="button">Entre em contato</a>
-                    </div>
-                    <?php endif;?>
-                    <?php 
+                    if ($categorias == null) : ?>
+
+                        <div class="h-100 col-12 col-sm-10 col-md-8 col-xl-6 row text-center mb-3 pt-3 pl-2 pr-2 mx-auto" style="border: 3px solid #C7BD6C; border-radius:15px;">
+                            <div class="col-12 col-sm-12 col-md-12 col-xl-12">
+                                <img class="mx-auto col-8 col-sm-5 col-md-3 col-xl-3 " src="img/png/emoji triste.png" alt="">
+                                <h3 class="col-12" style="color: #C7BD6C;">Ops... Ainda não há dúvidas sobre este produto</h3>
+                                <h5 class="col-12 col-md-12" style="color: #0485c4;">Caso tenha alguma dúvida sobre este produto, entre em contato com o nosso suporte</h>
+                                    <a href="https://wa.me/554891599584" class="btn btn-contato  col-8 col-sm-6 col-md-7 col-xl-6 mx-auto mt-2 mb-2" role="button">Entre em contato</a>
+                            </div>
+                        </div>
+                    <?php endif; ?>
+                    <?php
                     foreach ($categorias as $cat) :
 
                     ?>
@@ -108,7 +110,7 @@ $subcategoria = new Subcategoria();
                                 <a href="" class="btn btn-recentes" style="color: #FFFF;">
                                     EM BREVE...
                                 </a>
-                            <?php endif; ?>                    
+                            <?php endif; ?>
                         <?php endif; ?>
 
                         </div>

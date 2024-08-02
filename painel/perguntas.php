@@ -39,12 +39,14 @@ $service->DeletarPergunta();
                 <tbody id="tabela">
                     <?php
                     $perguntas = $pergunta->GetTodasPerguntas();
-                    foreach ($perguntas as $perg):
+                    $contador = 0;
+                    foreach ($perguntas as $perg):                       
+                        $contador++; 
                         ?>
                         <tr>
 
                         <td width="42%" data-toggle="collapse" href="#collapse<?php echo $perg->id_pergunta; ?>">
-                                <?php echo $perg->pergunta; ?>
+                                <?php echo "<strong>".$contador."</strong>"." - ". $perg->pergunta; ?>
                                 <div class="collapse" id="collapse<?php echo $perg->id_pergunta; ?>">
                                     <div class="">
 
