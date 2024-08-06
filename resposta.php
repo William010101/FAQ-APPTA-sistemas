@@ -94,9 +94,17 @@ $respostaimagem = new Respostaimagem();
                                 <div class="text-center w-100 " style="background-color: #f6f6f6; border-radius: 10px;">
                                     <img class="mx-auto mt-4 img-fluid" src="data:image/png;base64,<?= base64_encode($imagem->imagem) ?>" alt="Imagem">
                                     <p class="mb-0" style="font-family:Verdana;"><?php echo mb_strtoupper($imagem->descricao, 'UTF-8'); ?></p><br>
-                                    
+
                                 </div>
-                                <p style="font-family:Verdana;"><?php echo $imagem->resposta; ?></p>
+                                
+                                <div class="mt-5 mb-5 d-flex" style="font-family:Verdana;">
+                                <?php if ($imagem->resposta):?>    
+                                    <img src="img\ico\symbol-arrow-right.ico" style="width:13px; height:13px; margin-top: 21px; margin-right:3;">
+                                    <div>
+                                        <p><?php echo $imagem->resposta; ?></p>
+                                    </div>
+                                <?php endif; ?>    
+                                </div>
                                 
                             <?php endforeach; ?>
 
@@ -124,8 +132,8 @@ $respostaimagem = new Respostaimagem();
     </div>
 <?php endforeach; ?>
 </div>
-
+<?php include_once 'include/footer.php' ?>
 
 </body>
-<?php include_once 'include/footer.php' ?>
+
 <script src="js/conteudo.js"></script>

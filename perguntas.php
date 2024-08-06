@@ -13,11 +13,9 @@ $pergunta = new Pergunta();
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>APPTA Sistemas</title>
 </head>
-
-<?php include_once 'include/header.php'; ?>
-
 <body>
-    <div class="container-fluid">
+  <?php include_once 'include/header.php'; ?>  
+    <div class="container-fluid-page">
         <div class="container">
 
             <?php if (isset($_GET['categoria'])):
@@ -76,7 +74,7 @@ $pergunta = new Pergunta();
                         <div class="col-12 col-sm-12 mb-5">
                             <div class="card">
                             <div style="height: 36px; font-weight:bolder;" class="card-header text-center text-white">
-                                    <?php echo  mb_strtoupper($perg->pergunta, 'UTF-8'); ?>
+                                    <?php echo "- ".mb_strtoupper($perg->pergunta, 'UTF-8')." -"; ?>
                                 </div>
                                 <div class="card-body p-2">
                                 <p id="desc_resposta">DESCRIÇÃO:</p>
@@ -105,7 +103,7 @@ $pergunta = new Pergunta();
                         <div class="col-12 col-sm-12 mb-5">
                             <div class="card">
                                 <div style="height: 36px; font-weight:bolder;" class="card-header text-center text-white">
-                                    <?php echo mb_strtoupper($perg->pergunta, 'UTF-8');; ?>
+                                    <?php echo "- ".mb_strtoupper($perg->pergunta, 'UTF-8')." -"; ?>
                                 </div>
                                 <div class="card-body p-2">
                                 <p id="desc_resposta">DESCRIÇÃO:</p>
@@ -129,9 +127,6 @@ $pergunta = new Pergunta();
             </div>
         </div>
     </div>
-
+    <?php include_once 'include/footer.php' ?>
 </body>
 
-<footer>
-    <?php include_once 'include/footer.php' ?>
-</footer>

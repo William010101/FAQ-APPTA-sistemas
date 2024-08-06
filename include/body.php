@@ -4,7 +4,7 @@ include_once 'php_action/ClasseProduto.php';
 include_once 'php_action/ClasseConnection.php';
 $produto = new Produto();
 ?>
-<div class="container-fluid">
+<div class="container-fluid-page">
     <!-- Produtos categorias -->
     <div class="container">
         <h2 class="produtos-titulos ml-5 mt-5 mb-0">Todos os produtos</h2>

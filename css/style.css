@@ -23,6 +23,10 @@
     src: url(../fonts/Roboto-Regular.ttf)
 }
 
+.container-fluid-page{
+    min-height: 100vh;
+}
+
 .Poppins {
     font-family: PoppinsLight;
 }
@@ -87,9 +91,16 @@
     font-size: 14px;
     line-height: 24px;
     color: #FFF;
+    border:1px solid #07AEFF;
     background-color: #07AEFF;
     border-radius: 0px 0px 10px 10px;
 }
+.btn.btn-recentes:active{
+    background-color: #07AEFF;
+    color: #FFF;
+    border:1px solid #07AEFF;
+    border-radius: 0px 0px 10px 10px;
+   }
 
 #formRecentes {
     margin-bottom: 0;
@@ -616,6 +627,13 @@ footer {
     font-size: 20px;
 }
 
+.btn.ajudafooter:active{
+    color: #0583c2;
+    border: 1px solid #ffffff;
+}
+
+
+
 
 .produtos {
     margin-bottom: 3%;
@@ -725,7 +743,10 @@ footer {
     border-radius: 5px;
     text-decoration: none;
     font-size: 14px;
+    font-weight: bolder;
 }
+
+
 
 .resposta-perg{
  font-family: Verdana !important;
@@ -737,6 +758,7 @@ footer {
     white-space: nowrap;
     line-height: 1.2rem;
 }
+
 
 .list-link-card::marker{
     font-size: 23px;

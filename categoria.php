@@ -18,12 +18,13 @@ $subcategoria = new Subcategoria();
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>APPTA Sistemas</title>
 </head>
-<?php include_once 'include/header.php'; ?>
 
 <body>
 
 
-    <div class="container-fluid">
+    <?php include_once 'include/header.php'; ?>
+
+    <div class="container-fluid-page ">
         <div class="container">
             <?php
             $produtos = $produto->GetProduto($_GET['id']);
@@ -70,8 +71,9 @@ $subcategoria = new Subcategoria();
 
                                             foreach ($array_slice as $sub) :
                                         ?>
-                                                <li class="list-link-card" "><a href=" perguntas?subcategoria=<?php echo $sub->nomesubcategoria; ?>&id=<?php echo $sub->id_subcategoria; ?>" class="link-dark  link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">
-                                                    <?php echo $sub->nomesubcategoria ?>
+                                                <li class="list-link-card" ">
+                                                <a href=" perguntas?subcategoria=<?php echo $sub->nomesubcategoria; ?>&id=<?php echo $sub->id_subcategoria; ?>" class="link-dark  link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">
+                                                    <?php echo $sub->nomesubcategoria; ?>
                                                     </a></li>
                                             <?php endforeach; ?>
 
@@ -94,7 +96,7 @@ $subcategoria = new Subcategoria();
                                 ?>
 
                                     <li class="list-link-card" "><a href=" resposta?id=<?php echo $perg->id_pergunta ?>" class="link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">
-                                        <?php echo $perg->pergunta; ?>
+                                        <?php echo mb_strtoupper($perg->pergunta, 'UTF-8'); ?>
                                         </a></li>
                                 <?php endforeach; ?>
 
@@ -119,7 +121,9 @@ $subcategoria = new Subcategoria();
         </div>
     </div>
     </div>
-</body>
-<footer>
+
     <?php include_once 'include/footer.php' ?>
-</footer>
+
+</body>
+
+</html>
