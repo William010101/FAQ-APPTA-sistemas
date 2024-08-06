@@ -25,7 +25,7 @@ $produto = new Produto();
                         <img class="mt-4" style="max-width:80%; height: 80%;"
                             src="data:image/png;base64,<?= base64_encode($prod->imagem) ?>" alt="">
                     </a>
-                <div class="card-header p-1 " style="height: 15%; width:100%">
+                <div class="card-header-prod p-1 " style="height: 15%; width:100%">
                         <a style="height: 100%; width:100%;" href="categoria?id=<?php echo $prod->id_produto ?>"
                             class="btn btn-produtos-primario p-0"><?php echo mb_strtoupper($prod->nomeproduto, 'UTF-8') ?></a>
                 </div>    

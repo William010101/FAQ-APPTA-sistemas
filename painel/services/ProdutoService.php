@@ -21,7 +21,7 @@ class ProdutoService
             }
             $produto->visivel = $_POST['visivel'];
             $produto->CadastroProduto($produto);
-            
+            header('Location: produtos.php');
         }              
     }
 
@@ -47,6 +47,9 @@ class ProdutoService
         $produto->visivel = isset($_POST['visivel']) ? 1  : 0;
         $produto->id_produto = $_POST['id_produto'];
         $produto->SetProduto($produto);
+        echo "<script>
+        window.location.href = 'produtos.php';
+        </script>";
     }
 }
 

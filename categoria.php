@@ -44,11 +44,11 @@ $subcategoria = new Subcategoria();
                     if ($categorias == null) : ?>
 
                         <div class="h-100 col-10 col-sm-9 col-md-7 col-lg-6 col-xl-6 row text-center mb-3 pt-3 pl-2 pr-2 mx-auto" style="border: 3px solid #C7BD6C; border-radius:15px;">
-                            <div class="col-11 col-sm-11 col-md-10 col-lg-9 col-xl-10 mx-auto">
+                            <div class="col-11 col-sm-11 col-md-10 col-lg-9 col-xl-9 mx-auto">
                                 <img class="mx-auto col-6 col-sm-5 col-md-3 col-xl-3 " src="img/png/emoji triste.png" alt="">
                                 <h3 class="col-12" style="color: #C7BD6C;">Ops... Ainda não há dúvidas sobre este produto</h3>
                                 <h5 class="col-12 col-md-12" style="color: #0485c4;">Caso tenha alguma dúvida sobre este produto, entre em contato com o nosso suporte</h>
-                                    <a href="https://wa.me/554891599584" class="btn btn-contato col-12 col-sm-9 col-md-9 col-lg- col-xl-7 mx-auto mt-2 mb-2" role="button">Entre em contato</a>
+                                    <a href="https://wa.me/554891599584" class="btn btn-contato-naoencontrado col-12 col-sm-9 col-md-9 col-lg- col-xl-10 mx-auto mt-2 mb-2" role="button">ENTRE EM CONTATO</a>
                             </div>
                         </div>
                     <?php endif; ?>

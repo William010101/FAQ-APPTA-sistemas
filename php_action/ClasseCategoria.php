@@ -52,6 +52,9 @@ class Categoria
                 $stmt->bindParam(':visivel', $this->visivel, PDO::PARAM_BOOL);
                 $stmt->execute();
                 echo "Categoria alterada com sucesso!";
+                echo "<script>
+                window.location.href = 'categoria.php';
+                </script>";
             } 
         } catch (PDOException $e) {
             echo "Erro ao alterar a categoria: " . $e->getMessage();
@@ -73,6 +76,7 @@ class Categoria
                 $stmt->bindParam(':fk_id_produto', $this->fk_id_produto, PDO::PARAM_INT);
                 $stmt->execute();
                 echo "Categoria inserida com sucesso!";
+                header('Location: categoria.php');
             } 
         } catch (PDOException $e) {
             echo "Erro ao inserir a categoria: " . $e->getMessage();

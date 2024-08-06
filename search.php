@@ -75,8 +75,7 @@ $pergunta = new Pergunta();
                                     ?>
                                 </p>
 
-                                <a href="resposta?id=<?php echo $perg['id_pergunta']; ?>" class="btn-listar mt-2 ">visualizar
-                                    resposta completa</a>
+                                <a href="resposta?id=<?php echo $perg['id_pergunta']; ?>" class="btn-listar mt-2 ">VISUALIZAR RESPOSTA COMPLETA</a>
                             </div>
                         </div>
                     </div>

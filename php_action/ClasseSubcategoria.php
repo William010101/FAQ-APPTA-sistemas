@@ -34,6 +34,9 @@ class Subcategoria
                 $stmt->bindParam(':visivel', $this->visivel, PDO::PARAM_BOOL);
                 $stmt->execute();
                 echo "Subcategoria alterada com sucesso!";
+                echo "<script>
+                window.location.href = 'subcategoria.php';
+                </script>";
             } 
         } catch (PDOException $e) {
             echo "Erro ao alterar a categoria: " . $e->getMessage();
@@ -54,6 +57,9 @@ class Subcategoria
                 $stmt->bindParam(':fk_id_categoria', $this->fk_id_categoria, PDO::PARAM_INT);
                 $stmt->execute();
                 echo "Subcategoria inserida com sucesso!";
+                echo "<script>
+                window.location.href = 'subcategoria.php';
+                </script>";
             } 
         } catch (PDOException $e) {
             echo "Erro ao inserir a categoria: " . $e->getMessage();

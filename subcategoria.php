@@ -66,7 +66,7 @@ $subcategoria = new Subcategoria();
                                         <img class="mx-auto mt-2 mb-3" style="width: 10px; height:8px;" src="img/png/setabaixo.png" alt="">
                                     </div>
                                     <a href="perguntas?subcategoria=<?php echo $sub->nomesubcategoria;?>&id=<?php echo $sub->id_subcategoria ?>" class="btn btn-recentes">
-                                        Visualizar todas as perguntas da subcategoria
+                                    VISUALIZAR TODAS AS PERGUNTAS DA SUBCATEGORIA
                                     </a>
 
                                 </div>

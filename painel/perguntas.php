@@ -31,6 +31,7 @@ $service->DeletarPergunta();
                         <th>Pergunta</th>
                         <th>Subcategoria</th>
                         <th>Categoria</th>
+                        <th>Ult.modificação</th>
                         <th>Editar</th>
                         <th>Deletar</th>
                     </tr>
@@ -60,7 +61,7 @@ $service->DeletarPergunta();
                                 </div>
                             </td>
                                 
-                                <td width="22%">
+                                <td width="20%">
                                     <?php
                                 $subcategorias = $subcategoria->GetTodasSubcategorias();
                                 foreach ($subcategorias as $sub):
@@ -72,7 +73,7 @@ $service->DeletarPergunta();
                                    ?>
                                   <?php endforeach; ?>
                                 </td>
-                                <td width="22%">
+                                <td width="20%">
                                     <?php
                                 $categorias = $categoria->GetTodasCategorias();
                                 foreach ($categorias as $cat):
@@ -84,6 +85,10 @@ $service->DeletarPergunta();
                                    ?>
                                   <?php endforeach; ?>
                                 </td>
+                                <td width="30%"><?php 
+                                $data = new DateTime($perg->dataedicao);
+                                echo  $data->format('d/m/Y'); 
+                                ?></td>
                             
                             <td ><a href="editarpergunta.php?id=<?php echo $perg->id_pergunta; ?>" class="btn btn-warning"><i
                                         class="material-icons">edit</i></a></td>

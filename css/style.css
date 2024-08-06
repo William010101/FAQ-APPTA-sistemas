@@ -560,6 +560,20 @@
     line-height: 24px;
 }
 
+.btn.btn-contato-naoencontrado {
+    display: block;
+    width: 65%;
+    padding: 18px 0px 18px 0px;
+    color: #2e90fa;
+    background: #ffffff;
+    border:1px solid #C7BD6C;
+    border-radius: 30px;
+    font-family: RobotoBold;
+    font-size: 18px;
+    line-height: 24px;
+}
+
+
 .breadcrumb-item.active {
     font-weight: bold;
     color: #C7BD6C;
@@ -676,6 +690,7 @@ footer {
 
 .btn.btn-produtos-primario {
     color: #ffffff;
+    background-color: #0485C4;
 }
 
 #autorArtigo {
@@ -689,9 +704,13 @@ footer {
     width: 5rem;
     height: 5rem;
 }
+.card-header-prod{
+    background-color: #0485C4;
+    border-radius:5px 5px 5px 5px;
+}
 
  .card-header{
-    background-color: #0485C4;
+    background-color: #07AEFF;
     border-radius:5px 5px 5px 5px;
 }
 
@@ -700,7 +719,7 @@ footer {
 }
 
 .btn-listar{
-    background-color: #0485C4;
+    background-color: #07AEFF;
     color: #FFF;
     padding: 5px;
     border-radius: 5px;
