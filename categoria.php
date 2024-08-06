@@ -96,7 +96,7 @@ $subcategoria = new Subcategoria();
                                 ?>
 
                                     <li class="list-link-card" "><a href=" resposta?id=<?php echo $perg->id_pergunta ?>" class="link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">
-                                        <?php echo mb_strtoupper($perg->pergunta, 'UTF-8'); ?>
+                                        <?php echo $perg->pergunta; ?>
                                         </a></li>
                                 <?php endforeach; ?>
 
