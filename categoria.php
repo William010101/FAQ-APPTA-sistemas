@@ -80,7 +80,7 @@ $subcategoria = new Subcategoria();
 
 
                                     </span>
-                                    <p class=" mt-2 mb-0">Para ver mais subcategorias clique no botão abaixo</p>
+                                    <p class=" mt-2 mb-0 mx-auto">Para ver mais subcategorias clique no botão abaixo</p>
                                     <img class="mx-auto  mt-2 mb-3" style="width: 10px; height:8px;" src="img/png/setabaixo.png" alt="">
                                 </div>
 
@@ -101,7 +101,7 @@ $subcategoria = new Subcategoria();
                                 <?php endforeach; ?>
 
                                 </span>
-                                <p class=" mt-2 mb-0">Para ver mais subcategorias clique no botão abaixo</p>
+                                <p class=" mt-2 mb-0 mx-auto">Para ver mais subcategorias clique no botão abaixo</p>
                                 <img class="mx-auto mt-1 mb-3" style="width: 10px; height:8px;" src="img/png/setabaixo.png" alt="">
                             </div>
                             <?php if ($array_slice) : ?>

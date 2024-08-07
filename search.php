@@ -33,6 +33,8 @@ $pergunta = new Pergunta();
         <div class="container mt-4">
             <?php
             $perguntas = $pergunta->Pesquisar();
+            
+
             if (empty($perguntas)):
                 ?>
                 <div class="contagempesquisa mt-3 mb-4">
@@ -75,8 +77,9 @@ $pergunta = new Pergunta();
                                     ?>
                                 </p>
 
-                                <a href="resposta?id=<?php echo $perg['id_pergunta']; ?>" class="btn-listar mt-2 ">VISUALIZAR RESPOSTA COMPLETA</a>
+                                
                             </div>
+                            <a href="resposta?id=<?php echo $perg['id_pergunta']; ?>" class="btn-listar col-9 col-sm-6 col-md-4 col-xl-3 m-2 text-center">VISUALIZAR RESPOSTA COMPLETA</a>
                         </div>
                     </div>
                 <?php endforeach; ?>

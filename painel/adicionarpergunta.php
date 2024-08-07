@@ -136,7 +136,7 @@ $service->PostPergunta();
                             '<div class="form-floating">' +
                             '<h6><label class="mb-0">Resposta da imagem</label></h6>' +
 
-                            '<textarea class="form-control  mb-3" name="respostaimagem[]" id="respostaimagem" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>' +
+                            '<textarea class="form-control  mb-3 p-0" name="respostaimagem[]" id="respostaimagem" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>' +
                             '</div>' +
                             '<button id="' + controleCampo + '" onclick="removerCampo(' + controleCampo + ')" type="button" class="btn btn-outline-dark mx-auto w-25 mb-3">Excluir</button>' +
                             '<hr class="w-75 mx-auto" />' +

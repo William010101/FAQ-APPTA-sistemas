@@ -96,16 +96,16 @@ $respostaimagem = new Respostaimagem();
                                     <p class="mb-0" style="font-family:Verdana;"><?php echo mb_strtoupper($imagem->descricao, 'UTF-8'); ?></p><br>
 
                                 </div>
-                                
+                                <?php if ($imagem->resposta):?>  
                                 <div class="mt-5 mb-5 d-flex" style="font-family:Verdana;">
-                                <?php if ($imagem->resposta):?>    
-                                    <img src="img\ico\symbol-arrow-right.ico" style="width:13px; height:13px; margin-top: 21px; margin-right:3;">
-                                    <div>
-                                        <p><?php echo $imagem->resposta; ?></p>
+                                  
+                                    <img src="img\ico\symbol-arrow-right.ico" style="width:13px; height:13px; margin-top:6px; margin-right:3;">
+                                    <div class="paragrafo-resp">
+                                        <?php echo $imagem->resposta; ?>
                                     </div>
-                                <?php endif; ?>    
+                                  
                                 </div>
-                                
+                                <?php endif; ?>  
                             <?php endforeach; ?>
 
                         </div>

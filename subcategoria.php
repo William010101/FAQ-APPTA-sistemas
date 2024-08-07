@@ -59,7 +59,7 @@ $subcategoria = new Subcategoria();
                                             </a></li>
                                     <?php endforeach; ?>
                                 </span>
-                                <p class="mt-2 mb-0">Para ver mais perguntas clique no botão abaixo</p>
+                                <p class="mt-2 mb-0 mx-auto">Para ver mais perguntas clique no botão abaixo</p>
                                 <img class="mx-auto mt-2 mb-3" style="width: 10px; height:8px;" src="img/png/setabaixo.png" alt="">
                             </div>
                             <a href="perguntas?subcategoria=<?php echo $sub->nomesubcategoria; ?>&id=<?php echo $sub->id_subcategoria ?>" class="btn btn-recentes">
